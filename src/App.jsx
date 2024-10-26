@@ -1,10 +1,14 @@
+import Sidebar from "./components/Sidebar";
+import ContentArea from "./components/ContentArea";
 function App() {
   return (
     <>
-    <h1 className="text-xl text-red-500 ">first tailwind css with react vite</h1>
-     <div>hello</div>
+      <main className="grid grid-cols-4 h-screen ">
+        <Sidebar />
+        <ContentArea />
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
