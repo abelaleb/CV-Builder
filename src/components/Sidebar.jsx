@@ -4,8 +4,8 @@ import Experience from "./Experience";
 export default function Sidebar() {
   return (
     <>
-      <aside className="text-center bg-red-300 col-span-1">
-        <h1>CV Generator</h1>
+      <aside className="text-center p-4 bg-red-300 col-span-1">
+        <div className="">CV Generator</div>
         <PersonalDetails />
         <EducationalBackground />
         <Experience />

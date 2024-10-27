@@ -1,31 +1,34 @@
 import React, { useState } from "react";
-export default function EducationalBackground(props) {
-  const [school, setSchool] = useState("");
-  const [degree, setDegree] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [form, setForm] = useState("");
-  const [isShown, setIsShown] = useState(false);
 
-  const handleChange = () => {
-    console.log("form");
+export default function EducationalBackground() {
+  const [educationalFormData, setEducationalFormData] = useState({
+    school: "",
+    degree: "",
+    city: "",
+    country: "",
+    startDate: "",
+    endDate: "",
+  });
+  const [isShown, setIsShown] = useState(true);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEducationalFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const toggleForm = () => {
-    setIsShown(!isShown);
+    setIsShown((prevShown) => !prevShown);
   };
 
   return (
     <>
       <section className="p-4">
-        <h3 className="text-xl font-semibold mb-4">Educational Experience</h3>
-        <button
-          onClick={toggleForm}
-          className="text-indigo-500 underline mb-4"
-        >
-          {isShown ? "Hide Form" : "Shown Form"}
+        <h3 className="text-xl font-semibold mb-4">Education</h3>
+        <button onClick={toggleForm} className="text-indigo-500 underline mb-4">
+          {isShown ? "Hide Form" : "Show Form"}
         </button>
         {isShown && (
           <form>
