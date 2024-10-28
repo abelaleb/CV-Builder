@@ -1,16 +1,15 @@
-export default function ContentArea() {
+export default function ContentArea({ name, email, phoneNumber, address }) {
   return (
     <>
-      <main className="bg-green-300 col-span-3 p-4 text-center ">
+      <main className="bg-green-300 col-span-3 m-4 p-4 text-center ">
         <div className="">Resume builder</div>
-
         <div>
           <div className="text-2xl font-bold m-4">Personal Details</div>
-          <div>Name</div>
+          <div>Name: {name}</div>
           <div>
-            <div>email</div>
-            <div>random phone no</div>
-            <div>Address</div>
+            <div>email: {email}</div>
+            <div>Phone Number: {phoneNumber}</div>
+            <div>Address: {address}</div>
           </div>
         </div>
 

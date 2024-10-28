@@ -9,7 +9,7 @@ export default function EducationalBackground() {
     startDate: "",
     endDate: "",
   });
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
