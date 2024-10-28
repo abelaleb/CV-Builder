@@ -101,16 +101,16 @@ function EducationalBackground({
 
             <div className="mb-4">
               <label
-                htmlFor="startDate"
+                htmlFor="startSchoolDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 Start Date
               </label>
               <input
                 type="date"
-                name="startDate"
-                id="startDate"
-                value={educationalBackground.startDate || ""}
+                name="startSchoolDate"
+                id="startSchoolDate"
+                value={educationalBackground.startSchoolDate || ""}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
@@ -119,16 +119,16 @@ function EducationalBackground({
 
             <div className="mb-4">
               <label
-                htmlFor="endDate"
+                htmlFor="endSchoolDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 End Date
               </label>
               <input
                 type="date"
-                name="endDate"
-                id="endDate"
-                value={educationalBackground.endDate || ""}
+                name="endSchoolDate"
+                id="endSchoolDate"
+                value={educationalBackground.endSchoolDate || ""}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"

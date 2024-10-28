@@ -19,8 +19,8 @@ export default function PersonalDetails({
   };
 
   return (
-    <section className="p-4">
-      <h3 className="text-xl font-semibold mb-4">Personal Details</h3>
+    <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
+      <h2 className="text-xl font-semibold mb-4">Personal Details</h2>
       <button onClick={toggleForm} className="text-indigo-500 underline mb-4">
         {isShown ? "Hide Form" : "Show Form"}
       </button>

@@ -7,15 +7,9 @@ function ContentArea({
   const { name, email, phoneNumber, address } = personalDetails;
   const { school, degree, city, country, startSchoolDate, endSchoolDate } =
     educationalBackground;
-  const {
-    company,
-    position,
-    startJobDate,
-    endJobDate,
-    location,
-    description,
-  } = professionalExperience;
-  
+  const { company, position, startJobDate, endJobDate, location, description } =
+    professionalExperience;
+
   return (
     <>
       <main className="bg-green-300 col-span-3 m-4 p-4 text-center ">
@@ -34,22 +28,22 @@ function ContentArea({
           <div className="text-2xl font-bold mb-4">Education</div>
           <div>
             <div>School: {school}</div>
-            <div>Degree:{degree}</div>
-            <div>City:{city}</div>
-            <div>Country:{country}</div>
-            <div>Startdate:{startSchoolDate}</div>
-            <div>EndDate:{endSchoolDate}</div>
+            <div>Degree: {degree}</div>
+            <div>City: {city}</div>
+            <div>Country: {country}</div>
+            <div>Startdate: {startSchoolDate}</div>
+            <div>EndDate: {endSchoolDate}</div>
           </div>
         </div>
 
         <div>
           <div className="text-2xl font-bold mb-4">Professional Experience</div>
-          <div>Company:{company}</div>
-          <div>Position:{position}</div>
-          <div>Start Date:{startJobDate}</div>
-          <div>End date:{endJobDate}</div>
-          <div>Location:{location}</div>
-          <div>Description:{description}</div>
+          <div>Company: {company}</div>
+          <div>Position: {position}</div>
+          <div>Start Date: {startJobDate}</div>
+          <div>End date: {endJobDate}</div>
+          <div>Location: {location}</div>
+          <div>Description: {description}</div>
         </div>
       </main>
     </>

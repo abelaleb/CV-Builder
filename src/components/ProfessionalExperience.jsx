@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Experience({ professionalExperience, setProfessionalExperience }) {
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const toggleForm = () => {
     setIsShown(!isShown);
@@ -62,15 +62,15 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
 
             <div className="mb-4">
               <label
-                htmlFor="startDate"
+                htmlFor="startJobDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 Start Date
               </label>
               <input
                 type="date"
-                name="startDate"
-                id="startDate"
+                name="startJobDate"
+                id="startJobDate"
                 value={professionalExperience.startJobDate || ""}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
@@ -80,15 +80,15 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
 
             <div className="mb-4">
               <label
-                htmlFor="endDate"
+                htmlFor="endJobDate"
                 className="block text-sm font-medium text-gray-700"
               >
                 End Date
               </label>
               <input
                 type="date"
-                name="endDate"
-                id="endDate"
+                name="endJobDate"
+                id="endJobDate"
                 value={professionalExperience.endJobDate}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
