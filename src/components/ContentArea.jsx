@@ -1,4 +1,11 @@
-export default function ContentArea({ name, email, phoneNumber, address }) {
+import React from "react";
+export default function ContentArea(
+  { personalDetails },
+  { educationalDetails }
+) {
+  const { name, email, phoneNumber, address } = personalDetails;
+  
+
   return (
     <>
       <main className="bg-green-300 col-span-3 m-4 p-4 text-center ">
