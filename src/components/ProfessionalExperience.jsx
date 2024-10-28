@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 
-export default function Experience() {
-  const [experienceData, setExperienceData] = useState({
-    jobTitle: "",
-    company: "",
-    position: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    description: "",
-  });
-  const [isShown, setIsShown] = useState(false);
+function Experience({ professionalExperience, setProfessionalExperience }) {
+  const [isShown, setIsShown] = useState(true);
 
   const toggleForm = () => {
     setIsShown(!isShown);
@@ -18,7 +9,7 @@ export default function Experience() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setExperienceData((prevData) => ({
+    setProfessionalExperience((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -43,10 +34,10 @@ export default function Experience() {
               <input
                 type="text"
                 name="company"
-                placeholder="Enter Company Name"
                 id="company"
-                // value={company}
-                // onChange={handleChange}
+                value={professionalExperience.company || ""}
+                onChange={handleChange}
+                placeholder="Enter Company Name"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -61,10 +52,10 @@ export default function Experience() {
               <input
                 type="position"
                 name="position"
-                placeholder="Enter Position Title"
                 id="position"
-                // value={email}
-                // onChange={toggleChange}
+                value={professionalExperience.position || ""}
+                onChange={handleChange}
+                placeholder="Enter Position Title"
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
               />
             </div>
@@ -77,12 +68,12 @@ export default function Experience() {
                 Start Date
               </label>
               <input
-                type="text"
+                type="date"
                 name="startDate"
-                placeholder="mm / dd / yy"
                 id="startDate"
-                // value={startDate}
-                // onChange={handleChange}
+                value={professionalExperience.startJobDate || ""}
+                onChange={handleChange}
+                placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -95,12 +86,12 @@ export default function Experience() {
                 End Date
               </label>
               <input
-                type="text"
+                type="date"
                 name="endDate"
-                placeholder="mm / dd / yy"
                 id="endDate"
-                // value={endDate}
-                // onChange={handleChange}
+                value={professionalExperience.endJobDate}
+                onChange={handleChange}
+                placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -115,10 +106,10 @@ export default function Experience() {
               <input
                 type="text"
                 name="location"
-                placeholder="Enter Location"
                 id="location"
-                // value={endDate}
-                // onChange={handleChange}
+                value={professionalExperience.location}
+                onChange={handleChange}
+                placeholder="Enter Location"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -133,10 +124,10 @@ export default function Experience() {
               <textarea
                 type="description"
                 name="description"
-                placeholder="Enter Description"
                 id="description"
-                // value={endDate}
-                // onChange={handleChange}
+                value={professionalExperience.description}
+                onChange={handleChange}
+                placeholder="Enter Description"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -146,3 +137,5 @@ export default function Experience() {
     </>
   );
 }
+
+export default Experience;

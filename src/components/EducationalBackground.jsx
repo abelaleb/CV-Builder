@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 
-export default function EducationalBackground() {
-  const [educationalFormData, setEducationalFormData] = useState({
-    school: "",
-    degree: "",
-    city: "",
-    country: "",
-    startDate: "",
-    endDate: "",
-  });
+function EducationalBackground({
+  educationalBackground,
+  setEducationalBackground,
+}) {
   const [isShown, setIsShown] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEducationalFormData((prevData) => ({
+    setEducationalBackground((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -42,10 +37,10 @@ export default function EducationalBackground() {
               <input
                 type="text"
                 name="school"
-                placeholder="Enter School / University"
                 id="school"
-                // value={degree}
-                // onChange={handleChange}
+                value={educationalBackground.school || ""}
+                onChange={handleChange}
+                placeholder="Enter School / University"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -60,10 +55,10 @@ export default function EducationalBackground() {
               <input
                 type="text"
                 name="degree"
-                placeholder="Enter Degree / Field of Study"
                 id="degree"
-                // value={degree}
-                // onChange={handleChange}
+                value={educationalBackground.degree || ""}
+                onChange={handleChange}
+                placeholder="Enter Degree / Field of Study"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -78,10 +73,10 @@ export default function EducationalBackground() {
               <input
                 type="text"
                 name="city"
-                placeholder="Enter City"
                 id="city"
-                // value={city}
-                // onChange={handleChange}
+                value={educationalBackground.city || ""}
+                onChange={handleChange}
+                placeholder="Enter City"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -96,10 +91,10 @@ export default function EducationalBackground() {
               <input
                 type="text"
                 name="country"
-                placeholder="Enter Country"
                 id="country"
-                // value={startDate}
-                // onChange={handleChange}
+                value={educationalBackground.country || ""}
+                onChange={handleChange}
+                placeholder="Enter Country"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -112,12 +107,12 @@ export default function EducationalBackground() {
                 Start Date
               </label>
               <input
-                type="text"
+                type="date"
                 name="startDate"
-                placeholder="mm / dd / yy"
                 id="startDate"
-                // value={startDate}
-                // onChange={handleChange}
+                value={educationalBackground.startDate || ""}
+                onChange={handleChange}
+                placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -130,12 +125,12 @@ export default function EducationalBackground() {
                 End Date
               </label>
               <input
-                type="text"
+                type="date"
                 name="endDate"
-                placeholder="mm / dd / yy"
                 id="endDate"
-                // value={endDate}
-                // onChange={handleChange}
+                value={educationalBackground.endDate || ""}
+                onChange={handleChange}
+                placeholder="mm / dd / yy"
                 className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
               />
             </div>
@@ -145,3 +140,4 @@ export default function EducationalBackground() {
     </>
   );
 }
+export default EducationalBackground;

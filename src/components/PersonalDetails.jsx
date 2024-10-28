@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-export default function PersonalDetails({ personalDetails, setPersonalDetails }) {
+export default function PersonalDetails({
+  personalDetails,
+  setPersonalDetails,
+}) {
   const [isShown, setIsShown] = useState(false);
-
-  const toggleForm = () => {
-    setIsShown(!isShown);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,6 +12,10 @@ export default function PersonalDetails({ personalDetails, setPersonalDetails })
       ...prevDetails,
       [name]: value,
     }));
+  };
+
+  const toggleForm = () => {
+    setIsShown(!isShown);
   };
 
   return (
@@ -25,7 +28,10 @@ export default function PersonalDetails({ personalDetails, setPersonalDetails })
       {isShown && (
         <form>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
               Name
             </label>
             <input
@@ -40,7 +46,10 @@ export default function PersonalDetails({ personalDetails, setPersonalDetails })
           </div>
 
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email
             </label>
             <input
@@ -55,7 +64,10 @@ export default function PersonalDetails({ personalDetails, setPersonalDetails })
           </div>
 
           <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="phoneNumber"
+              className="block text-sm font-medium text-gray-700"
+            >
               Phone Number
             </label>
             <input
@@ -70,7 +82,10 @@ export default function PersonalDetails({ personalDetails, setPersonalDetails })
           </div>
 
           <div className="mb-4">
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="address"
+              className="block text-sm font-medium text-gray-700"
+            >
               Address
             </label>
             <input

@@ -10,13 +10,39 @@ function App() {
     address: "",
   });
 
+  const [educationalBackground, setEducationalBackground] = useState({
+    school: "",
+    degree: "",
+    city: "",
+    country: "",
+    startSchoolDate: "",
+    endSchoolDate: "",
+  });
+  const [professionalExperience, setProfessionalExperience] = useState({
+    jobTitle: "",
+    company: "",
+    position: "",
+    startJobDate: "",
+    endJobDate: "",
+    location: "",
+    description: "",
+  });
+
   return (
     <main className="grid grid-cols-4 bg-gray-400">
       <Sidebar
         personalDetails={personalDetails}
         setPersonalDetails={setPersonalDetails}
+        educationalBackground={educationalBackground}
+        setEducationalBackground={setEducationalBackground}
+        professionalExperience={professionalExperience}
+        setProfessionalExperience={setProfessionalExperience}
       />
-      <ContentArea personalDetails={personalDetails} />
+      <ContentArea
+        personalDetails={personalDetails}
+        educationalBackground={educationalBackground}
+        professionalExperience={professionalExperience}
+      />
     </main>
   );
 }
