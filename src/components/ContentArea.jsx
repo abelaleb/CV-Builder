@@ -37,8 +37,14 @@ function ContentArea({
               {city}, {country}
             </div>
             <div className="flex items-center gap-2">
-              <img src="/src/assets/linkedin.svg" alt="linkedin icon" />
-              {linkedin}
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <img src="/src/assets/linkedin.svg" alt="linkedin icon" />
+              </a>
             </div>
           </div>
         </div>
