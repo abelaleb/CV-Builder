@@ -19,11 +19,21 @@ export default function PersonalDetails({
   };
 
   return (
-    <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
-      <h2 className=" font-bold text-lg mb-4">Personal Details</h2>
-      <button onClick={toggleForm} className="text-indigo-500 underline mb-4">
-        {isShown ? "Hide Form" : "Show Form"}
-      </button>
+    <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
+      <div className="flex justify-center items-center gap-4">
+        <h2 className=" font-bold text-lg ">Personal Details</h2>
+
+        <button onClick={toggleForm} className="text-indigo-500 underline ">
+          {isShown ? (
+            "Hide Form"
+          ) : (
+            <img
+              src="/src/assets/dropdown-arrow.svg"
+              alt="dropdown-arrow svg"
+            />
+          )}
+        </button>
+      </div>
 
       {isShown && (
         <form>
@@ -39,9 +49,7 @@ export default function PersonalDetails({
                 value={personalDetails.name || ""}
                 onChange={handleChange}
                 placeholder="Enter your Name"
-
-
-className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div className="mb-4">

@@ -17,7 +17,7 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
 
   return (
     <>
-      <section className="p-4">
+      <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
         <h3 className="text-xl font-semibold mb-4">Experience</h3>
         <button onClick={toggleForm} className="text-indigo-500 underline mb-4">
           {isShown ? "Hide Form" : "Show Form"}

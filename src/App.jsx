@@ -29,7 +29,7 @@ function App() {
   });
 
   return (
-    <main className="grid grid-cols-4 bg-gray-400">
+    <main className="grid grid-cols-4">
       <Sidebar
         personalDetails={personalDetails}
         setPersonalDetails={setPersonalDetails}

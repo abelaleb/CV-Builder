@@ -12,38 +12,46 @@ function ContentArea({
 
   return (
     <>
-      <main className="bg-green-300 col-span-3 m-4 p-4 text-center ">
-        <div className="">Resume builder</div>
-        <div>
-          <div className="text-2xl font-bold m-4">Personal Details</div>
-          <div>Name: {name}</div>
+      <main className=" col-span-3 m-4 ml-0 grid grid-cols-3 bg-slate-100 ">
+        <div className="col-span-1 bg-red-50 flex flex-col border-4 p-4">
           <div>
-            <div>email: {email}</div>
-            <div>Phone Number: {phoneNumber}</div>
-            <div>Address: {address}</div>
+            <div> {email}</div>
+            <div> {phoneNumber}</div>
+            <div className="capitalize">{address}</div>
+            <div>linkedin</div>
           </div>
         </div>
 
-        <div>
-          <div className="text-2xl font-bold mb-4">Education</div>
+        <div className="col-span-2 bg-red-50 border-4 p-4">
+          <div className="bg-red-800 text-white">
+            <div className="capitalize">{name}</div>
+            <div>summary</div>
+            <div>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
+              aliquam dolores vel fuga eius nisi repellat officia facilis iusto
+              voluptas ex repellendus minima nostrum sit numquam, impedit
+              laboriosam iure. Doloremque!
+            </div>
+          </div>
           <div>
+            <div className="text-2xl">Education</div>
             <div>School: {school}</div>
             <div>Degree: {degree}</div>
             <div>City: {city}</div>
             <div>Country: {country}</div>
             <div>Startdate: {startSchoolDate}</div>
             <div>EndDate: {endSchoolDate}</div>
+            <div></div>
           </div>
-        </div>
-
-        <div>
-          <div className="text-2xl font-bold mb-4">Professional Experience</div>
-          <div>Company: {company}</div>
-          <div>Position: {position}</div>
-          <div>Start Date: {startJobDate}</div>
-          <div>End date: {endJobDate}</div>
-          <div>Location: {location}</div>
-          <div>Description: {description}</div>
+          <div>
+            <div className="text-2xl">Professional Experience</div>
+            <div>Company: {company}</div>
+            <div>Position: {position}</div>
+            <div>Start Date: {startJobDate}</div>
+            <div>End date: {endJobDate}</div>
+            <div>Location: {location}</div>
+            <div>Description: {description}</div>
+          </div>
         </div>
       </main>
     </>
