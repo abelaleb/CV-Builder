@@ -4,7 +4,7 @@ function EducationalBackground({
   educationalBackground,
   setEducationalBackground,
 }) {
-  const [isShown, setIsShown] = useState(false);
+  const [isShown, setIsShown] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -4,7 +4,7 @@ export default function PersonalDetails({
   personalDetails,
   setPersonalDetails,
 }) {
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
