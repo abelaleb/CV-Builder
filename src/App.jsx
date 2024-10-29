@@ -3,24 +3,23 @@ import Sidebar from "./components/Sidebar";
 import ContentArea from "./components/ContentArea";
 
 function App() {
-  const [personalDetails, setPersonalDetails] = useState({
+  const initialPersonalDetails = {
     name: "",
     email: "",
     phoneNumber: "",
     city: "",
     country: "",
     linkedin: "",
-  });
-
-  const [educationalBackground, setEducationalBackground] = useState({
+  };
+  const initialEducationalBackground = {
     school: "",
     degree: "",
     schoolCity: "",
     schoolCountry: "",
     startSchoolDate: "",
     endSchoolDate: "",
-  });
-  const [professionalExperience, setProfessionalExperience] = useState({
+  };
+  const initialProfessionalExperience = {
     jobTitle: "",
     company: "",
     position: "",
@@ -28,8 +27,18 @@ function App() {
     endJobDate: "",
     location: "",
     description: "",
-  });
-  
+  };
+
+  const [personalDetails, setPersonalDetails] = useState(
+    initialPersonalDetails
+  );
+  const [educationalBackground, setEducationalBackground] = useState(
+    initialEducationalBackground
+  );
+  const [professionalExperience, setProfessionalExperience] = useState(
+    initialProfessionalExperience
+  );
+
   const sample = () => {
     setPersonalDetails({
       name: "John Doe",
@@ -58,6 +67,13 @@ function App() {
         "Developed and maintained web applications using React and JavaScript.",
     });
   };
+
+  const clear = () => {
+    setPersonalDetails(initialPersonalDetails);
+    setEducationalBackground(initialEducationalBackground);
+    setProfessionalExperience(initialProfessionalExperience);
+  };
+
   return (
     <main className="grid grid-cols-4  bg-slate-100">
       <Sidebar
@@ -68,6 +84,7 @@ function App() {
         professionalExperience={professionalExperience}
         setProfessionalExperience={setProfessionalExperience}
         sample={sample}
+        clear={clear}
       />
       <ContentArea
         personalDetails={personalDetails}

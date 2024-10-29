@@ -5,7 +5,7 @@ import ExperienceForm from "./ProfessionalExperience";
 import { Button } from "./UI/button";
 
 const Save = () => {
-  console.log("Save");
+  alert("Save");
 };
 
 const Clear = () => {
@@ -23,11 +23,16 @@ function Sidebar({
   professionalExperience,
   setProfessionalExperience,
   sample,
+  clear
 }) {
   return (
     <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4 ">
       <div className="flex justify-between p-3">
-        <Button onClick={Clear}>Clear</Button>
+        <Button
+          onClick={clear}
+        >
+          Clear
+        </Button>
         <Button onClick={sample}>Sample</Button>
       </div>
       <PersonalDetailsForm

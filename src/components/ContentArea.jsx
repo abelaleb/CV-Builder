@@ -24,7 +24,7 @@ function ContentArea({
             {name}
           </div>
           <div className="text-white flex justify-evenly">
-            <div> {email}</div>
+            <div><img src="src\assets\email-icon.svg" alt="" /> {email}</div>
             <div> {phoneNumber}</div>
             <div className="capitalize">
               {city}, {country}
