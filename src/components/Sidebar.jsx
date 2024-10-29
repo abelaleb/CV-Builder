@@ -11,10 +11,9 @@ const Save = () => {
 const Clear = () => {
   console.log("Clear");
 };
-const sample = ()=>{
-  console.log("Sample");
-  
-}
+// const sample = () => {
+//   console.log("Sample");
+// };
 
 function Sidebar({
   personalDetails,
@@ -23,6 +22,7 @@ function Sidebar({
   setEducationalBackground,
   professionalExperience,
   setProfessionalExperience,
+  sample,
 }) {
   return (
     <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4 ">
@@ -42,8 +42,9 @@ function Sidebar({
         professionalExperience={professionalExperience}
         setProfessionalExperience={setProfessionalExperience}
       />
-      <div className="m-5"><Button onClick={Save}>Save</Button></div>
-      
+      <div className="m-5">
+        <Button onClick={Save}>Save</Button>
+      </div>
     </aside>
   );
 }

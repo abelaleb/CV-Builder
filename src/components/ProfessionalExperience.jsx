@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Experience({ professionalExperience, setProfessionalExperience }) {
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const toggleForm = () => {
     setIsShown(!isShown);

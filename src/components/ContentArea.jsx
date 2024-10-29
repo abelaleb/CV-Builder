@@ -17,7 +17,7 @@ function ContentArea({
     professionalExperience;
 
   return (
-    <main className="  col-span-3 m-4 ml-0  grid-rows-4 h-screen bg-red-50 flex justify-center self-center">
+    <main className="  col-span-3 m-4 ml-0  grid-rows-4 h-screen flex justify-center self-center">
       <div className="w-a4 bg-white border-yellow-200">
         <div className="row-span-1 flex flex-col  p-4 bg-primary">
           <div className="capitalize text-2xl font-bold text-white flex justify-center">
@@ -73,13 +73,13 @@ function ContentArea({
                 <div>
                   {startJobDate} - {endJobDate}
                 </div>
-                <div>Location: {location}</div>
+                <div> {location}</div>
               </div>
 
               <div className="col-span-2">
                 <div className="font-bold"> {company}</div>
                 <div> {position}</div>
-                <div>Description: {description}</div>
+                <div> {description}</div>
               </div>
             </div>
           </div>
