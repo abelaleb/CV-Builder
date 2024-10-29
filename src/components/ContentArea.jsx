@@ -20,16 +20,26 @@ function ContentArea({
     <main className="  col-span-3 m-4 ml-0  grid-rows-4 h-screen flex justify-center self-center">
       <div className="w-a4 bg-white border-yellow-200">
         <div className="row-span-1 flex flex-col  p-4 bg-primary">
-          <div className="capitalize text-2xl font-bold text-white flex justify-center">
+          <div className="capitalize text-2xl font-bold text-white flex justify-center items-center ">
             {name}
           </div>
-          <div className="text-white flex justify-evenly">
-            <div><img src="src\assets\email-icon.svg" alt="" /> {email}</div>
-            <div> {phoneNumber}</div>
-            <div className="capitalize">
+          <div className="text-white flex justify-evenly mt-4">
+            <div className="flex gap-2 items-center">
+              <img src="src\assets\email-icon.svg" alt="email-icon" />
+              {email}
+            </div>
+            <div className="flex gap-2 items-center">
+              <img src="/src/assets/phone-icon.svg" alt="phone-icon" />
+              {phoneNumber}
+            </div>
+            <div className="capitalize flex items-center gap-2">
+              <img src="/src/assets/location-icon.svg" alt="location icon" />
               {city}, {country}
             </div>
-            <div>{linkedin}</div>
+            <div className="flex items-center gap-2">
+              <img src="/src/assets/linkedin.svg" alt="linkedin icon" />
+              {linkedin}
+            </div>
           </div>
         </div>
 
