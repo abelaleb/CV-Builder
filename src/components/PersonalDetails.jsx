@@ -39,7 +39,10 @@ export default function PersonalDetails({
         <form>
           <div className=" mt-5 gap-3 ">
             <div className="mb-1">
-              <label htmlFor="name" className="text-sm flex font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="text-sm flex font-medium text-gray-700"
+              >
                 Full Name
               </label>
               <input
@@ -54,7 +57,10 @@ export default function PersonalDetails({
               />
             </div>
             <div className="mb-1">
-              <label htmlFor="email" className="flex text-sm font-medium text-gray-700" >
+              <label
+                htmlFor="email"
+                className="flex text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -69,7 +75,10 @@ export default function PersonalDetails({
               />
             </div>
             <div className="mb-1">
-              <label htmlFor="phoneNumber" className="text-sm flex font-medium text-gray-700 ">
+              <label
+                htmlFor="phoneNumber"
+                className="text-sm flex font-medium text-gray-700 "
+              >
                 Phone Number
               </label>
               <input
@@ -83,19 +92,57 @@ export default function PersonalDetails({
                 "
               />
             </div>
+
             <div className="mb-1">
-              <label htmlFor="address" className=" text-sm flex font-medium text-gray-700 ">
-                Address
+              <label
+                htmlFor="city"
+                className="flex text-sm font-medium text-gray-700"
+              >
+                City
               </label>
               <input
                 type="text"
-                name="address"
-                id="address"
-                value={personalDetails.address || ""}
+                name="city"
+                id="city"
+                value={personalDetails.city || ""}
                 onChange={handleChange}
-                placeholder="City, Country"
-                className=" border capitalize mt-1 block w-full p-2 rounded-md 
-                "
+                placeholder="Enter City"
+                className=" capitalize mt-1 block w-full p-2 border rounded-md "
+              />
+            </div>
+
+            <div className="mb-1">
+              <label
+                htmlFor="country"
+                className=" flex text-sm font-medium text-gray-700"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                name="country"
+                id="country"
+                value={personalDetails.country || ""}
+                onChange={handleChange}
+                placeholder="Enter Country"
+                className="capitalize mt-1 block w-full p-2 rounded-md border"
+              />
+            </div>
+            <div className="mb-1">
+              <label
+                htmlFor="linkedin"
+                className=" flex text-sm font-medium text-gray-700"
+              >
+                LinkedIn Profile
+              </label>
+              <input
+                type="url"
+                name="linkedin"
+                id="linkedin"
+                value={personalDetails.linkedin || ""}
+                onChange={handleChange}
+                placeholder="https://linkedin.com/in/username"
+                className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>
           </div>

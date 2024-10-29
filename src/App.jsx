@@ -7,14 +7,16 @@ function App() {
     name: "",
     email: "",
     phoneNumber: "",
-    address: "",
+    city: "",
+    country: "",
+    linkedin:""
   });
 
   const [educationalBackground, setEducationalBackground] = useState({
     school: "",
     degree: "",
-    city: "",
-    country: "",
+    schoolCity: "",
+    schoolCountry: "",
     startSchoolDate: "",
     endSchoolDate: "",
   });

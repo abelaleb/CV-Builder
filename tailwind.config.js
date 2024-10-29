@@ -4,8 +4,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      width: {
+        "us-letter": "51rem", // 8.5 x 11 inches
+        a4: "49.7rem", // 8.27 x 11.69 inches
+      },
+      height: {
+        "us-letter": "66rem", // 8.5 x 11 inches
+        a4: "70rem", // 8.27 x 11.69 inches
+      },
       colors: {
-        primary: "#020B26", 
+        primary: "#020B26",
         secondary: "#274659",
         tritary: "#2B4C8C",
         background: "hsl(var(--background))",

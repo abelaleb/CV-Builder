@@ -75,16 +75,16 @@ function EducationalBackground({
 
               <div className="mb-1">
                 <label
-                  htmlFor="city"
+                  htmlFor="schoolCity"
                   className="flex text-sm font-medium text-gray-700"
                 >
                   City
                 </label>
                 <input
                   type="text"
-                  name="city"
-                  id="city"
-                  value={educationalBackground.city || ""}
+                  name="schoolCity"
+                  id="schoolCity"
+                  value={educationalBackground.schoolCity || ""}
                   onChange={handleChange}
                   placeholder="Enter City"
                   className=" capitalize mt-1 block w-full p-2 border rounded-md "
@@ -93,16 +93,16 @@ function EducationalBackground({
 
               <div className="mb-1">
                 <label
-                  htmlFor="country"
+                  htmlFor="schoolCountry"
                   className=" flex text-sm font-medium text-gray-700"
                 >
                   Country
                 </label>
                 <input
                   type="text"
-                  name="country"
-                  id="country"
-                  value={educationalBackground.country || ""}
+                  name="schoolCountry"
+                  id="schoolCountry"
+                  value={educationalBackground.schoolCountry || ""}
                   onChange={handleChange}
                   placeholder="Enter Country"
                   className="capitalize mt-1 block w-full p-2 rounded-md border"

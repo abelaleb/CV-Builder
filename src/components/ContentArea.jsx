@@ -4,27 +4,29 @@ function ContentArea({
   educationalBackground,
   professionalExperience,
 }) {
-  const { name, email, phoneNumber, address } = personalDetails;
-  const { school, degree, city, country, startSchoolDate, endSchoolDate } =
+  const { name, email, phoneNumber, city, country, linkedin } = personalDetails;
+  const { school, degree, schoolCity, schoolCountry, startSchoolDate, endSchoolDate } =
     educationalBackground;
   const { company, position, startJobDate, endJobDate, location, description } =
     professionalExperience;
 
   return (
-    <>
-      <main className=" col-span-3 m-4 ml-0 grid grid-cols-3 bg-slate-100 ">
-        <div className="col-span-1 bg-red-50 flex flex-col border-4 p-4">
-          <div>
+    <main className="  col-span-3 m-4 ml-0  grid-rows-4 h-screen flex justify-center self-center">
+      <div className="w-a4 bg-white">
+        <div className="row-span-1 flex flex-col border-4 p-4 bg-primary">
+        <div className="capitalize text-2xl font-bold text-white flex justify-center">{name}</div>
+          <div className="text-white flex justify-evenly">
             <div> {email}</div>
             <div> {phoneNumber}</div>
-            <div className="capitalize">{address}</div>
-            <div>linkedin</div>
+            <div className="capitalize">{city}</div>
+            <div className="capitalize">{country}</div>
+            <div >{linkedin}</div>
           </div>
         </div>
 
-        <div className="col-span-2 bg-red-50 border-4 p-4">
+        <div className="row-span-2 border-4 p-4">
           <div className="bg-red-800 text-white">
-            <div className="capitalize">{name}</div>
+            
             <div>summary</div>
             <div>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
@@ -37,8 +39,8 @@ function ContentArea({
             <div className="text-2xl">Education</div>
             <div>School: {school}</div>
             <div>Degree: {degree}</div>
-            <div>City: {city}</div>
-            <div>Country: {country}</div>
+            <div>City: {schoolCity}</div>
+            <div>Country: {schoolCountry}</div>
             <div>Startdate: {startSchoolDate}</div>
             <div>EndDate: {endSchoolDate}</div>
             <div></div>
@@ -53,8 +55,8 @@ function ContentArea({
             <div>Description: {description}</div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }
 export default ContentArea;
