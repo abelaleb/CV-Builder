@@ -11,6 +11,10 @@ const Save = () => {
 const Clear = () => {
   console.log("Clear");
 };
+const sample = ()=>{
+  console.log("Sample");
+  
+}
 
 function Sidebar({
   personalDetails,
@@ -24,7 +28,7 @@ function Sidebar({
     <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4 ">
       <div className="flex justify-between p-3">
         <Button onClick={Clear}>Clear</Button>
-        <Button onClick={Save}>Save</Button>
+        <Button onClick={sample}>Sample</Button>
       </div>
       <PersonalDetailsForm
         personalDetails={personalDetails}
@@ -38,6 +42,8 @@ function Sidebar({
         professionalExperience={professionalExperience}
         setProfessionalExperience={setProfessionalExperience}
       />
+      <div className="m-5"><Button onClick={Save}>Save</Button></div>
+      
     </aside>
   );
 }

@@ -51,7 +51,7 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.company || ""}
                 onChange={handleChange}
                 placeholder="Enter Company Name"
-                className="mt-1 block w-full p-2 border rounded-md "
+                className=" capitalize mt-1 block w-full p-2 border rounded-md "
               />
             </div>
 
@@ -69,7 +69,7 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.position || ""}
                 onChange={handleChange}
                 placeholder="Enter Position Title"
-                className="mt-1 block w-full p-2 border-gray-300 rounded-md border"
+                className=" capitalize mt-1 block w-full p-2 border-gray-300 rounded-md border"
               />
             </div>
 
@@ -123,7 +123,7 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.location}
                 onChange={handleChange}
                 placeholder="Enter Location"
-                className="mt-1 block w-full p-2 rounded-md border"
+                className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>
 
@@ -141,7 +141,7 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.description}
                 onChange={handleChange}
                 placeholder="Enter Description"
-                className=" border mt-1 block w-full p-2 rounded-md focus:outline-none "
+                className="capitalize border mt-1 block w-full p-2 rounded-md focus:outline-none "
               />
             </div>
             </div>

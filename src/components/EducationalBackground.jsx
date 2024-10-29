@@ -40,7 +40,7 @@ function EducationalBackground({
               <div className="mb-1">
                 <label
                   htmlFor="school"
-                  className="flex text-sm font-medium text-gray-700"
+                  className=" flex text-sm font-medium text-gray-700"
                 >
                   School
                 </label>
@@ -51,7 +51,7 @@ function EducationalBackground({
                   value={educationalBackground.school || ""}
                   onChange={handleChange}
                   placeholder="Enter School / University"
-                  className="mt-1 block w-full p-2 rounded-md border"
+                  className="capitalize mt-1 block w-full p-2 rounded-md border"
                 />
               </div>
 
@@ -69,7 +69,7 @@ function EducationalBackground({
                   value={educationalBackground.degree || ""}
                   onChange={handleChange}
                   placeholder="Enter Degree / Field of Study"
-                  className="mt-1 block w-full p-2 border rounded-md "
+                  className="capitalize mt-1 block w-full p-2 border rounded-md "
                 />
               </div>
 
@@ -87,14 +87,14 @@ function EducationalBackground({
                   value={educationalBackground.city || ""}
                   onChange={handleChange}
                   placeholder="Enter City"
-                  className="mt-1 block w-full p-2 border rounded-md "
+                  className=" capitalize mt-1 block w-full p-2 border rounded-md "
                 />
               </div>
 
               <div className="mb-1">
                 <label
                   htmlFor="country"
-                  className="flex text-sm font-medium text-gray-700"
+                  className=" flex text-sm font-medium text-gray-700"
                 >
                   Country
                 </label>
@@ -105,7 +105,7 @@ function EducationalBackground({
                   value={educationalBackground.country || ""}
                   onChange={handleChange}
                   placeholder="Enter Country"
-                  className="mt-1 block w-full p-2 rounded-md border"
+                  className="capitalize mt-1 block w-full p-2 rounded-md border"
                 />
               </div>
 
