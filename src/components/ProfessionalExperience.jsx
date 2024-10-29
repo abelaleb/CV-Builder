@@ -17,17 +17,30 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
 
   return (
     <>
-      <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
-        <h3 className="text-xl font-semibold mb-4">Experience</h3>
-        <button onClick={toggleForm} className="text-indigo-500 underline mb-4">
-          {isShown ? "Hide Form" : "Show Form"}
+      <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
+        <div className="flex justify-between items-center gap-4">
+        <h2 className=" font-bold text-lg ">Experience</h2>
+        <button onClick={toggleForm} className="text-indigo-500 underline ">
+          {isShown ? (
+            <img
+              src="/src/assets/dropdown-arrow-up.svg"
+              alt="dropdown-arrow-up svg"
+            />
+          ) : (
+            <img
+            src="src/assets/dropdown-arrow.svg"
+            alt="add-icon image"
+          />
+          )}
         </button>
+      </div>
         {isShown && (
           <form>
-            <div className="mb-4">
+            <div className="mt-5 gap-3">
+            <div className="mb-1">
               <label
                 htmlFor="company"
-                className="block text-sm font-medium text-gray-700"
+                className="text-sm flex font-medium text-gray-700"
               >
                 Company Name
               </label>
@@ -38,14 +51,14 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.company || ""}
                 onChange={handleChange}
                 placeholder="Enter Company Name"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
+                className="mt-1 block w-full p-2 border rounded-md "
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-1">
               <label
                 htmlFor="position"
-                className="block text-sm font-medium text-gray-700"
+                className="flex text-sm font-medium text-gray-700"
               >
                 Position Title
               </label>
@@ -56,14 +69,14 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.position || ""}
                 onChange={handleChange}
                 placeholder="Enter Position Title"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className="mt-1 block w-full p-2 border-gray-300 rounded-md border"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-1">
               <label
                 htmlFor="startJobDate"
-                className="block text-sm font-medium text-gray-700"
+                className="flex text-sm font-medium text-gray-700"
               >
                 Start Date
               </label>
@@ -74,14 +87,14 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.startJobDate || ""}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
+                className="border mt-1 block w-full p-2 rounded-md "
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-1">
               <label
                 htmlFor="endJobDate"
-                className="block text-sm font-medium text-gray-700"
+                className="flex text-sm font-medium text-gray-700"
               >
                 End Date
               </label>
@@ -92,14 +105,14 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.endJobDate}
                 onChange={handleChange}
                 placeholder="mm / dd / yy"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
+                className=" border mt-1 block w-full p-2 rounded-md "
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-1">
               <label
                 htmlFor="location"
-                className="block text-sm font-medium text-gray-700"
+                className="flex text-sm font-medium text-gray-700"
               >
                 Location
               </label>
@@ -110,14 +123,14 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.location}
                 onChange={handleChange}
                 placeholder="Enter Location"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
+                className="mt-1 block w-full p-2 rounded-md border"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="description"
-                className="block text-sm font-medium text-gray-700"
+                className="flex text-sm font-medium text-gray-700"
               >
                 Description
               </label>
@@ -128,8 +141,9 @@ function Experience({ professionalExperience, setProfessionalExperience }) {
                 value={professionalExperience.description}
                 onChange={handleChange}
                 placeholder="Enter Description"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-x-indigo-500"
+                className=" border mt-1 block w-full p-2 rounded-md focus:outline-none "
               />
+            </div>
             </div>
           </form>
         )}

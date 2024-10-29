@@ -19,27 +19,27 @@ export default function PersonalDetails({
   };
 
   return (
-    <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
-      <div className="flex justify-center items-center gap-4">
+    <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
+      <div className="flex justify-between items-center gap-4">
         <h2 className=" font-bold text-lg ">Personal Details</h2>
 
         <button onClick={toggleForm} className="text-indigo-500 underline ">
           {isShown ? (
-            "Hide Form"
-          ) : (
             <img
-              src="/src/assets/dropdown-arrow.svg"
-              alt="dropdown-arrow svg"
+              src="/src/assets/dropdown-arrow-up.svg"
+              alt="dropdown-arrow-up svg"
             />
+          ) : (
+            <img src="src/assets/dropdown-arrow.svg" alt="add-icon image" />
           )}
         </button>
       </div>
 
       {isShown && (
         <form>
-          <div className="grid grid-cols-2 mt-5 gap-3">
-            <div>
-              <label htmlFor="name" className="text-sm">
+          <div className=" mt-5 gap-3 ">
+            <div className="mb-1">
+              <label htmlFor="name" className="text-sm flex font-medium text-gray-700">
                 Full Name
               </label>
               <input
@@ -49,11 +49,12 @@ export default function PersonalDetails({
                 value={personalDetails.name || ""}
                 onChange={handleChange}
                 placeholder="Enter your Name"
-                className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className=" border capitalize mt-1 block w-full p-2 border-gray-300 rounded-md 
+                "
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="text-sm">
+            <div className="mb-1">
+              <label htmlFor="email" className="flex text-sm font-medium text-gray-700" >
                 Email
               </label>
               <input
@@ -63,11 +64,12 @@ export default function PersonalDetails({
                 value={personalDetails.email || ""}
                 onChange={handleChange}
                 placeholder="Enter your Email"
-                className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className="border mt-1 block w-full p-2 border-gray-300 rounded-md 
+                "
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="phoneNumber" className=" text-sm ">
+            <div className="mb-1">
+              <label htmlFor="phoneNumber" className="text-sm flex font-medium text-gray-700 ">
                 Phone Number
               </label>
               <input
@@ -77,11 +79,12 @@ export default function PersonalDetails({
                 value={personalDetails.phoneNumber || ""}
                 onChange={handleChange}
                 placeholder="Enter your phone number"
-                className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className=" border mt-1 block w-full p-2 border-gray-300 rounded-md 
+                "
               />
             </div>
-            <div className="mb-4 col-span-2">
-              <label htmlFor="address" className="text-sm">
+            <div className="mb-1">
+              <label htmlFor="address" className=" text-sm flex font-medium text-gray-700 ">
                 Address
               </label>
               <input
@@ -91,7 +94,8 @@ export default function PersonalDetails({
                 value={personalDetails.address || ""}
                 onChange={handleChange}
                 placeholder="City, Country"
-                className="mt-1 block w-full p-2 border-green-300 rounded-md focus:outline-none focus:border-indigo-500"
+                className=" border capitalize mt-1 block w-full p-2 rounded-md 
+                "
               />
             </div>
           </div>

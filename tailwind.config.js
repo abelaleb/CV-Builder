@@ -5,9 +5,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#3490dc", // Replace with your primary color
-        secondary: "#ffed4a", // Optional: add secondary color,
-		tritary:"#2B4C8C",
+        primary: "#020B26", 
+        secondary: "#274659",
+        tritary: "#2B4C8C",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -58,3 +58,23 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 };
+// /* Color Theme Swatches in Hex */
+// .Tridal®-Logo-&-Identity-1-hex { color: #020B26; }
+// .Tridal®-Logo-&-Identity-2-hex { color: #071826; }
+// .Tridal®-Logo-&-Identity-3-hex { color: #142F40; }
+// .Tridal®-Logo-&-Identity-4-hex { color: #274659; }
+// .Tridal®-Logo-&-Identity-5-hex { color: #F2F2F2; }
+
+// /* Color Theme Swatches in RGBA */
+// .Tridal®-Logo-&-Identity-1-rgba { color: rgba(1, 10, 38, 1); }
+// .Tridal®-Logo-&-Identity-2-rgba { color: rgba(7, 23, 38, 1); }
+// .Tridal®-Logo-&-Identity-3-rgba { color: rgba(19, 46, 63, 1); }
+// .Tridal®-Logo-&-Identity-4-rgba { color: rgba(39, 70, 89, 1); }
+// .Tridal®-Logo-&-Identity-5-rgba { color: rgba(242, 242, 242, 1); }
+
+// /* Color Theme Swatches in HSLA */
+// .Tridal®-Logo-&-Identity-1-hsla { color: hsla(225, 90, 7, 1); }
+// .Tridal®-Logo-&-Identity-2-hsla { color: hsla(208, 68, 8, 1); }
+// .Tridal®-Logo-&-Identity-3-hsla { color: hsla(202, 52, 16, 1); }
+// .Tridal®-Logo-&-Identity-4-hsla { color: hsla(202, 38, 25, 1); }
+// .Tridal®-Logo-&-Identity-5-hsla { color: hsla(0, 0, 95, 1); }

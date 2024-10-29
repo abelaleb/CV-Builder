@@ -4,6 +4,14 @@ import EducationalBackground from "./EducationalBackground";
 import ExperienceForm from "./ProfessionalExperience";
 import { Button } from "./UI/button";
 
+const Save = () => {
+  console.log("Save");
+};
+
+const Clear = () => {
+  console.log("Clear");
+};
+
 function Sidebar({
   personalDetails,
   setPersonalDetails,
@@ -13,9 +21,11 @@ function Sidebar({
   setProfessionalExperience,
 }) {
   return (
-    <aside className="text-center m-4 p-4 bg-slate-100 col-span-1">
-      <div>CV Generator</div>
-      <Button onClick="submit" className="bg-blue-500 text-white px-4 py-2 rounded">hi</Button>
+    <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4 ">
+      <div className="flex justify-between p-3">
+        <Button onClick={Clear}>Clear</Button>
+        <Button onClick={Save}>Save</Button>
+      </div>
       <PersonalDetailsForm
         personalDetails={personalDetails}
         setPersonalDetails={setPersonalDetails}
