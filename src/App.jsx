@@ -7,8 +7,8 @@ function App() {
     name: "",
     email: "",
     phoneNumber: "",
-    city: "",
-    country: "",
+    location: "",
+    aboutMe: "",
     linkedin: "",
   };
   const initialEducationalBackground = {
@@ -25,9 +25,10 @@ function App() {
     position: "",
     startJobDate: "",
     endJobDate: "",
-    location: "",
+    jobLocation: "",
     description: "",
   };
+
 
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
@@ -38,14 +39,14 @@ function App() {
   const [professionalExperience, setProfessionalExperience] = useState(
     initialProfessionalExperience
   );
-
   const sample = () => {
     setPersonalDetails({
       name: "John Doe",
       email: "john.doe@example.com",
       phoneNumber: "123-456-7890",
-      city: "New York",
-      country: "USA",
+      location: "New York ,USA",
+      aboutMe:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias nostrum illo in commodi beatae rerum, inventore consequatur porro laborum ipsum quidem, qui tempore ab quibusdam quo? Sint eligendi optio adipisci.",
       linkedin: "linkedin.com/in/johndoe",
     });
     setEducationalBackground({
@@ -62,7 +63,7 @@ function App() {
       position: "Frontend Developer",
       startJobDate: "2020-01-01",
       endJobDate: "2023-08-31",
-      location: "Remote",
+      jobLocation: "Remote",
       description:
         "Developed and maintained web applications using React and JavaScript.",
     });

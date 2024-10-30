@@ -4,7 +4,7 @@ function ContentArea({
   educationalBackground,
   professionalExperience,
 }) {
-  const { name, email, phoneNumber, city, country, linkedin } = personalDetails;
+  const { name, email, phoneNumber, location, aboutMe, linkedin } = personalDetails;
   const {
     school,
     degree,
@@ -13,7 +13,7 @@ function ContentArea({
     startSchoolDate,
     endSchoolDate,
   } = educationalBackground;
-  const { company, position, startJobDate, endJobDate, location, description } =
+  const { company, position, startJobDate, endJobDate, jobLocation, description } =
     professionalExperience;
 
   return (
@@ -34,7 +34,7 @@ function ContentArea({
             </div>
             <div className="capitalize flex items-center gap-2">
               <img src="/src/assets/location-icon.svg" alt="location icon" />
-              {city}, {country}
+              {location}
             </div>
             <div className="flex items-center gap-2">
               <a
@@ -51,12 +51,9 @@ function ContentArea({
 
         <div className="row-span-2  p-8">
           <div className="bg-primary p-4 text-white">
-            <div>summary</div>
+            <div className="text-2xl flex bg-primary text-white mb-4">About Me</div>
             <div>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              aliquam dolores vel fuga eius nisi repellat officia facilis iusto
-              voluptas ex repellendus minima nostrum sit numquam, impedit
-              laboriosam iure. Doloremque!
+              {aboutMe}
             </div>
           </div>
           <div>
@@ -89,7 +86,7 @@ function ContentArea({
                 <div>
                   {startJobDate} - {endJobDate}
                 </div>
-                <div> {location}</div>
+                <div> {jobLocation}</div>
               </div>
 
               <div className="col-span-2">

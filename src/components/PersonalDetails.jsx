@@ -3,8 +3,11 @@ import React, { useState } from "react";
 export default function PersonalDetails({
   personalDetails,
   setPersonalDetails,
+  isShown,
+  toggleForm
 }) {
-  const [isShown, setIsShown] = useState(false);
+// alert(setIsShown);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,16 +17,15 @@ export default function PersonalDetails({
     }));
   };
 
-  const toggleForm = () => {
-    setIsShown(!isShown);
-  };
+  // const toggleForm = () => {
+  //   setIsShown(!isShown);
+  // };
 
   return (
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
       <div className="flex justify-between items-center gap-4">
         <h2 className=" font-bold text-lg ">Personal Details</h2>
-
-        <button onClick={toggleForm} className="text-indigo-500 underline ">
+        <button onClick={toggleForm} className=" underline ">
           {isShown ? (
             <img
               src="/src/assets/dropdown-arrow-up.svg"
@@ -95,36 +97,36 @@ export default function PersonalDetails({
 
             <div className="mb-1">
               <label
-                htmlFor="city"
+                htmlFor="location"
                 className="flex text-sm font-medium text-gray-700"
               >
-                City
+                Location
               </label>
               <input
                 type="text"
-                name="city"
-                id="city"
-                value={personalDetails.city || ""}
+                name="location"
+                id="location"
+                value={personalDetails.location || ""}
                 onChange={handleChange}
-                placeholder="Enter City"
+                placeholder="Enter City, Country"
                 className=" capitalize mt-1 block w-full p-2 border rounded-md "
               />
             </div>
 
             <div className="mb-1">
               <label
-                htmlFor="country"
+                htmlFor="aboutMe"
                 className=" flex text-sm font-medium text-gray-700"
               >
-                Country
+                About Me
               </label>
               <input
-                type="text"
-                name="country"
-                id="country"
-                value={personalDetails.country || ""}
+                type=""
+                name="aboutMe"
+                id="aboutMe"
+                value={personalDetails.aboutMe || ""}
                 onChange={handleChange}
-                placeholder="Enter Country"
+                placeholder="About me"
                 className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>

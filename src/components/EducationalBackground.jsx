@@ -3,8 +3,9 @@ import React, { useState } from "react";
 function EducationalBackground({
   educationalBackground,
   setEducationalBackground,
+  isShown,
+  toggleForm,
 }) {
-  const [isShown, setIsShown] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -12,10 +13,6 @@ function EducationalBackground({
       ...prevData,
       [name]: value,
     }));
-  };
-
-  const toggleForm = () => {
-    setIsShown((prevShown) => !prevShown);
   };
 
   return (
