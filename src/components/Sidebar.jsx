@@ -8,11 +8,6 @@ const Save = () => {
   alert("Save");
 };
 
-const Clear = () => {
-  console.log("Clear");
-};
-
-
 function Sidebar({
   personalDetails,
   setPersonalDetails,
@@ -23,6 +18,7 @@ function Sidebar({
   sample,
   clear,
 }) {
+  
   const [isShown, setIsShown] = useState({
     personalDetails: false,
     educationalBackground: false,

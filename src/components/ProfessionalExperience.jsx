@@ -114,16 +114,16 @@ function Experience({
 
               <div className="mb-1">
                 <label
-                  htmlFor="location"
+                  htmlFor="jobLocation"
                   className="flex text-sm font-medium text-gray-700"
                 >
                   Location
                 </label>
                 <input
                   type="text"
-                  name="location"
-                  id="location"
-                  value={professionalExperience.location}
+                  name="jobLocation"
+                  id="jobLocation"
+                  value={professionalExperience.jobLocation}
                   onChange={handleChange}
                   placeholder="Enter Location"
                   className="capitalize mt-1 block w-full p-2 rounded-md border"

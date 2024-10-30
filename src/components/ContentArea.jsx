@@ -4,7 +4,8 @@ function ContentArea({
   educationalBackground,
   professionalExperience,
 }) {
-  const { name, email, phoneNumber, location, aboutMe, linkedin } = personalDetails;
+  const { name, email, phoneNumber, location, aboutMe, linkedin } =
+    personalDetails;
   const {
     school,
     degree,
@@ -13,11 +14,17 @@ function ContentArea({
     startSchoolDate,
     endSchoolDate,
   } = educationalBackground;
-  const { company, position, startJobDate, endJobDate, jobLocation, description } =
-    professionalExperience;
+  const {
+    company,
+    position,
+    startJobDate,
+    endJobDate,
+    jobLocation,
+    description,
+  } = professionalExperience;
 
   return (
-    <main className="  col-span-3 m-4 ml-0  grid-rows-4 h-screen flex justify-center self-center">
+    <main className="  col-span-3 m-4 ml-0  grid-rows-4  flex justify-center ">
       <div className="w-a4 bg-white border-yellow-200">
         <div className="row-span-1 flex flex-col  p-4 bg-primary">
           <div className="capitalize text-2xl font-bold text-white flex justify-center items-center ">
@@ -51,10 +58,10 @@ function ContentArea({
 
         <div className="row-span-2  p-8">
           <div className="bg-primary p-4 text-white">
-            <div className="text-2xl flex bg-primary text-white mb-4">About Me</div>
-            <div>
-              {aboutMe}
+            <div className="text-2xl flex bg-primary text-white mb-4">
+              About Me
             </div>
+            <div>{aboutMe}</div>
           </div>
           <div>
             <div className="text-2xl flex justify-center bg-primary text-white mt-4">
