@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function PersonalDetails({
   personalDetails,
   setPersonalDetails,
   isShown,
-  toggleForm
+  toggleForm,
 }) {
-// alert(setIsShown);
-
+  // alert(setIsShown);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,14 +16,13 @@ export default function PersonalDetails({
     }));
   };
 
-  // const toggleForm = () => {
-  //   setIsShown(!isShown);
-  // };
-
   return (
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
       <div className="flex justify-between items-center gap-4">
-        <h2 className=" font-bold text-lg ">Personal Details</h2>
+        <div className="flex gap-2 items-center">
+          <img src="/src/assets/user-icon.svg" alt="user icon" />
+          <h2 className=" font-bold text-lg ">Personal Details</h2>
+        </div>
         <button onClick={toggleForm} className=" underline ">
           {isShown ? (
             <img
@@ -37,7 +35,11 @@ export default function PersonalDetails({
         </button>
       </div>
 
-      {isShown && (
+      <div
+        className={`transition-all duration-500 overflow-hidden ${
+          isShown ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
         <form>
           <div className=" mt-5 gap-3 ">
             <div className="mb-1">
@@ -149,7 +151,7 @@ export default function PersonalDetails({
             </div>
           </div>
         </form>
-      )}
+      </div>
     </section>
   );
 }
