@@ -3,6 +3,7 @@ function ContentArea({
   personalDetails,
   educationalBackground,
   professionalExperience,
+  selectedFont,
 }) {
   const { name, email, phoneNumber, location, aboutMe, linkedin } =
     personalDetails;
@@ -24,7 +25,10 @@ function ContentArea({
   } = professionalExperience;
 
   return (
-    <main className="  col-span-3 m-4 ml-0  grid-rows-4  flex justify-center ">
+    <main
+      className="  col-span-3 m-4 ml-0  grid-rows-4  flex justify-center "
+      style={{ fontFamily: selectedFont }}
+    >
       <div className="w-a4 bg-white border-yellow-200">
         <div className="row-span-1 flex flex-col  p-4 bg-primary">
           <div className="capitalize text-2xl font-bold text-white flex justify-center items-center ">

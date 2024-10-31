@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        custom: ["EBGaramond", "sans-serif"],
+      },
+
       width: {
         "us-letter": "51rem", // 8.5 x 11 inches
         a4: "49.7rem", // 8.27 x 11.69 inches

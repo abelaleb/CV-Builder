@@ -4,6 +4,7 @@ import EducationalBackground from "./EducationalBackground";
 import ExperienceForm from "./ProfessionalExperience";
 import { Button } from "./UI/button";
 
+import FontSelector from "./customize/FontSelector";
 const Save = () => {
   alert("Save");
 };
@@ -17,8 +18,9 @@ function Sidebar({
   setProfessionalExperience,
   sample,
   clear,
+  selectedFont,
+  setSelectedFont,
 }) {
-  
   const [isShown, setIsShown] = useState({
     personalDetails: false,
     educationalBackground: false,
@@ -35,10 +37,16 @@ function Sidebar({
       [formName]: !prevIsShown[formName], // Toggle the selected form
     }));
   };
-  
 
   return (
-    <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4 ">
+    <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4">
+      <div>
+        <FontSelector
+          selectedFont={selectedFont}
+          setSelectedFont={setSelectedFont}
+        />
+      </div>
+
       <div className="flex justify-between p-3">
         <Button onClick={clear}>Clear</Button>
         <Button onClick={sample}>Sample</Button>

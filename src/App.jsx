@@ -28,7 +28,7 @@ function App() {
     jobLocation: "",
     description: "",
   };
-
+  const [selectedFont, setSelectedFont] = useState("EBGaramond");
 
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
@@ -86,11 +86,14 @@ function App() {
         setProfessionalExperience={setProfessionalExperience}
         sample={sample}
         clear={clear}
+        selectedFont={selectedFont}
+        setSelectedFont={setSelectedFont}
       />
       <ContentArea
         personalDetails={personalDetails}
         educationalBackground={educationalBackground}
         professionalExperience={professionalExperience}
+        selectedFont={selectedFont}
       />
     </main>
   );
