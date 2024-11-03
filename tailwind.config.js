@@ -5,9 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        custom: ["EBGaramond", "sans-serif"],
+        body: ["EBGaramond", "sans-serif"],
       },
-
       width: {
         "us-letter": "51rem", // 8.5 x 11 inches
         a4: "49.7rem", // 8.27 x 11.69 inches
@@ -19,7 +18,7 @@ export default {
       colors: {
         primary: "#020B26",
         secondary: "#274659",
-        tritary: "#2B4C8C",
+        tertiary: "#2B4C8C",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

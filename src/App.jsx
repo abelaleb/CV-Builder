@@ -29,6 +29,7 @@ function App() {
     description: "",
   };
   const [selectedFont, setSelectedFont] = useState("EBGaramond");
+  const [selectedLayout, setSelectedLayout] = useState("Single Column");
 
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
@@ -46,7 +47,7 @@ function App() {
       phoneNumber: "123-456-7890",
       location: "New York ,USA",
       aboutMe:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias nostrum illo in commodi beatae rerum, inventore consequatur porro laborum ipsum quidem, qui tempore ab quibusdam quo? Sint eligendi optio adipisci.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis blanditiis sit, velit incidunt quam sed quo autem itaque corporis cum deleniti quas aspernatur ipsam facilis necessitatibus quis nam accusamus fugiat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis blanditiis sit, velit incidunt quam sed quo autem itaque corporis cum deleniti quas aspernatur ipsam facilis necessitatibus quis nam accusamus fugiat?",
       linkedin: "linkedin.com/in/johndoe",
     });
     setEducationalBackground({
@@ -88,12 +89,15 @@ function App() {
         clear={clear}
         selectedFont={selectedFont}
         setSelectedFont={setSelectedFont}
+        selectedLayout={selectedLayout}
+        setSelectedLayout={setSelectedLayout}
       />
       <ContentArea
         personalDetails={personalDetails}
         educationalBackground={educationalBackground}
         professionalExperience={professionalExperience}
         selectedFont={selectedFont}
+        selectedLayout={selectedLayout}
       />
     </main>
   );
