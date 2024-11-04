@@ -12,7 +12,7 @@ function ContentArea({
   return (
     <>
       <main
-        className={"m-5 flex flex-col  bg-white"}
+        className={" flex flex-col  bg-white"}
         style={{ fontFamily: selectedFont }}
       >
         {/* <PDFDownloadLink

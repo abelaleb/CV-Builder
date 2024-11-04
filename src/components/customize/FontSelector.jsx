@@ -20,7 +20,7 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
           value={selectedFont}
           onValueChange={setSelectedFont}
         >
-          <SelectTrigger className="w-[100px]">
+          <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Select Font" />
           </SelectTrigger>
           <SelectContent>

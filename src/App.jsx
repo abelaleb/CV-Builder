@@ -32,6 +32,7 @@ function App() {
     jobLocation: "",
     description: "",
   };
+
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
   );
@@ -82,18 +83,19 @@ function App() {
   };
 
   return (
-    <main className="grid grid-cols-8 bg-slate-100">
-      <div className="col-span-1 flex flex-col  justify-center items-center bg-white m-5">
-        <FontSelector
-          selectedFont={selectedFont}
-          setSelectedFont={setSelectedFont}
-        />
-        <LayoutSelector
-          selectedLayout={selectedLayout}
-          setSelectedLayout={setSelectedLayout}
-        />
-      </div>
-      <div className="col-span-2">
+    <main className="grid grid-cols-4 bg-slate-100 min-h-screen">
+      {/* Sidebar with Font and Layout Selectors */}
+      <div className="col-span-1 m-5 bg-white p-5">
+        <div className="flex flex-col ml-5">
+          <FontSelector
+            selectedFont={selectedFont}
+            onFontSelect={setSelectedFont}
+          />
+          <LayoutSelector
+            selectedLayout={selectedLayout}
+            onLayoutSelect={setSelectedLayout}
+          />
+        </div>
         <Sidebar
           personalDetails={personalDetails}
           setPersonalDetails={setPersonalDetails}
@@ -107,14 +109,11 @@ function App() {
           setShowPDFPreview={setShowPDFPreview}
         />
       </div>
-      <div className="col-span-5">
+
+      {/* ContentArea or PDFViewer */}
+      <div className="col-span-3 p-5 flex justify-center">
         {showPDFPreview ? (
-          <PDFViewer
-            width="100%"
-            height="600px"
-            style={{ border: "none" }}
-            className="col-span-3 p-5"
-          >
+          <PDFViewer width="100%" height="600px" style={{ border: "none" }}>
             <PDFFile
               personalDetails={personalDetails}
               educationalBackground={educationalBackground}

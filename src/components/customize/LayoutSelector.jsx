@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 
 const LayoutSelector = ({ selectedLayout, setSelectedLayout }) => {
-  const layouts = ["Single Column", "Two Column", "Compact"];
+  const layouts = ["Default Column", "Alternative Column"];
 
   return (
     <div className="layout-selector mt-4">
@@ -20,7 +20,7 @@ const LayoutSelector = ({ selectedLayout, setSelectedLayout }) => {
         value={selectedLayout}
         onValueChange={setSelectedLayout}
       >
-        <SelectTrigger className="w-[100px]">
+        <SelectTrigger className="w-[200px]">
           <SelectValue placeholder="Select Layout" />
         </SelectTrigger>
         <SelectContent>

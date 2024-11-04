@@ -3,8 +3,6 @@ import PersonalDetailsForm from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ExperienceForm from "./ProfessionalExperience";
 import { Button } from "./UI/button";
-import LayoutSelector from "./customize/LayoutSelector";
-import FontSelector from "./customize/FontSelector";
 
 function Sidebar({
   personalDetails,
@@ -35,7 +33,7 @@ function Sidebar({
   };
 
   return (
-    <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4">
+    <aside className="text-center  bg-white col-span-1 pt-4">
       <div className="flex justify-between p-3">
         <Button onClick={clear}>Clear</Button>
         <Button onClick={sample}>Sample</Button>

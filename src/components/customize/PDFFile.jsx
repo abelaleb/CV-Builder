@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Page,
   Text,
@@ -6,203 +7,194 @@ import {
   StyleSheet,
   View,
   Link,
+  Image,
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
+  // Common Styles
   page: { width: 800 },
-  main: {
-    display: "flex",
-    flexDirection: "column",
-    fontSize: 14,
-    padding: 20,
-  },
-  section: { marginBottom: 10, paddingLeft: 0 },
-  mainheader: {
-    fontSize: 32,
+  headerText: {
     fontWeight: "bold",
-    display: "flex",
-  },
-  header: { color: "blue", fontWeight: "bold", marginBottom: 10 },
-  subheader: {
     color: "blue",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginVertical: 4,
-    textDecoration: "underline",
+    marginBottom: 10,
   },
   text: { marginVertical: 4 },
-  flexRow: { display: "flex", gap: 100 },
+  dateRange: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 4,
+  },
+  image: { width: "50px" },
+  // Common Flex and Layout Styles
+  flexRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   flexColumn: {
     display: "flex",
     flexDirection: "column",
   },
-  contactInfo: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 29,
-    padding: 10,
-    paddingBottom: 20,
-    paddingLeft: 0,
-  },
-  personalInfo: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 4,
-  },
-  name: {
-    fontSize: 32,
+  sectionHeader: {
+    fontSize: 24,
     fontWeight: "bold",
-    color: "white",
-    display: "flex",
-    justifyContent: "center",
-  },
-  aboutMe: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 4,
-  },
-  educationSection: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 10,
-    paddingLeft: 0,
+    marginVertical: 8,
   },
 
-  flexContainer: { display: "flex", gap: 10 },
-  dateRange: {
-    display: "flex",
-    gap: 4,
+  // Default Layout Styles
+  defaultLayout: {
+    main: {
+      display: "flex",
+      flexDirection: "column",
+      fontSize: 14,
+    },
+    name: {
+      fontSize: 32,
+      fontWeight: "bold",
+      color: "black",
+      textAlign: "center",
+      marginBottom: 10,
+      color: "white",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+    },
+    contactInfo: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      gap: 10,
+      marginBottom: 15,
+    },
+    aboutMe: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 4,
+      marginBottom: 15,
+    },
+    section: {
+      marginBottom: 10,
+      paddingLeft: 0,
+    },
+    educationSection: {
+      marginBottom: 15,
+    },
   },
-  // Layout-specific styles can go here as well
+
+  // Alternative Layout Styles
+  altLayout: {
+    main: {
+      display: "flex",
+      flexDirection: "row",
+      fontSize: 14,
+      padding: 30,
+    },
+    name: {
+      fontSize: 30,
+      fontWeight: "bold",
+      color: "darkblue",
+      textAlign: "left",
+      marginBottom: 10,
+    },
+    contactInfo: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      gap: 10,
+      marginBottom: 15,
+    },
+    aboutMe: {
+      display: "flex",
+      flexDirection: "row",
+      gap: 6,
+      marginBottom: 15,
+    },
+    section: {
+      marginBottom: 15,
+      paddingLeft: 10,
+    },
+    educationSection: {
+      marginBottom: 15,
+      paddingLeft: 10,
+    },
+  },
 });
 
-// Layout 1: Single Column
-const SingleColumnLayout = ({
+const defaultLayout = ({
   personalDetails,
   educationalBackground,
   professionalExperience,
 }) => (
-  <View style={styles.main}>
-    <View style={styles.personalInfo}>
-      <Text style={styles.name}>{personalDetails.name}</Text>
-      <Text style={styles.header}>{professionalExperience.position}</Text>
-      <View style={styles.contactInfo}>
+  <View style={styles.defaultLayout.main}>
+    <View
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        paddingTop: "26px",
+        paddingBottom: "6px",
+      }}
+    >
+      <Text style={styles.defaultLayout.name}>{personalDetails.name}</Text>
+      <View style={styles.defaultLayout.contactInfo}>
         <Text style={styles.text}>{personalDetails.email}</Text>
         <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
         <Text style={styles.text}>{personalDetails.location}</Text>
       </View>
-      <View style={styles.section}>
-        <Text style={styles.subheader}>Profile</Text>
-        <Text style={styles.aboutMe}>{personalDetails.aboutMe}</Text>
+    </View>
+    <View style={styles.defaultLayout.aboutMe}>
+      <Text style={styles.sectionHeader}>Profile</Text>
+      <Text>{personalDetails.aboutMe}</Text>
+    </View>
+    <View style={styles.defaultLayout.educationSection}>
+      <Text style={styles.sectionHeader}>Education</Text>
+      <View style={styles.flexRow}>
+        <Text>{educationalBackground.school}</Text>
+        <Text>{educationalBackground.degree}</Text>
       </View>
     </View>
-    <View style={styles.educationSection}>
-      <Text style={styles.subheader}>Education</Text>
+    <View style={styles.defaultLayout.section}>
+      <Text style={styles.sectionHeader}>Experience</Text>
       <View style={styles.flexRow}>
-        <View style={styles.flexColumn}>
-          <Text>
-            {educationalBackground.startSchoolDate} -
-            {educationalBackground.endSchoolDate}
-          </Text>
-          <Text>
-            {educationalBackground.schoolCity}-
-            {educationalBackground.schoolCountry}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.aboutMe}>{educationalBackground.school}</Text>
-          <Text style={styles.aboutMe}>{educationalBackground.degree}</Text>
-        </View>
-      </View>
-    </View>
-    <View style={styles.section}>
-      <Text style={styles.subheader}>Experience</Text>
-      <View style={styles.flexRow}>
-        <View style={styles.flexColumn}>
-          <Text>
-            {professionalExperience.startJobDate}-
-            {professionalExperience.endJobDate}
-          </Text>
-          <Text>{professionalExperience.jobLocation}</Text>
-        </View>
-        <View>
-          <Text>{professionalExperience.company}</Text>
-          <Text>{professionalExperience.position}</Text>
-        </View>
+        <Text>{professionalExperience.company}</Text>
+        <Text>{professionalExperience.position}</Text>
       </View>
     </View>
   </View>
 );
 
-// Layout 2: Two Column
-// Layout 2: Two Column
-const alternativeLayout = ({
+const AlternativeLayout = ({
   personalDetails,
   educationalBackground,
   professionalExperience,
-}) => {
-  return (
-    <View style={{ ...styles.main, paddingRight: 10 }}>
-      <View style={{ backgroundColor: "black", color: "white" }}>
-        <Text style={{ ...styles.name, textAlign: "center" }}>
-          {personalDetails.name}
-        </Text>
-        {/* <View style={styles.personalInfo}>
-          <Text style={styles.header}>{professionalExperience.position}</Text>
-        </View> */}
-        <View style={styles.contactInfo}>
-          <Text style={styles.text}>{personalDetails.email}</Text>
-          <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
-          <Text style={styles.text}>{personalDetails.location}</Text>
-        </View>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.subheader}>Profile</Text>
-        <Text style={styles.aboutMe}>{personalDetails.aboutMe}</Text>
-      </View>
-
-      {/* Education */}
-      <View style={styles.educationSection}>
-        <Text style={styles.subheader}>Education</Text>
-        <View style={styles.flexContainer}>
-          <View style={styles.flexColumn}>
-            <Text>
-              {educationalBackground.startSchoolDate} -{" "}
-              {educationalBackground.endSchoolDate}
-            </Text>
-            <Text>
-              {educationalBackground.schoolCity} -{" "}
-              {educationalBackground.schoolCountry}
-            </Text>
-          </View>
-          <View>
-            <Text style={styles.aboutMe}>{educationalBackground.school}</Text>
-            <Text style={styles.aboutMe}>{educationalBackground.degree}</Text>
-          </View>
-        </View>
-      </View>
-      {/* Professional Experience */}
-      <View style={styles.section}>
-        <Text style={styles.subheader}>Experience</Text>
-        <View style={styles.flexContainer}>
-          <View style={styles.flexColumn}>
-            <Text>
-              {professionalExperience.startJobDate} -{" "}
-              {professionalExperience.endJobDate}
-            </Text>
-            <Text>{professionalExperience.jobLocation}</Text>
-          </View>
-          <View>
-            <Text>{professionalExperience.company}</Text>
-            <Text>{professionalExperience.position}</Text>
-          </View>
-        </View>
+}) => (
+  <View style={styles.altLayout.main}>
+    <Text style={styles.altLayout.name}>{personalDetails.name}</Text>
+    <View style={styles.altLayout.contactInfo}>
+      <Text style={styles.text}>{personalDetails.email}</Text>
+      <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
+      <Text style={styles.text}>{personalDetails.location}</Text>
+    </View>
+    <View style={styles.altLayout.aboutMe}>
+      <Text style={styles.sectionHeader}>About Me</Text>
+      <Text>{personalDetails.aboutMe}</Text>
+    </View>
+    <View style={styles.altLayout.educationSection}>
+      <Text style={styles.sectionHeader}>Education</Text>
+      <View style={styles.flexRow}>
+        <Text>{educationalBackground.school}</Text>
+        <Text>{educationalBackground.degree}</Text>
       </View>
     </View>
-  );
-};
+    <View style={styles.altLayout.section}>
+      <Text style={styles.sectionHeader}>Experience</Text>
+      <View style={styles.flexRow}>
+        <Text>{professionalExperience.company}</Text>
+        <Text>{professionalExperience.position}</Text>
+      </View>
+    </View>
+  </View>
+);
 
 const PDFFile = ({
   personalDetails,
@@ -210,18 +202,8 @@ const PDFFile = ({
   professionalExperience,
   selectedLayout,
 }) => {
-  let LayoutComponent;
-
-  switch (selectedLayout) {
-    case "TwoColumn":
-      LayoutComponent = alternativeLayout;
-      break;
-    case "Compact":
-      LayoutComponent = CompactLayout;
-      break;
-    default:
-      LayoutComponent = alternativeLayout;
-  }
+  const LayoutComponent =
+    selectedLayout === "defaultLayout" ? AlternativeLayout : defaultLayout;
 
   return (
     <Document>

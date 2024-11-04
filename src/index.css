@@ -2,8 +2,6 @@
   font-family: 'EBGaramond';
   src: url('./fonts/EBGaramond-Regular.ttf') format('truetype');
 }
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
