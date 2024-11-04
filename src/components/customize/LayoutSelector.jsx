@@ -15,7 +15,11 @@ const LayoutSelector = ({ selectedLayout, setSelectedLayout }) => {
       <label htmlFor="layouts" className="mr-2">
         Layout:
       </label>
-      <Select value={selectedLayout} onValueChange={setSelectedLayout}>
+      <Select
+        id="layouts"
+        value={selectedLayout}
+        onValueChange={setSelectedLayout}
+      >
         <SelectTrigger className="w-[100px]">
           <SelectValue placeholder="Select Layout" />
         </SelectTrigger>

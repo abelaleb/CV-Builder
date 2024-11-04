@@ -12,12 +12,16 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
   return (
     <>
       <div className="layout-selector">
-        <label htmlFor="layouts" className="mr-2">
+        <label htmlFor="font-select" className="mr-2">
           Fonts:
         </label>
-        <Select value={selectedFont} onValueChange={setSelectedFont}>
+        <Select
+          id="font-select"
+          value={selectedFont}
+          onValueChange={setSelectedFont}
+        >
           <SelectTrigger className="w-[100px]">
-            <SelectValue placeholder="Select Fonts" />
+            <SelectValue placeholder="Select Font" />
           </SelectTrigger>
           <SelectContent>
             {fonts.map((font) => (
@@ -31,4 +35,5 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
     </>
   );
 };
+
 export default FontSelector;
