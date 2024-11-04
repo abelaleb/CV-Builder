@@ -6,10 +6,6 @@ import { Button } from "./UI/button";
 import LayoutSelector from "./customize/LayoutSelector";
 import FontSelector from "./customize/FontSelector";
 
-const Save = () => {
-  alert("Save");
-};
-
 function Sidebar({
   personalDetails,
   setPersonalDetails,
@@ -23,13 +19,14 @@ function Sidebar({
   setSelectedFont,
   selectedLayout,
   setSelectedLayout,
+  showPDFPreview,
+  setShowPDFPreview,
 }) {
   const [isShown, setIsShown] = useState({
     personalDetails: false,
     educationalBackground: false,
     professionalExperience: false,
   });
-
   const toggleForm = (formName) => {
     setIsShown((prevIsShown) => ({
       ...{
@@ -75,9 +72,22 @@ function Sidebar({
         isShown={isShown.professionalExperience}
         toggleForm={() => toggleForm("professionalExperience")}
       />
-      
-      <div className="m-5">
-        <Button onClick={Save}>Save</Button>
+
+      <div className="m-5 flex justify-between">
+        <Button
+          onClick={() => {
+            setShowPDFPreview(true);
+          }}
+        >
+          Save
+        </Button>
+        <Button
+          onClick={() => {
+            setShowPDFPreview(false);
+          }}
+        >
+          Edit
+        </Button>
       </div>
     </aside>
   );

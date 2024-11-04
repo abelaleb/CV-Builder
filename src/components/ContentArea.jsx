@@ -1,6 +1,6 @@
 import React from "react";
 import PDFFile from "./customize/PDFFile";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 function ContentArea({
   personalDetails,
@@ -15,7 +15,7 @@ function ContentArea({
         className={`col-span-3 m-5 flex flex-col bg-white`}
         style={{ fontFamily: selectedFont }}
       >
-        <PDFDownloadLink
+        {/* <PDFDownloadLink
           document={
             <PDFFile
               personalDetails={personalDetails}
@@ -37,9 +37,10 @@ function ContentArea({
               </button>
             )
           }
-        </PDFDownloadLink>
+        </PDFDownloadLink> */}
 
-        <div className="m-5  rounded-lg border-4 border-black">
+        {/* PDF Viewer Section */}
+        <div className=" rounded-lg  ">
           <PDFFile
             personalDetails={personalDetails}
             educationalBackground={educationalBackground}
@@ -52,4 +53,5 @@ function ContentArea({
     </>
   );
 }
+
 export default ContentArea;
