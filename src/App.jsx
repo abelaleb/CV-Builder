@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ContentArea from "./components/ContentArea";
+import { PDFViewer } from "@react-pdf/renderer";
+import PDFFile from "./components/customize/PDFFile";
 
 function App() {
   const initialPersonalDetails = {
@@ -28,9 +30,6 @@ function App() {
     jobLocation: "",
     description: "",
   };
-  const [selectedFont, setSelectedFont] = useState("EBGaramond");
-  const [selectedLayout, setSelectedLayout] = useState("Single Column");
-
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
   );
@@ -40,6 +39,10 @@ function App() {
   const [professionalExperience, setProfessionalExperience] = useState(
     initialProfessionalExperience
   );
+  const [selectedFont, setSelectedFont] = useState("sans");
+  const [selectedLayout, setSelectedLayout] = useState("Single Column");
+  const [showPDFPreview, setShowPDFPreview] = useState(false);
+
   const sample = () => {
     setPersonalDetails({
       name: "John Doe",
@@ -53,7 +56,7 @@ function App() {
     setEducationalBackground({
       school: "University of Example",
       degree: "Bachelor of Science",
-      schoolCity: "Example City",
+      schoolCity: "Los Angeles",
       schoolCountry: "USA",
       startSchoolDate: "2015-09-01",
       endSchoolDate: "2019-06-15",
@@ -91,14 +94,28 @@ function App() {
         setSelectedFont={setSelectedFont}
         selectedLayout={selectedLayout}
         setSelectedLayout={setSelectedLayout}
+        showPDFPreview={showPDFPreview}
+        setShowPDFPreview={setShowPDFPreview}
       />
-      <ContentArea
-        personalDetails={personalDetails}
-        educationalBackground={educationalBackground}
-        professionalExperience={professionalExperience}
-        selectedFont={selectedFont}
-        selectedLayout={selectedLayout}
-      />
+      {showPDFPreview ? (
+        <PDFViewer width="100%" height="600px" style={{ border: "none" }} className="col-span-3 p-5">
+          <PDFFile
+            personalDetails={personalDetails}
+            educationalBackground={educationalBackground}
+            professionalExperience={professionalExperience}
+            selectedFont={selectedFont}
+            selectedLayout={selectedLayout}
+          />
+        </PDFViewer>
+      ) : (
+        <ContentArea
+          personalDetails={personalDetails}
+          educationalBackground={educationalBackground}
+          professionalExperience={professionalExperience}
+          selectedFont={selectedFont}
+          selectedLayout={selectedLayout}
+        />
+      )}
     </main>
   );
 }

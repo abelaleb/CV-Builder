@@ -9,11 +9,10 @@ import {
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
-  page: { padding: 20 },
   main: {
     display: "flex",
     flexDirection: "column",
-    fontSize: 16,
+    fontSize: 14,
     padding: 20,
   },
   section: { marginBottom: 10, paddingLeft: 0 },
@@ -38,9 +37,12 @@ const styles = StyleSheet.create({
   },
   contactInfo: {
     display: "flex",
-    flexDirection: "column",
-    gap: 4,
-    padding: 4,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 29,
+    padding: 10,
+    paddingBottom: 20,
     paddingLeft: 0,
   },
   personalInfo: {
@@ -50,8 +52,10 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 32,
-    fontWeight: "extrabold",
-    color: "blue",
+    fontWeight: "bold",
+    color: "white",
+    display: "flex",
+    justifyContent: "center",
   },
   aboutMe: {
     display: "flex",
@@ -132,40 +136,69 @@ const SingleColumnLayout = ({
 );
 
 // Layout 2: Two Column
-const TwoColumnLayout = ({
+// Layout 2: Two Column
+const alternativeLayout = ({
   personalDetails,
   educationalBackground,
   professionalExperience,
 }) => {
   return (
-    <View style={{ flexDirection: "row" }}>
-      <View style={{ flex: 1, ...styles.section }}>
-        <Text style={styles.header}>{personalDetails.name}</Text>
-        <Text style={styles.about}>{personalDetails.aboutMe}</Text>
+    <View style={{ ...styles.main, paddingRight: 10 }}>
+      <View style={{ backgroundColor: "black", color: "white" }}>
+        <Text style={{ ...styles.name, textAlign: "center" }}>
+          {personalDetails.name}
+        </Text>
+        {/* <View style={styles.personalInfo}>
+          <Text style={styles.header}>{professionalExperience.position}</Text>
+        </View> */}
+        <View style={styles.contactInfo}>
+          <Text style={styles.text}>{personalDetails.email}</Text>
+          <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
+          <Text style={styles.text}>{personalDetails.location}</Text>
+        </View>
       </View>
-      <View style={{ flex: 1, ...styles.section }}>
-        <Text style={styles.subheader}>Experience</Text>
-        <Text>{professionalExperience.company}</Text>
-        <Text>{professionalExperience.position}</Text>
+      <View style={styles.section}>
+        <Text style={styles.subheader}>Profile</Text>
+        <Text style={styles.aboutMe}>{personalDetails.aboutMe}</Text>
       </View>
-    </View>
-  );
 
-  // Layout 3: Compact
-  const CompactLayout = ({
-    personalDetails,
-    educationalBackground,
-    professionalExperience,
-  }) => (
-    <View style={styles.section}>
-      <Text style={styles.header}>{personalDetails.name}</Text>
-      <Text style={styles.text}>{personalDetails.aboutMe}</Text>
-      <Text style={styles.subheader}>
-        Education: {educationalBackground.degree}
-      </Text>
-      <Text style={styles.subheader}>
-        Experience: {professionalExperience.position}
-      </Text>
+      {/* Education */}
+      <View style={styles.educationSection}>
+        <Text style={styles.subheader}>Education</Text>
+        <View style={styles.flexContainer}>
+          <View style={styles.flexColumn}>
+            <Text>
+              {educationalBackground.startSchoolDate} -{" "}
+              {educationalBackground.endSchoolDate}
+            </Text>
+            <Text>
+              {educationalBackground.schoolCity} -{" "}
+              {educationalBackground.schoolCountry}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.aboutMe}>{educationalBackground.school}</Text>
+            <Text style={styles.aboutMe}>{educationalBackground.degree}</Text>
+          </View>
+        </View>
+      </View>
+      {/* Professional Experience */}
+      <View style={styles.section}>
+        <Text style={styles.subheader}>Experience</Text>
+        <View style={styles.flexContainer}>
+          <View style={styles.flexColumn}>
+            <Text>
+              {professionalExperience.startJobDate} -{" "}
+              {professionalExperience.endJobDate}
+            </Text>
+            <Text>{professionalExperience.jobLocation}</Text>
+          </View>
+          <View>
+            <Text>{professionalExperience.company}</Text>
+            <Text>{professionalExperience.position}</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
@@ -180,13 +213,13 @@ const PDFFile = ({
 
   switch (selectedLayout) {
     case "TwoColumn":
-      LayoutComponent = TwoColumnLayout;
+      LayoutComponent = alternativeLayout;
       break;
     case "Compact":
       LayoutComponent = CompactLayout;
       break;
     default:
-      LayoutComponent = SingleColumnLayout;
+      LayoutComponent = alternativeLayout;
   }
 
   return (
