@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ContentArea from "./components/ContentArea";
+import FontSelector from "./components/customize/FontSelector";
+import LayoutSelector from "./components/customize/LayoutSelector";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFFile from "./components/customize/PDFFile";
 
@@ -80,42 +82,57 @@ function App() {
   };
 
   return (
-    <main className="grid grid-cols-4  bg-slate-100">
-      <Sidebar
-        personalDetails={personalDetails}
-        setPersonalDetails={setPersonalDetails}
-        educationalBackground={educationalBackground}
-        setEducationalBackground={setEducationalBackground}
-        professionalExperience={professionalExperience}
-        setProfessionalExperience={setProfessionalExperience}
-        sample={sample}
-        clear={clear}
-        selectedFont={selectedFont}
-        setSelectedFont={setSelectedFont}
-        selectedLayout={selectedLayout}
-        setSelectedLayout={setSelectedLayout}
-        showPDFPreview={showPDFPreview}
-        setShowPDFPreview={setShowPDFPreview}
-      />
-      {showPDFPreview ? (
-        <PDFViewer width="100%" height="600px" style={{ border: "none" }} className="col-span-3 p-5">
-          <PDFFile
+    <main className="grid grid-cols-8 bg-slate-100">
+      <div className="col-span-1 flex flex-col  justify-center items-center bg-white m-5">
+        <FontSelector
+          selectedFont={selectedFont}
+          setSelectedFont={setSelectedFont}
+        />
+        <LayoutSelector
+          selectedLayout={selectedLayout}
+          setSelectedLayout={setSelectedLayout}
+        />
+      </div>
+      <div className="col-span-2">
+        <Sidebar
+          personalDetails={personalDetails}
+          setPersonalDetails={setPersonalDetails}
+          educationalBackground={educationalBackground}
+          setEducationalBackground={setEducationalBackground}
+          professionalExperience={professionalExperience}
+          setProfessionalExperience={setProfessionalExperience}
+          sample={sample}
+          clear={clear}
+          showPDFPreview={showPDFPreview}
+          setShowPDFPreview={setShowPDFPreview}
+        />
+      </div>
+      <div className="col-span-5">
+        {showPDFPreview ? (
+          <PDFViewer
+            width="100%"
+            height="600px"
+            style={{ border: "none" }}
+            className="col-span-3 p-5"
+          >
+            <PDFFile
+              personalDetails={personalDetails}
+              educationalBackground={educationalBackground}
+              professionalExperience={professionalExperience}
+              selectedFont={selectedFont}
+              selectedLayout={selectedLayout}
+            />
+          </PDFViewer>
+        ) : (
+          <ContentArea
             personalDetails={personalDetails}
             educationalBackground={educationalBackground}
             professionalExperience={professionalExperience}
             selectedFont={selectedFont}
             selectedLayout={selectedLayout}
           />
-        </PDFViewer>
-      ) : (
-        <ContentArea
-          personalDetails={personalDetails}
-          educationalBackground={educationalBackground}
-          professionalExperience={professionalExperience}
-          selectedFont={selectedFont}
-          selectedLayout={selectedLayout}
-        />
-      )}
+        )}
+      </div>
     </main>
   );
 }

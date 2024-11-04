@@ -12,7 +12,7 @@ function ContentArea({
   return (
     <>
       <main
-        className={`col-span-3 m-5 flex flex-col bg-white`}
+        className={"m-5 flex flex-col  bg-white"}
         style={{ fontFamily: selectedFont }}
       >
         {/* <PDFDownloadLink
@@ -40,7 +40,7 @@ function ContentArea({
         </PDFDownloadLink> */}
 
         {/* PDF Viewer Section */}
-        <div className=" rounded-lg  ">
+        <div className=" rounded-lg  w-[800px]">
           <PDFFile
             personalDetails={personalDetails}
             educationalBackground={educationalBackground}

@@ -15,10 +15,6 @@ function Sidebar({
   setProfessionalExperience,
   sample,
   clear,
-  selectedFont,
-  setSelectedFont,
-  selectedLayout,
-  setSelectedLayout,
   showPDFPreview,
   setShowPDFPreview,
 }) {
@@ -40,15 +36,6 @@ function Sidebar({
 
   return (
     <aside className="text-center  bg-white col-span-1 mt-5 ml-5 p-4">
-      <FontSelector
-        selectedFont={selectedFont}
-        setSelectedFont={setSelectedFont}
-      />
-      <LayoutSelector
-        selectedLayout={selectedLayout}
-        setSelectedLayout={setSelectedLayout}
-      />
-
       <div className="flex justify-between p-3">
         <Button onClick={clear}>Clear</Button>
         <Button onClick={sample}>Sample</Button>

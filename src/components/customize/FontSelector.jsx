@@ -11,10 +11,13 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
   const fonts = ["sans-serif", "calibri", "EBGaramond", "monospace"];
   return (
     <>
-      <div className="font-selector ">
-        <Select value={selectedFont} onValueChange={setSelectedFont} >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Fonts" />
+      <div className="layout-selector">
+        <label htmlFor="layouts" className="mr-2">
+          Fonts:
+        </label>
+        <Select value={selectedFont} onValueChange={setSelectedFont}>
+          <SelectTrigger className="w-[100px]">
+            <SelectValue placeholder="Select Fonts" />
           </SelectTrigger>
           <SelectContent>
             {fonts.map((font) => (

@@ -9,6 +9,7 @@ import {
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
+  page: { width: 800 },
   main: {
     display: "flex",
     flexDirection: "column",
