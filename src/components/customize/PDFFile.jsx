@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "date-fns";
 
 import {
   Page,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     color: "blue",
     marginBottom: 10,
   },
-  text: { marginVertical: 4 },
+  text: { fontSize: 13, marginVertical: 4 },
   dateRange: {
     display: "flex",
     flexDirection: "row",
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
   flexRow: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
   },
   flexColumn: {
@@ -37,9 +37,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   sectionHeader: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: "bold",
-    marginVertical: 8,
+    margin: 13,
+    marginLeft: 0,
+    marginRight: 0,
   },
 
   // Default Layout Styles
@@ -55,7 +57,6 @@ const styles = StyleSheet.create({
       color: "black",
       textAlign: "center",
       marginBottom: 10,
-      color: "white",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
       display: "flex",
       flexDirection: "column",
       gap: 4,
-      marginBottom: 15,
+      marginBottom: 35,
     },
     section: {
       marginBottom: 10,
@@ -121,6 +122,8 @@ const styles = StyleSheet.create({
   },
 });
 
+const formatDate = (date) => (date ? format(new Date(date), "MMMM yyyy") : "");
+
 const defaultLayout = ({
   personalDetails,
   educationalBackground,
@@ -135,29 +138,89 @@ const defaultLayout = ({
         paddingBottom: "6px",
       }}
     >
-      <Text style={styles.defaultLayout.name}>{personalDetails.name}</Text>
+      <Text style={{ ...styles.defaultLayout.name, color: "white" }}>
+        {personalDetails.name}
+      </Text>
       <View style={styles.defaultLayout.contactInfo}>
         <Text style={styles.text}>{personalDetails.email}</Text>
         <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
         <Text style={styles.text}>{personalDetails.location}</Text>
       </View>
     </View>
-    <View style={styles.defaultLayout.aboutMe}>
-      <Text style={styles.sectionHeader}>Profile</Text>
-      <Text>{personalDetails.aboutMe}</Text>
-    </View>
-    <View style={styles.defaultLayout.educationSection}>
-      <Text style={styles.sectionHeader}>Education</Text>
-      <View style={styles.flexRow}>
-        <Text>{educationalBackground.school}</Text>
-        <Text>{educationalBackground.degree}</Text>
+    <View style={{ padding: 40 }}>
+      <View style={styles.defaultLayout.aboutMe}>
+        <Text
+          style={{
+            ...styles.sectionHeader,
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "#0e374e12",
+          }}
+        >
+          About me
+        </Text>
+        <Text>{personalDetails.aboutMe}</Text>
       </View>
-    </View>
-    <View style={styles.defaultLayout.section}>
-      <Text style={styles.sectionHeader}>Experience</Text>
-      <View style={styles.flexRow}>
-        <Text>{professionalExperience.company}</Text>
-        <Text>{professionalExperience.position}</Text>
+      <View style={styles.defaultLayout.educationSection}>
+        <Text
+          style={{
+            ...styles.sectionHeader,
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "#0e374e12",
+          }}
+        >
+          Education
+        </Text>
+        <View style={{ ...styles.flexRow, gap: 100 }}>
+          <View style={styles.flexColumn}>
+            <Text>
+              {formatDate(educationalBackground.startSchoolDate)} -
+              {formatDate(educationalBackground.endSchoolDate)}
+            </Text>
+            <Text>
+              {educationalBackground.schoolCity},{" "}
+              {educationalBackground.schoolCountry}
+            </Text>
+          </View>
+          <View style={styles.flexColumn}>
+            <Text>{educationalBackground.school}</Text>
+            <Text>{educationalBackground.degree}</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.defaultLayout.section}>
+        <Text
+          style={{
+            ...styles.sectionHeader,
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "#0e374e12",
+          }}
+        >
+          Experience
+        </Text>
+        <View style={{ ...styles.flexRow, gap: 100 }}>
+          <View style={styles.flexColumn}>
+            <Text>
+              {formatDate(professionalExperience.startJobDate)} -{" "}
+              {formatDate(professionalExperience.endJobDate)}
+            </Text>
+            <Text>
+              {professionalExperience.jobLocation},{" "}
+              {professionalExperience.jobTitle}
+            </Text>
+          </View>
+          <View style={{ ...styles.flexColumn }}>
+            {" "}
+            <Text>{professionalExperience.company}</Text>
+            <Text>{professionalExperience.position}</Text>
+            <Text>{professionalExperience.description}</Text>
+          </View>
+        </View>
       </View>
     </View>
   </View>
@@ -182,6 +245,10 @@ const AlternativeLayout = ({
     <View style={styles.altLayout.educationSection}>
       <Text style={styles.sectionHeader}>Education</Text>
       <View style={styles.flexRow}>
+        <Text>{educationalBackground.startSchoolDate}</Text>
+        <Text>{educationalBackground.endSchoolDate}</Text>
+        <Text>{educationalBackground.schoolCity}</Text>
+        <Text>{educationalBackground.schoolCountry}</Text>
         <Text>{educationalBackground.school}</Text>
         <Text>{educationalBackground.degree}</Text>
       </View>
@@ -191,6 +258,11 @@ const AlternativeLayout = ({
       <View style={styles.flexRow}>
         <Text>{professionalExperience.company}</Text>
         <Text>{professionalExperience.position}</Text>
+        <Text>{professionalExperience.jobTitle}</Text>
+        <Text>{professionalExperience.startJobDate}</Text>
+        <Text>{professionalExperience.endJobDate}</Text>
+        <Text>{professionalExperience.description}</Text>
+        <Text>{professionalExperience.jobLocation}</Text>
       </View>
     </View>
   </View>
