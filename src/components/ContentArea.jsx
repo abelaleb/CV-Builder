@@ -4,7 +4,7 @@ import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 function ContentArea({
   personalDetails,
-  educationalBackground,
+  educationalBackgrounds,
   professionalExperience,
   selectedFont,
   selectedLayout,
@@ -43,7 +43,7 @@ function ContentArea({
         <div className=" rounded-lg  w-[800px]">
           <PDFFile
             personalDetails={personalDetails}
-            educationalBackground={educationalBackground}
+            educationalBackgrounds={educationalBackgrounds}
             professionalExperience={professionalExperience}
             selectedFont={selectedFont}
             selectedLayout={selectedLayout}

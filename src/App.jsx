@@ -36,49 +36,52 @@ function App() {
   const [personalDetails, setPersonalDetails] = useState(
     initialPersonalDetails
   );
-  const [educationalBackground, setEducationalBackground] = useState(
-    initialEducationalBackground
-  );
+  const [educationalBackgrounds, setEducationalBackgrounds] = useState([
+    { ...initialEducationalBackground },
+  ]);
   const [professionalExperience, setProfessionalExperience] = useState(
     initialProfessionalExperience
   );
-  const [selectedFont, setSelectedFont] = useState("sans");
+  const [selectedFont, setSelectedFont] = useState("san-serif");
   const [selectedLayout, setSelectedLayout] = useState("Single Column");
   const [showPDFPreview, setShowPDFPreview] = useState(false);
 
-  const sample = () => {
-    setPersonalDetails({
-      name: "John Doe",
-      email: "john.doe@example.com",
-      phoneNumber: "123-456-7890",
-      location: "New York ,USA",
-      aboutMe:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis blanditiis sit, velit incidunt quam sed quo autem itaque corporis cum deleniti quas aspernatur ipsam facilis necessitatibus quis nam accusamus fugiat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis blanditiis sit, velit incidunt quam sed quo autem itaque corporis cum deleniti quas aspernatur ipsam facilis necessitatibus quis nam accusamus fugiat?",
-      linkedin: "linkedin.com/in/johndoe",
-    });
-    setEducationalBackground({
+const sample = () => {
+  setPersonalDetails({
+    name: "John Doe",
+    email: "john.doe@example.com",
+    phoneNumber: "123-456-7890",
+    location: "New York, USA",
+    aboutMe: "Lorem ipsum...",
+    linkedin: "linkedin.com/in/johndoe",
+  });
+  
+  setEducationalBackgrounds([
+    {
       school: "University of Example",
       degree: "Bachelor of Science",
       schoolCity: "Los Angeles",
       schoolCountry: "USA",
       startSchoolDate: "2015-09-01",
       endSchoolDate: "2019-06-15",
-    });
-    setProfessionalExperience({
-      jobTitle: "Software Engineer",
-      company: "Tech Solutions Inc.",
-      position: "Frontend Developer",
-      startJobDate: "2020-01-01",
-      endJobDate: "2023-08-31",
-      jobLocation: "Remote",
-      description:
-        "Developed and maintained web applications using React and JavaScript.",
-    });
-  };
+    },
+  ]);
+
+  setProfessionalExperience({
+    jobTitle: "Software Engineer",
+    company: "Tech Solutions Inc.",
+    position: "Frontend Developer",
+    startJobDate: "2020-01-01",
+    endJobDate: "2023-08-31",
+    jobLocation: "Remote",
+    description: "Developed and maintained web applications...",
+  });
+};
+
 
   const clear = () => {
     setPersonalDetails(initialPersonalDetails);
-    setEducationalBackground(initialEducationalBackground);
+    setEducationalBackgrounds(initialEducationalBackground);
     setProfessionalExperience(initialProfessionalExperience);
   };
 
@@ -99,8 +102,8 @@ function App() {
         <Sidebar
           personalDetails={personalDetails}
           setPersonalDetails={setPersonalDetails}
-          educationalBackground={educationalBackground}
-          setEducationalBackground={setEducationalBackground}
+          educationalBackgrounds={educationalBackgrounds}
+          setEducationalBackgrounds={setEducationalBackgrounds}
           professionalExperience={professionalExperience}
           setProfessionalExperience={setProfessionalExperience}
           sample={sample}
@@ -116,7 +119,7 @@ function App() {
           <PDFViewer width="100%" height="600px" style={{ border: "none" }}>
             <PDFFile
               personalDetails={personalDetails}
-              educationalBackground={educationalBackground}
+              educationalBackgrounds={educationalBackgrounds}
               professionalExperience={professionalExperience}
               selectedFont={selectedFont}
               selectedLayout={selectedLayout}
@@ -125,13 +128,14 @@ function App() {
         ) : (
           <ContentArea
             personalDetails={personalDetails}
-            educationalBackground={educationalBackground}
+            educationalBackgrounds={educationalBackgrounds}
             professionalExperience={professionalExperience}
             selectedFont={selectedFont}
             selectedLayout={selectedLayout}
           />
         )}
       </div>
+      
     </main>
   );
 }

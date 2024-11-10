@@ -1,5 +1,6 @@
 import React from "react";
 import { format } from "date-fns";
+import briefcase from "/src/assets/briefcase-icon.svg";
 
 import {
   Page,
@@ -126,7 +127,7 @@ const formatDate = (date) => (date ? format(new Date(date), "MMMM yyyy") : "");
 
 const defaultLayout = ({
   personalDetails,
-  educationalBackground,
+  educationalBackgrounds,
   professionalExperience,
 }) => (
   <View style={styles.defaultLayout.main}>
@@ -160,6 +161,11 @@ const defaultLayout = ({
         >
           About me
         </Text>
+        <Image
+          src={briefcase}
+          alt="a picture of a briefcase"
+          style={{ width: "100px" }}
+        />
         <Text>{personalDetails.aboutMe}</Text>
       </View>
       <View style={styles.defaultLayout.educationSection}>
@@ -177,17 +183,17 @@ const defaultLayout = ({
         <View style={{ ...styles.flexRow, gap: 100 }}>
           <View style={styles.flexColumn}>
             <Text>
-              {formatDate(educationalBackground.startSchoolDate)} -
-              {formatDate(educationalBackground.endSchoolDate)}
+              {formatDate(educationalBackgrounds[0].startSchoolDate)} -
+              {formatDate(educationalBackgrounds[0].endSchoolDate)}
             </Text>
             <Text>
-              {educationalBackground.schoolCity},{" "}
-              {educationalBackground.schoolCountry}
+              {educationalBackgrounds[0].schoolCity},
+              {educationalBackgrounds[0].schoolCountry}
             </Text>
           </View>
           <View style={styles.flexColumn}>
-            <Text>{educationalBackground.school}</Text>
-            <Text>{educationalBackground.degree}</Text>
+            <Text>{educationalBackgrounds[0].school}</Text>
+            <Text>{educationalBackgrounds[0].degree}</Text>
           </View>
         </View>
       </View>
@@ -228,7 +234,7 @@ const defaultLayout = ({
 
 const AlternativeLayout = ({
   personalDetails,
-  educationalBackground,
+  educationalBackgrounds,
   professionalExperience,
 }) => (
   <View style={styles.altLayout.main}>
@@ -245,12 +251,12 @@ const AlternativeLayout = ({
     <View style={styles.altLayout.educationSection}>
       <Text style={styles.sectionHeader}>Education</Text>
       <View style={styles.flexRow}>
-        <Text>{educationalBackground.startSchoolDate}</Text>
-        <Text>{educationalBackground.endSchoolDate}</Text>
-        <Text>{educationalBackground.schoolCity}</Text>
-        <Text>{educationalBackground.schoolCountry}</Text>
-        <Text>{educationalBackground.school}</Text>
-        <Text>{educationalBackground.degree}</Text>
+        <Text>{educationalBackgrounds[0].startSchoolDate}</Text>
+        <Text>{educationalBackgrounds[0].endSchoolDate}</Text>
+        <Text>{educationalBackgrounds[0].schoolCity}</Text>
+        <Text>{educationalBackgrounds[0].schoolCountry}</Text>
+        <Text>{educationalBackgrounds[0].school}</Text>
+        <Text>{educationalBackgrounds[0].degree}</Text>
       </View>
     </View>
     <View style={styles.altLayout.section}>
@@ -270,7 +276,7 @@ const AlternativeLayout = ({
 
 const PDFFile = ({
   personalDetails,
-  educationalBackground,
+  educationalBackgrounds,
   professionalExperience,
   selectedLayout,
 }) => {
@@ -282,7 +288,7 @@ const PDFFile = ({
       <Page size="A4" style={styles.page}>
         <LayoutComponent
           personalDetails={personalDetails}
-          educationalBackground={educationalBackground}
+          educationalBackgrounds={educationalBackgrounds}
           professionalExperience={professionalExperience}
         />
       </Page>

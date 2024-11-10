@@ -1,17 +1,26 @@
 import React, { useState } from "react";
-
+import { Button } from "./UI/button";
 function EducationalBackground({
   educationalBackground,
-  setEducationalBackground,
+  setEducationalBackgrounds,
   isShown,
   toggleForm,
 }) {
-  const handleChange = (e) => {
+  const handleChange = (index, e) => {
     const { name, value } = e.target;
-    setEducationalBackground((prevData) => ({
-      ...prevData,
+    const updatedBackgrounds = [...educationalBackground];
+    updatedBackgrounds[index] = {
+      ...updatedBackgrounds[index],
       [name]: value,
-    }));
+    };
+    setEducationalBackgrounds(updatedBackgrounds);
+  };
+
+  const addEducationalBackground = () => {
+    setEducationalBackgrounds((prev) => [
+      ...prev,
+      { ...initialEducationalBackground },
+    ]);
   };
 
   return (
@@ -33,6 +42,7 @@ function EducationalBackground({
             )}
           </button>
         </div>
+
         <div
           className={`transition-all duration-500 overflow-hidden ${
             isShown ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
@@ -51,7 +61,7 @@ function EducationalBackground({
                   type="text"
                   name="school"
                   id="school"
-                  value={educationalBackground.school || ""}
+                  value={"educationalBackground.school" || ""}
                   onChange={handleChange}
                   placeholder="Enter School / University"
                   className="capitalize mt-1 block w-full p-2 rounded-md border"
@@ -69,7 +79,7 @@ function EducationalBackground({
                   type="text"
                   name="degree"
                   id="degree"
-                  value={educationalBackground.degree || ""}
+                  value={"educationalBackground.degree" || ""}
                   onChange={handleChange}
                   placeholder="Enter Degree / Field of Study"
                   className="capitalize mt-1 block w-full p-2 border rounded-md "
@@ -87,7 +97,7 @@ function EducationalBackground({
                   type="text"
                   name="schoolCity"
                   id="schoolCity"
-                  value={educationalBackground.schoolCity || ""}
+                  value={"educationalBackground.schoolCity" || ""}
                   onChange={handleChange}
                   placeholder="Enter City"
                   className=" capitalize mt-1 block w-full p-2 border rounded-md "
@@ -105,7 +115,7 @@ function EducationalBackground({
                   type="text"
                   name="schoolCountry"
                   id="schoolCountry"
-                  value={educationalBackground.schoolCountry || ""}
+                  value={"educationalBackground.schoolCountry" || ""}
                   onChange={handleChange}
                   placeholder="Enter Country"
                   className="capitalize mt-1 block w-full p-2 rounded-md border"
@@ -123,7 +133,7 @@ function EducationalBackground({
                   type="date"
                   name="startSchoolDate"
                   id="startSchoolDate"
-                  value={educationalBackground.startSchoolDate || ""}
+                  value={"educationalBackground.startSchoolDate" || ""}
                   onChange={handleChange}
                   placeholder="mm / dd / yy"
                   className="mt-1 block w-full p-2 rounded-md border"
@@ -141,7 +151,7 @@ function EducationalBackground({
                   type="date"
                   name="endSchoolDate"
                   id="endSchoolDate"
-                  value={educationalBackground.endSchoolDate || ""}
+                  value={"educationalBackground.endSchoolDate" || ""}
                   onChange={handleChange}
                   placeholder="mm / dd / yy"
                   className="mt-1 block w-full p-2 rounded-md border"
@@ -149,6 +159,9 @@ function EducationalBackground({
               </div>
             </div>
           </form>
+        </div>
+        <div className="p-4 pb-0">
+          <Button onClick={addEducationalBackground}>Add Education</Button>
         </div>
       </section>
     </>

@@ -7,8 +7,8 @@ import { Button } from "./UI/button";
 function Sidebar({
   personalDetails,
   setPersonalDetails,
-  educationalBackground,
-  setEducationalBackground,
+  educationalBackgrounds,
+  setEducationalBackgrounds,
   professionalExperience,
   setProfessionalExperience,
   sample,
@@ -16,21 +16,29 @@ function Sidebar({
   showPDFPreview,
   setShowPDFPreview,
 }) {
+
   const [isShown, setIsShown] = useState({
     personalDetails: false,
     educationalBackground: false,
     professionalExperience: false,
   });
+
   const toggleForm = (formName) => {
     setIsShown((prevIsShown) => ({
       ...{
         personalDetails: false,
-        educationalBackground: false,
+        educationalBackgrounds: false,
         professionalExperience: false,
       },
       [formName]: !prevIsShown[formName], // Toggle the selected form
     }));
   };
+
+
+  const addProfessionalExperienceBackground =()=>{
+    console.log("professionalBackground");
+    
+  }
 
   return (
     <aside className="text-center  bg-white col-span-1 pt-4">
@@ -38,7 +46,6 @@ function Sidebar({
         <Button onClick={clear}>Clear</Button>
         <Button onClick={sample}>Sample</Button>
       </div>
-
       <PersonalDetailsForm
         personalDetails={personalDetails}
         setPersonalDetails={setPersonalDetails}
@@ -46,18 +53,21 @@ function Sidebar({
         toggleForm={() => toggleForm("personalDetails")}
       />
       <EducationalBackground
-        educationalBackground={educationalBackground}
-        setEducationalBackground={setEducationalBackground}
+        educationalBackgrounds={educationalBackgrounds}
+        setEducationalBackgrounds={setEducationalBackgrounds}
         isShown={isShown.educationalBackground}
         toggleForm={() => toggleForm("educationalBackground")}
       />
+   
       <ExperienceForm
         professionalExperience={professionalExperience}
         setProfessionalExperience={setProfessionalExperience}
         isShown={isShown.professionalExperience}
         toggleForm={() => toggleForm("professionalExperience")}
       />
-
+      <div className="p-4">
+        <Button onClick={addProfessionalExperienceBackground}>Add Experience</Button>
+      </div>
       <div className="m-5 flex justify-between">
         <Button
           onClick={() => {
