@@ -185,40 +185,27 @@ const defaultLayout = ({
         >
           Education
         </Text>
-        {educationalBackgrounds.map((education, index) => (
-          <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
-            <View style={styles.flexColumn}>
-              <Text>
-                {formatDate(education.startSchoolDate)} -{" "}
-                {formatDate(education.endSchoolDate)}
-              </Text>
-              <Text>
-                {education.schoolCity}, {education.schoolCountry}
-              </Text>
+        {educationalBackgrounds.length > 0 ? (
+          educationalBackgrounds.map((education, index) => (
+            <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
+              <View style={styles.flexColumn}>
+                <Text>
+                  {formatDate(education.startSchoolDate)} -{" "}
+                  {formatDate(education.endSchoolDate)}
+                </Text>
+                <Text>
+                  {education.schoolCity}, {education.schoolCountry}
+                </Text>
+              </View>
+              <View style={styles.flexColumn}>
+                <Text>{education.school}</Text>
+                <Text>{education.degree}</Text>
+              </View>
             </View>
-            <View style={styles.flexColumn}>
-              <Text>{education.school}</Text>
-              <Text>{education.degree}</Text>
-            </View>
-          </View>
-        ))}
-
-        {/* <View style={{ ...styles.flexRow, gap: 100 }}>
-          <View style={styles.flexColumn}>
-            <Text>
-              {formatDate(educationalBackgrounds[0].startSchoolDate)} -
-              {formatDate(educationalBackgrounds[0].endSchoolDate)}
-            </Text>
-            <Text>
-              {educationalBackgrounds[0].schoolCity},
-              {educationalBackgrounds[0].schoolCountry}
-            </Text>
-          </View>
-          <View style={styles.flexColumn}>
-            <Text>{educationalBackgrounds[0].school}</Text>
-            <Text>{educationalBackgrounds[0].degree}</Text>
-          </View>
-        </View>*/}
+          ))
+        ) : (
+          <Text>No Educational Backgrounds Added</Text>
+        )}
       </View>
 
       <View style={styles.defaultLayout.section}>

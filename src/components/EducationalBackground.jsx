@@ -16,20 +16,6 @@ function EducationalBackground({
     setEducationalBackgrounds(updatedBackgrounds);
   };
 
-  const addEducationalBackground = () => {
-    setEducationalBackgrounds((prev) => [
-      ...prev,
-      {
-        school: "",
-        degree: "",
-        schoolCity: "",
-        schoolCountry: "",
-        startSchoolDate: "",
-        endSchoolDate: "",
-      },
-    ]);
-  };
-
   return (
     <>
       <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
@@ -161,10 +147,6 @@ function EducationalBackground({
               </div>
             </form>
           ))}
-        </div>
-        <div className="flex justify-between p-4 pb-0">
-          <Button>Save</Button>
-          <Button onClick={addEducationalBackground}>&#x2795; School</Button>
         </div>
       </section>
     </>

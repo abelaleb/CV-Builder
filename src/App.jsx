@@ -7,41 +7,9 @@ import { PDFViewer } from "@react-pdf/renderer";
 import PDFFile from "./components/customize/PDFFile";
 
 function App() {
-  const initialPersonalDetails = {
-    name: "",
-    email: "",
-    phoneNumber: "",
-    location: "",
-    aboutMe: "",
-    linkedin: "",
-  };
-  const initialEducationalBackground = {
-    school: "",
-    degree: "",
-    schoolCity: "",
-    schoolCountry: "",
-    startSchoolDate: "",
-    endSchoolDate: "",
-  };
-  const initialProfessionalExperience = {
-    jobTitle: "",
-    company: "",
-    position: "",
-    startJobDate: "",
-    endJobDate: "",
-    jobLocation: "",
-    description: "",
-  };
-
-  const [personalDetails, setPersonalDetails] = useState(
-    initialPersonalDetails
-  );
-  const [educationalBackgrounds, setEducationalBackgrounds] = useState([
-    { ...initialEducationalBackground },
-  ]);
-  const [professionalExperience, setProfessionalExperience] = useState(
-    initialProfessionalExperience
-  );
+  const [personalDetails, setPersonalDetails] = useState([]);
+  const [educationalBackgrounds, setEducationalBackgrounds] = useState([]);
+  const [professionalExperience, setProfessionalExperience] = useState([]);
   const [selectedFont, setSelectedFont] = useState("san-serif");
   const [selectedLayout, setSelectedLayout] = useState("Single Column");
   const [showPDFPreview, setShowPDFPreview] = useState(false);
@@ -52,7 +20,7 @@ function App() {
       email: "john.doe@example.com",
       phoneNumber: "123-456-7890",
       location: "New York, USA",
-      aboutMe: "Lorem ipsum...",
+      aboutMe: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab enim ipsum inventore sequi officia! Ad quisquam consequatur itaque temporibus odit sapiente quam, perspiciatis obcaecati vel, deserunt sunt minus soluta",
       linkedin: "linkedin.com/in/johndoe",
     });
 
