@@ -1,5 +1,6 @@
 import React from "react";
-import { format } from "date-fns";
+import { format, parseISO,isValid } from "date-fns";
+
 import briefcase from "/src/assets/briefcase-icon.svg";
 
 import {
@@ -123,11 +124,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const formatDate = (date) => (date ? format(new Date(date), "MMMM yyyy") : "");
+const formatDate = (date) => {
+  if (!date) return ""; // Handle empty or null date input
+  const parsedDate = parseISO(date); // Parse date string
+  return isValid(parsedDate) ? format(parsedDate, "MMMM yyyy") : ""; // Ensure the date is valid before formatting
+};
 
 const defaultLayout = ({
   personalDetails,
-  educationalBackgrounds,
+  educationalBackgrounds = [],
   professionalExperience,
 }) => (
   <View style={styles.defaultLayout.main}>
@@ -180,7 +185,25 @@ const defaultLayout = ({
         >
           Education
         </Text>
-        <View style={{ ...styles.flexRow, gap: 100 }}>
+        {educationalBackgrounds.map((education, index) => (
+          <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
+            <View style={styles.flexColumn}>
+              <Text>
+                {formatDate(education.startSchoolDate)}-
+                {formatDate(education.endSchoolDate)}
+              </Text>
+              <Text>
+                {formatDate(education.schoolCity)}, {education.schoolCountry}
+              </Text>
+            </View>
+            <View style={styles.flexColumn}>
+              <Text>{education.school}</Text>
+              <Text>{education.degree}</Text>
+            </View>
+          </View>
+        ))}
+
+        {/* <View style={{ ...styles.flexRow, gap: 100 }}>
           <View style={styles.flexColumn}>
             <Text>
               {formatDate(educationalBackgrounds[0].startSchoolDate)} -
@@ -195,8 +218,9 @@ const defaultLayout = ({
             <Text>{educationalBackgrounds[0].school}</Text>
             <Text>{educationalBackgrounds[0].degree}</Text>
           </View>
-        </View>
+        </View>*/}
       </View>
+
       <View style={styles.defaultLayout.section}>
         <Text
           style={{
