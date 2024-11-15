@@ -129,7 +129,7 @@ export default function PersonalDetails({
                 value={personalDetails.aboutMe || ""}
                 onChange={handleChange}
                 placeholder="About me"
-                className="capitalize mt-1 block w-full p-2 rounded-md border"
+                className=" mt-1 block w-full p-2 rounded-md border"
               />
             </div>
             <div className="mb-1">

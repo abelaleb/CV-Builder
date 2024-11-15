@@ -126,6 +126,39 @@ function EducationalBackground({
                   className="mt-1 block w-full p-2 rounded-md border"
                 />
               </div>
+
+              <div className="mb-1">
+                <label
+                  htmlFor={`schoolCity-${index}`}
+                  className="flex text-sm font-medium text-gray-700"
+                >
+                  City
+                </label>
+                <input
+                  type="text"
+                  name="schoolCity"
+                  id={`schoolCity-${index}`}
+                  value={background.schoolCity || ""}
+                  onChange={(e) => handleChange(index, e)}
+                  className=" capitalize mt-1 block w-full p-2 rounded-md border"
+                />
+              </div>
+              <div className="mb-1">
+                <label
+                  htmlFor={`schoolCountry-${index}`}
+                  className="flex text-sm font-medium text-gray-700"
+                >
+                  Country
+                </label>
+                <input
+                  type="text"
+                  name="schoolCountry"
+                  id={`schoolCountry-${index}`}
+                  value={background.schoolCountry || ""}
+                  onChange={(e) => handleChange(index, e)}
+                  className="capitalize mt-1 block w-full p-2 rounded-md border"
+                />
+              </div>
             </form>
           ))}
         </div>

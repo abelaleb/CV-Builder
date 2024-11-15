@@ -1,5 +1,5 @@
 import React from "react";
-import { format, parseISO,isValid } from "date-fns";
+import { format, parseISO, isValid } from "date-fns";
 
 import briefcase from "/src/assets/briefcase-icon.svg";
 
@@ -189,11 +189,11 @@ const defaultLayout = ({
           <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
             <View style={styles.flexColumn}>
               <Text>
-                {formatDate(education.startSchoolDate)}-
+                {formatDate(education.startSchoolDate)} -{" "}
                 {formatDate(education.endSchoolDate)}
               </Text>
               <Text>
-                {formatDate(education.schoolCity)}, {education.schoolCountry}
+                {education.schoolCity}, {education.schoolCountry}
               </Text>
             </View>
             <View style={styles.flexColumn}>
