@@ -5,7 +5,7 @@ import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 function ContentArea({
   personalDetails,
   educationalBackgrounds,
-  professionalExperience,
+  professionalExperiences,
   selectedFont,
   selectedLayout,
 }) {
@@ -44,7 +44,7 @@ function ContentArea({
           <PDFFile
             personalDetails={personalDetails}
             educationalBackgrounds={educationalBackgrounds}
-            professionalExperience={professionalExperience}
+            professionalExperiences={professionalExperiences}
             selectedFont={selectedFont}
             selectedLayout={selectedLayout}
           />

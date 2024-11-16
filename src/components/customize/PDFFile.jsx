@@ -131,9 +131,9 @@ const formatDate = (date) => {
 };
 
 const defaultLayout = ({
-  personalDetails,
+  personalDetails =[],
   educationalBackgrounds = [],
-  professionalExperience,
+  professionalExperiences=[],
 }) => (
   <View style={styles.defaultLayout.main}>
     <View
@@ -166,12 +166,12 @@ const defaultLayout = ({
         >
           About me
         </Text>
-        <Image
-          src={briefcase}
-          alt="a picture of a briefcase"
-          style={{ width: "100px" }}
-        />
-        <Text>{personalDetails.aboutMe}</Text>
+
+        {personalDetails.length > 0 ? (
+          <Text>{personalDetails.aboutMe}</Text>
+        ) : (
+          <Text>No About Me Added</Text>
+        )}
       </View>
       <View style={styles.defaultLayout.educationSection}>
         <Text
@@ -220,24 +220,28 @@ const defaultLayout = ({
         >
           Experience
         </Text>
-        <View style={{ ...styles.flexRow, gap: 100 }}>
-          <View style={styles.flexColumn}>
-            <Text>
-              {formatDate(professionalExperience.startJobDate)} -{" "}
-              {formatDate(professionalExperience.endJobDate)}
-            </Text>
-            <Text>
-              {professionalExperience.jobLocation},{" "}
-              {professionalExperience.jobTitle}
-            </Text>
+        {professionalExperiences.length > 0 ? (
+          <View style={{ ...styles.flexRow, gap: 100 }}>
+            <View style={styles.flexColumn}>
+              <Text>
+                {formatDate(professionalExperiences.startJobDate)} -{" "}
+                {formatDate(professionalExperiences.endJobDate)}
+              </Text>
+              <Text>
+                {professionalExperiences.jobLocation},{" "}
+                {professionalExperiences.jobTitle}
+              </Text>
+            </View>
+            <View style={{ ...styles.flexColumn }}>
+              {" "}
+              <Text>{professionalExperiences.company}</Text>
+              <Text>{professionalExperiences.position}</Text>
+              <Text>{professionalExperiences.description}</Text>
+            </View>
           </View>
-          <View style={{ ...styles.flexColumn }}>
-            {" "}
-            <Text>{professionalExperience.company}</Text>
-            <Text>{professionalExperience.position}</Text>
-            <Text>{professionalExperience.description}</Text>
-          </View>
-        </View>
+        ) : (
+          <Text>No Professional Experience Added</Text>
+        )}
       </View>
     </View>
   </View>

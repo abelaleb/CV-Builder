@@ -9,10 +9,11 @@ import PDFFile from "./components/customize/PDFFile";
 function App() {
   const [personalDetails, setPersonalDetails] = useState([]);
   const [educationalBackgrounds, setEducationalBackgrounds] = useState([]);
-  const [professionalExperience, setProfessionalExperience] = useState([]);
+  const [professionalExperiences, setProfessionalExperiences] = useState(['a']);
   const [selectedFont, setSelectedFont] = useState("san-serif");
   const [selectedLayout, setSelectedLayout] = useState("Single Column");
   const [showPDFPreview, setShowPDFPreview] = useState(false);
+
 
   const sample = () => {
     setPersonalDetails({
@@ -20,7 +21,8 @@ function App() {
       email: "john.doe@example.com",
       phoneNumber: "123-456-7890",
       location: "New York, USA",
-      aboutMe: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab enim ipsum inventore sequi officia! Ad quisquam consequatur itaque temporibus odit sapiente quam, perspiciatis obcaecati vel, deserunt sunt minus soluta",
+      aboutMe:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab enim ipsum inventore sequi officia! Ad quisquam consequatur itaque temporibus odit sapiente quam, perspiciatis obcaecati vel, deserunt sunt minus soluta",
       linkedin: "linkedin.com/in/johndoe",
     });
 
@@ -35,7 +37,7 @@ function App() {
       },
     ]);
 
-    setProfessionalExperience({
+    setProfessionalExperiences({
       jobTitle: "Software Engineer",
       company: "Tech Solutions Inc.",
       position: "Frontend Developer",
@@ -47,9 +49,9 @@ function App() {
   };
 
   const clear = () => {
-    setPersonalDetails(initialPersonalDetails);
-    setEducationalBackgrounds([{ ...initialEducationalBackground }]);
-    setProfessionalExperience(initialProfessionalExperience);
+    setPersonalDetails([]);
+    setEducationalBackgrounds([]);
+    setProfessionalExperiences([]);
   };
 
   return (
@@ -71,8 +73,8 @@ function App() {
           setPersonalDetails={setPersonalDetails}
           educationalBackgrounds={educationalBackgrounds}
           setEducationalBackgrounds={setEducationalBackgrounds}
-          professionalExperience={professionalExperience}
-          setProfessionalExperience={setProfessionalExperience}
+          professionalExperiences={professionalExperiences}
+          setProfessionalExperiences={setProfessionalExperiences}
           sample={sample}
           clear={clear}
           showPDFPreview={showPDFPreview}
@@ -87,7 +89,7 @@ function App() {
             <PDFFile
               personalDetails={personalDetails}
               educationalBackgrounds={educationalBackgrounds}
-              professionalExperience={professionalExperience}
+              professionalExperiences={professionalExperiences}
               selectedFont={selectedFont}
               selectedLayout={selectedLayout}
             />
@@ -96,7 +98,7 @@ function App() {
           <ContentArea
             personalDetails={personalDetails}
             educationalBackgrounds={educationalBackgrounds}
-            professionalExperience={professionalExperience}
+            professionalExperiences={professionalExperiences}
             selectedFont={selectedFont}
             selectedLayout={selectedLayout}
           />

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "./UI/button";
+import React from "react";
+
 function EducationalBackground({
   educationalBackgrounds,
   setEducationalBackgrounds,

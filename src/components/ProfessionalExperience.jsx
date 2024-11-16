@@ -1,18 +1,22 @@
 import React from "react";
 
-function Experience({
-  professionalExperience,
-  setProfessionalExperience,
+function professionalExperience({
+  professionalExperiences,
+  setProfessionalExperiences,
   isShown,
   toggleForm,
 }) {
-  const handleChange = (e) => {
+  const handleChange = (index, e) => {
     const { name, value } = e.target;
-    setProfessionalExperience((prevData) => ({
-      ...prevData,
+
+    const updatedExperiences = [...professionalExperiences];
+    updatedExperiences[index] = {
+      ...updatedExperiences[index],
       [name]: value,
-    }));
+    };
+    setProfessionalExperiences(updatedExperiences);
   };
+  console.log(`hi${professionalExperiences}`);
 
   return (
     <>
@@ -38,121 +42,123 @@ function Experience({
             isShown ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <form>
-            <div className="mt-5 gap-3">
-              <div className="mb-1">
-                <label
-                  htmlFor="company"
-                  className="text-sm flex font-medium text-gray-700"
-                >
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  value={professionalExperience.company || ""}
-                  onChange={handleChange}
-                  placeholder="Enter Company Name"
-                  className=" capitalize mt-1 block w-full p-2 border rounded-md "
-                />
-              </div>
+          {professionalExperiences.map((experience, index) => (
+            <form key={index}>
+              <div className="mt-5 gap-3">
+                <div className="mb-1">
+                  <label
+                    htmlFor={`company-${index}`}
+                    className="text-sm flex font-medium text-gray-700"
+                  >
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    id={`company-${index}`}
+                    value={experience.company || ""}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Enter Company Name"
+                    className=" capitalize mt-1 block w-full p-2 border rounded-md "
+                  />
+                </div>
 
-              <div className="mb-1">
-                <label
-                  htmlFor="position"
-                  className="flex text-sm font-medium text-gray-700"
-                >
-                  Position Title
-                </label>
-                <input
-                  type="position"
-                  name="position"
-                  id="position"
-                  value={professionalExperience.position || ""}
-                  onChange={handleChange}
-                  placeholder="Enter Position Title"
-                  className=" capitalize mt-1 block w-full p-2 border-gray-300 rounded-md border"
-                />
-              </div>
+                <div className="mb-1">
+                  <label
+                    htmlFor={`position-${index}`}
+                    className="flex text-sm font-medium text-gray-700"
+                  >
+                    Position Title
+                  </label>
+                  <input
+                    type="position"
+                    name="position"
+                    id={`position-${index}`}
+                    value={experience.position || ""}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Enter Position Title"
+                    className=" capitalize mt-1 block w-full p-2 border-gray-300 rounded-md border"
+                  />
+                </div>
 
-              <div className="mb-1">
-                <label
-                  htmlFor="startJobDate"
-                  className="flex text-sm font-medium text-gray-700"
-                >
-                  Start Date
-                </label>
-                <input
-                  type="date"
-                  name="startJobDate"
-                  id="startJobDate"
-                  value={professionalExperience.startJobDate || ""}
-                  onChange={handleChange}
-                  placeholder="mm / dd / yy"
-                  className="border mt-1 block w-full p-2 rounded-md "
-                />
-              </div>
+                <div className="mb-1">
+                  <label
+                    htmlFor={`startJobDate-${index}`}
+                    className="flex text-sm font-medium text-gray-700"
+                  >
+                    Start Date
+                  </label>
+                  <input
+                    type="date"
+                    name="startJobDate"
+                    id={`startJobDate-${index}`}
+                    value={experience.startJobDate || ""}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="mm / dd / yy"
+                    className="border mt-1 block w-full p-2 rounded-md "
+                  />
+                </div>
 
-              <div className="mb-1">
-                <label
-                  htmlFor="endJobDate"
-                  className="flex text-sm font-medium text-gray-700"
-                >
-                  End Date
-                </label>
-                <input
-                  type="date"
-                  name="endJobDate"
-                  id="endJobDate"
-                  value={professionalExperience.endJobDate}
-                  onChange={handleChange}
-                  placeholder="mm / dd / yy"
-                  className=" border mt-1 block w-full p-2 rounded-md "
-                />
-              </div>
+                <div className="mb-1">
+                  <label
+                    htmlFor={`endJobDate-${index}`}
+                    className="flex text-sm font-medium text-gray-700"
+                  >
+                    End Date
+                  </label>
+                  <input
+                    type="date"
+                    name="endJobDate"
+                    id={`endJobDate-${index}`}
+                    value={experience.endJobDate}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="mm / dd / yy"
+                    className=" border mt-1 block w-full p-2 rounded-md "
+                  />
+                </div>
 
-              <div className="mb-1">
-                <label
-                  htmlFor="jobLocation"
-                  className="flex text-sm font-medium text-gray-700"
-                >
-                  Location
-                </label>
-                <input
-                  type="text"
-                  name="jobLocation"
-                  id="jobLocation"
-                  value={professionalExperience.jobLocation}
-                  onChange={handleChange}
-                  placeholder="Enter Location"
-                  className="capitalize mt-1 block w-full p-2 rounded-md border"
-                />
-              </div>
+                <div className="mb-1">
+                  <label
+                    htmlFor={`jobLocation-${index}`}
+                    className="flex text-sm font-medium text-gray-700"
+                  >
+                    Location
+                  </label>
+                  <input
+                    type="text"
+                    name="jobLocation"
+                    id={`jobLocation-${index}`}
+                    value={experience.jobLocation}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Enter Location"
+                    className="capitalize mt-1 block w-full p-2 rounded-md border"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <label
-                  htmlFor="description"
-                  className="flex text-sm font-medium text-gray-700"
-                >
-                  Description
-                </label>
-                <textarea
-                  type="description"
-                  name="description"
-                  id="description"
-                  value={professionalExperience.description}
-                  onChange={handleChange}
-                  placeholder="Enter Description"
-                  className="capitalize border mt-1 block w-full p-2 rounded-md focus:outline-none "
-                />
+                <div className="mb-4">
+                  <label
+                    htmlFor={`description-${index}`}
+                    className="flex text-sm font-medium text-gray-700"
+                  >
+                    Description
+                  </label>
+                  <textarea
+                    type="description"
+                    name="description"
+                    id={`description-${index}`}
+                    value={experience.description}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Enter Description"
+                    className="capitalize border mt-1 block w-full p-2 rounded-md focus:outline-none "
+                  />
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          ))}
         </div>
       </section>
     </>
   );
 }
 
-export default Experience;
+export default professionalExperience;
