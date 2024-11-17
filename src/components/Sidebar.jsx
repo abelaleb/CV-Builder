@@ -9,6 +9,8 @@ function Sidebar({
   setPersonalDetails,
   educationalBackgrounds,
   setEducationalBackgrounds,
+  saveEducationalEntries,
+  setSaveEducationalEntries,
   professionalExperiences,
   setProfessionalExperiences,
   sample,
@@ -32,65 +34,61 @@ function Sidebar({
       [formName]: !prevIsShown[formName], // Toggle the selected form
     }));
   };
-  const [saveProfessionalExperiences, setSaveProfessionalExperiences] =
-    useState([]);
-  const addProfessionalExperiences = () => {
-    const validEntries = saveProfessionalExperiences.filter(
-      (entry) => entry.school.trim() !== ""
-    );
-    if (validEntries.length > 0) {
-      setSaveProfessionalExperiences((prevProfessionalExperience) => [
-        ...prevProfessionalExperience,
-        ...validEntries,
-      ]);
-    }
-    setProfessionalExperiences([
-      {
-        company: "",
-        position: "",
-        jobLocation: "",
-        startJobDate: "",
-        endJobDate: "",
-        description: "",
-      },
-    ]);
-  };
-  const [saveEducationalEntries, setSaveEducationalEntries] = useState([]);
+
+  // const addProfessionalExperiences = () => {
+  //   const validEntries = saveProfessionalExperiences.filter(
+  //     (entry) => entry.school.trim() !== ""
+  //   );
+  //   if (validEntries.length > 0) {
+  //     setSaveProfessionalExperiences((prevProfessionalExperience) => [
+  //       ...prevProfessionalExperience,
+  //       ...validEntries,
+  //     ]);
+  //   }
+  //   setProfessionalExperiences([
+  //     {
+  //       company: "",
+  //       position: "",
+  //       jobLocation: "",
+  //       startJobDate: "",
+  //       endJobDate: "",
+  //       description: "",
+  //     },
+  //   ]);
+  // };
   const addEducationalBackground = () => {
-    const validEntries = saveEducationalEntries.filter(
-      (entry) => entry.school.trim() !== ""
+    const validEntries = educationalBackgrounds.filter(
+      (entry) => entry.school.trim() !== "" && entry.degree.trim() !== ""
     );
-
     if (validEntries.length > 0) {
-      // Add valid entries to the main educational backgrounds array in App.jsx
-      setSaveEducationalEntries((prevEducationalBackgrounds) => [
-        ...prevEducationalBackgrounds,
+      setSaveEducationalEntries((prevEntries) => [
+        ...prevEntries,
         ...validEntries,
       ]);
+      setEducationalBackgrounds([
+        {
+          school: "",
+          degree: "",
+          schoolCity: "",
+          schoolCountry: "",
+          startSchoolDate: "",
+          endSchoolDate: "",
+        },
+      ]);
+    } else {
+      alert("Please fill out the form before adding another entry.");
     }
-
-    // Reset the educational background form
-    setEducationalBackgrounds([
-      {
-        school: "",
-        degree: "",
-        schoolCity: "",
-        schoolCountry: "",
-        startSchoolDate: "",
-        endSchoolDate: "",
-      },
-    ]);
   };
 
   useEffect(() => {
     if (
-      educationalBackgrounds.length === 1 &&
-      educationalBackgrounds[0].school === ""
+      educationalBackgrounds.length > 0 &&
+      educationalBackgrounds[0].school !== ""
     ) {
-      console.log(`Educaitonal Backgrounds: ${educationalBackgrounds}`);
-      console.log(`professional Experiences: ${professionalExperiences}`);
+      console.log("saveEducationalEntries: ", saveEducationalEntries);
+      console.log("educationalBackgrounds: ", educationalBackgrounds);
     }
-  }, [addEducationalBackground, addProfessionalExperiences]);
+  }, [addEducationalBackground]);
 
   return (
     <aside className="text-center  bg-white col-span-1 pt-4">
@@ -128,7 +126,7 @@ function Sidebar({
       <div className="p-4">
         <Button onClick={addEducationalBackground}>&#x2795; School</Button>
       </div>
-      <ProfessionalExperience
+      {/* <ProfessionalExperience
         professionalExperiences={professionalExperiences}
         setProfessionalExperiences={setProfessionalExperiences}
         isShown={isShown.professionalExperiences}
@@ -138,7 +136,7 @@ function Sidebar({
         <Button onClick={addProfessionalExperiences}>
           &#x2795; Experience
         </Button>
-      </div>
+      </div> */}
       <div className="m-5 flex justify-between">
         <Button
           onClick={() => {

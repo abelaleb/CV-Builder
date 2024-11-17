@@ -1,16 +1,13 @@
 import React from "react";
 import { format, parseISO, isValid } from "date-fns";
 
-import briefcase from "/src/assets/briefcase-icon.svg";
-
 import {
   Page,
   Text,
   Document,
   StyleSheet,
   View,
-  Link,
-  Image,
+  PDFViewer,
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
@@ -130,182 +127,125 @@ const formatDate = (date) => {
   return isValid(parsedDate) ? format(parsedDate, "MMMM yyyy") : ""; // Ensure the date is valid before formatting
 };
 
-const defaultLayout = ({
-  personalDetails =[],
-  educationalBackgrounds = [],
-  professionalExperiences=[],
-}) => (
-  <View style={styles.defaultLayout.main}>
-    <View
-      style={{
-        backgroundColor: "black",
-        color: "white",
-        paddingTop: "26px",
-        paddingBottom: "6px",
-      }}
-    >
-      <Text style={{ ...styles.defaultLayout.name, color: "white" }}>
-        {personalDetails.name}
-      </Text>
-      <View style={styles.defaultLayout.contactInfo}>
-        <Text style={styles.text}>{personalDetails.email}</Text>
-        <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
-        <Text style={styles.text}>{personalDetails.location}</Text>
-      </View>
-    </View>
-    <View style={{ padding: 40 }}>
-      <View style={styles.defaultLayout.aboutMe}>
-        <Text
-          style={{
-            ...styles.sectionHeader,
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#0e374e12",
-          }}
-        >
-          About me
-        </Text>
-
-        {personalDetails.length > 0 ? (
-          <Text>{personalDetails.aboutMe}</Text>
-        ) : (
-          <Text>No About Me Added</Text>
-        )}
-      </View>
-      <View style={styles.defaultLayout.educationSection}>
-        <Text
-          style={{
-            ...styles.sectionHeader,
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#0e374e12",
-          }}
-        >
-          Education
-        </Text>
-        {educationalBackgrounds.length > 0 ? (
-          educationalBackgrounds.map((education, index) => (
-            <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
-              <View style={styles.flexColumn}>
-                <Text>
-                  {formatDate(education.startSchoolDate)} -{" "}
-                  {formatDate(education.endSchoolDate)}
-                </Text>
-                <Text>
-                  {education.schoolCity}, {education.schoolCountry}
-                </Text>
-              </View>
-              <View style={styles.flexColumn}>
-                <Text>{education.school}</Text>
-                <Text>{education.degree}</Text>
-              </View>
-            </View>
-          ))
-        ) : (
-          <Text>No Educational Backgrounds Added</Text>
-        )}
-      </View>
-
-      <View style={styles.defaultLayout.section}>
-        <Text
-          style={{
-            ...styles.sectionHeader,
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#0e374e12",
-          }}
-        >
-          Experience
-        </Text>
-        {professionalExperiences.length > 0 ? (
-          <View style={{ ...styles.flexRow, gap: 100 }}>
-            <View style={styles.flexColumn}>
-              <Text>
-                {formatDate(professionalExperiences.startJobDate)} -{" "}
-                {formatDate(professionalExperiences.endJobDate)}
-              </Text>
-              <Text>
-                {professionalExperiences.jobLocation},{" "}
-                {professionalExperiences.jobTitle}
-              </Text>
-            </View>
-            <View style={{ ...styles.flexColumn }}>
-              {" "}
-              <Text>{professionalExperiences.company}</Text>
-              <Text>{professionalExperiences.position}</Text>
-              <Text>{professionalExperiences.description}</Text>
-            </View>
-          </View>
-        ) : (
-          <Text>No Professional Experience Added</Text>
-        )}
-      </View>
-    </View>
-  </View>
-);
-
-const AlternativeLayout = ({
-  personalDetails,
-  educationalBackgrounds,
-  professionalExperience,
-}) => (
-  <View style={styles.altLayout.main}>
-    <Text style={styles.altLayout.name}>{personalDetails.name}</Text>
-    <View style={styles.altLayout.contactInfo}>
-      <Text style={styles.text}>{personalDetails.email}</Text>
-      <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
-      <Text style={styles.text}>{personalDetails.location}</Text>
-    </View>
-    <View style={styles.altLayout.aboutMe}>
-      <Text style={styles.sectionHeader}>About Me</Text>
-      <Text>{personalDetails.aboutMe}</Text>
-    </View>
-    <View style={styles.altLayout.educationSection}>
-      <Text style={styles.sectionHeader}>Education</Text>
-      <View style={styles.flexRow}>
-        <Text>{educationalBackgrounds[0].startSchoolDate}</Text>
-        <Text>{educationalBackgrounds[0].endSchoolDate}</Text>
-        <Text>{educationalBackgrounds[0].schoolCity}</Text>
-        <Text>{educationalBackgrounds[0].schoolCountry}</Text>
-        <Text>{educationalBackgrounds[0].school}</Text>
-        <Text>{educationalBackgrounds[0].degree}</Text>
-      </View>
-    </View>
-    <View style={styles.altLayout.section}>
-      <Text style={styles.sectionHeader}>Experience</Text>
-      <View style={styles.flexRow}>
-        <Text>{professionalExperience.company}</Text>
-        <Text>{professionalExperience.position}</Text>
-        <Text>{professionalExperience.jobTitle}</Text>
-        <Text>{professionalExperience.startJobDate}</Text>
-        <Text>{professionalExperience.endJobDate}</Text>
-        <Text>{professionalExperience.description}</Text>
-        <Text>{professionalExperience.jobLocation}</Text>
-      </View>
-    </View>
-  </View>
-);
-
 const PDFFile = ({
-  personalDetails,
-  educationalBackgrounds,
-  professionalExperience,
-  selectedLayout,
+  personalDetails = [],
+  professionalExperiences = [],
+  saveEducationalEntries = [],
 }) => {
-  const LayoutComponent =
-    selectedLayout === "defaultLayout" ? AlternativeLayout : defaultLayout;
-
+ 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <LayoutComponent
-          personalDetails={personalDetails}
-          educationalBackgrounds={educationalBackgrounds}
-          professionalExperience={professionalExperience}
-        />
+        <View style={styles.defaultLayout.main}>
+          <View
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              paddingTop: "26px",
+              paddingBottom: "6px",
+            }}
+          >
+            <Text style={{ ...styles.defaultLayout.name, color: "white" }}>
+              {personalDetails.name}
+            </Text>
+            <View style={styles.defaultLayout.contactInfo}>
+              <Text style={styles.text}>{personalDetails.email}</Text>
+              <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
+              <Text style={styles.text}>{personalDetails.location}</Text>
+            </View>
+          </View>
+          <View style={{ padding: 40 }}>
+            <View style={styles.defaultLayout.aboutMe}>
+              <Text
+                style={{
+                  ...styles.sectionHeader,
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "#0e374e12",
+                }}
+              >
+                About me
+              </Text>
+
+              {personalDetails.aboutMe ? (
+                <Text>{personalDetails.aboutMe}</Text>
+              ) : (
+                <Text>No Personal Details Added</Text>
+              )}
+            </View>
+            <View style={styles.defaultLayout.educationSection}>
+              <Text
+                style={{
+                  ...styles.sectionHeader,
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "#0e374e12",
+                }}
+              >
+                Education
+              </Text>
+              {saveEducationalEntries.length>0 ? (
+                saveEducationalEntries.map((education, index) => (
+                  <View key={index} style={{ ...styles.flexRow, gap: 100,padding:10 }}>
+                    <View style={styles.flexColumn}>
+                      <Text>
+                        {formatDate(education.startSchoolDate)} -{" "}
+                        {formatDate(education.endSchoolDate)}
+                      </Text>
+                      <Text>
+                        {education.schoolCity}, {education.schoolCountry}
+                      </Text>
+                    </View>
+                    <View style={styles.flexColumn}>
+                      <Text>{education.school}</Text>
+                      <Text>{education.degree}</Text>
+                    </View>
+                  </View>
+                ))
+              ) : (
+                <Text>No Educational Background Added</Text>
+              )}
+            </View>
+
+            <View style={styles.defaultLayout.section}>
+              <Text
+                style={{
+                  ...styles.sectionHeader,
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "#0e374e12",
+                }}
+              >
+                Experience
+              </Text>
+              {professionalExperiences.length > 0 ? (
+                <View style={{ ...styles.flexRow, gap: 100 }}>
+                  <View style={styles.flexColumn}>
+                    <Text>
+                      {formatDate(professionalExperiences.startJobDate)} -{" "}
+                      {formatDate(professionalExperiences.endJobDate)}
+                    </Text>
+                    <Text>
+                      {professionalExperiences.jobLocation},{" "}
+                      {professionalExperiences.jobTitle}
+                    </Text>
+                  </View>
+                  <View style={{ ...styles.flexColumn }}>
+                    {" "}
+                    <Text>{professionalExperiences.company}</Text>
+                    <Text>{professionalExperiences.position}</Text>
+                    <Text>{professionalExperiences.description}</Text>
+                  </View>
+                </View>
+              ) : (
+                <Text>No Professional Experience Added</Text>
+              )}
+            </View>
+          </View>
+        </View>
       </Page>
     </Document>
   );

@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ContentArea from "./components/ContentArea";
 import FontSelector from "./components/customize/FontSelector";
-import LayoutSelector from "./components/customize/LayoutSelector";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFFile from "./components/customize/PDFFile";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState([]);
   const [educationalBackgrounds, setEducationalBackgrounds] = useState([]);
-  const [professionalExperiences, setProfessionalExperiences] = useState(['a']);
+  const [saveEducationalEntries, setSaveEducationalEntries] = useState([]);
+  const [professionalExperiences, setProfessionalExperiences] = useState([]);
   const [selectedFont, setSelectedFont] = useState("san-serif");
-  const [selectedLayout, setSelectedLayout] = useState("Single Column");
+  
   const [showPDFPreview, setShowPDFPreview] = useState(false);
-
 
   const sample = () => {
     setPersonalDetails({
@@ -63,16 +62,14 @@ function App() {
             selectedFont={selectedFont}
             onFontSelect={setSelectedFont}
           />
-          <LayoutSelector
-            selectedLayout={selectedLayout}
-            onLayoutSelect={setSelectedLayout}
-          />
         </div>
         <Sidebar
           personalDetails={personalDetails}
           setPersonalDetails={setPersonalDetails}
           educationalBackgrounds={educationalBackgrounds}
           setEducationalBackgrounds={setEducationalBackgrounds}
+          saveEducationalEntries={saveEducationalEntries}
+          setSaveEducationalEntries={setSaveEducationalEntries}
           professionalExperiences={professionalExperiences}
           setProfessionalExperiences={setProfessionalExperiences}
           sample={sample}
@@ -89,18 +86,18 @@ function App() {
             <PDFFile
               personalDetails={personalDetails}
               educationalBackgrounds={educationalBackgrounds}
+              saveEducationalEntries={saveEducationalEntries}
               professionalExperiences={professionalExperiences}
               selectedFont={selectedFont}
-              selectedLayout={selectedLayout}
             />
           </PDFViewer>
         ) : (
           <ContentArea
             personalDetails={personalDetails}
             educationalBackgrounds={educationalBackgrounds}
+            // saveEducationalEntries={saveEducationalEntries}
             professionalExperiences={professionalExperiences}
             selectedFont={selectedFont}
-            selectedLayout={selectedLayout}
           />
         )}
       </div>

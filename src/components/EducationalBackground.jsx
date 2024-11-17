@@ -1,10 +1,12 @@
+import { set } from "date-fns";
 import React from "react";
 
 function EducationalBackground({
   educationalBackgrounds,
   setEducationalBackgrounds,
+  saveEducationalEntries,
   isShown,
-  toggleForm,
+  toggleForm
 }) {
   const handleChange = (index, e) => {
     const { name, value } = e.target;
@@ -15,6 +17,7 @@ function EducationalBackground({
     };
     setEducationalBackgrounds(updatedBackgrounds);
   };
+  
 
   return (
     <>
