@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ContentArea from "./components/ContentArea";
 import FontSelector from "./components/customize/FontSelector";
-import { PDFViewer } from "@react-pdf/renderer";
-import PDFFile from "./components/customize/PDFFile";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState([]);
@@ -11,7 +9,6 @@ function App() {
   const [saveEducationalEntries, setSaveEducationalEntries] = useState([]);
   const [professionalExperiences, setProfessionalExperiences] = useState([]);
   const [selectedFont, setSelectedFont] = useState("san-serif");
-  
   const [showPDFPreview, setShowPDFPreview] = useState(false);
 
   const sample = () => {
@@ -27,7 +24,7 @@ function App() {
 
     setEducationalBackgrounds([
       {
-        school: "California University ",
+        school: "California University",
         degree: "Bachelor of Science",
         schoolCity: "Los Angeles",
         schoolCountry: "USA",
@@ -79,30 +76,16 @@ function App() {
         />
       </div>
 
-      {/* ContentArea or PDFViewer */}
-      <div className="col-span-3 p-5 flex justify-center">
-        {showPDFPreview ? (
-          <PDFViewer width="100%" height="600px" style={{ border: "none" }}>
-            <PDFFile
-              personalDetails={personalDetails}
-              educationalBackgrounds={educationalBackgrounds}
-              saveEducationalEntries={saveEducationalEntries}
-              professionalExperiences={professionalExperiences}
-              selectedFont={selectedFont}
-            />
-          </PDFViewer>
-        ) : (
-          <ContentArea
-            personalDetails={personalDetails}
-            educationalBackgrounds={educationalBackgrounds}
-            // saveEducationalEntries={saveEducationalEntries}
-            professionalExperiences={professionalExperiences}
-            selectedFont={selectedFont}
-          />
-        )}
-      </div>
+      <ContentArea
+        personalDetails={personalDetails}
+        educationalBackgrounds={educationalBackgrounds}
+        saveEducationalEntries={saveEducationalEntries}
+        professionalExperiences={professionalExperiences}
+        selectedFont={selectedFont}
+        showPDFPreview={showPDFPreview}
+      />
     </main>
   );
 }
 
-export default App;
+export default App
