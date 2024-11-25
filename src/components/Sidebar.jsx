@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../components/ui/button";
+// import { Button } from "../components/ui/button";
 import PersonalDetails from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ProfessionalExperience from "./ProfessionalExperience";
@@ -19,8 +19,8 @@ const sidebar = (props) => {
   return (
     <aside className="text-center  bg-white col-span-1 pt-4">
       <div className="flex justify-between p-3">
-        <Button onClick={props.clear}>Clear</Button>
-        <Button onClick={props.sample}>Sample</Button>
+        <button onClick={props.clear}>Clear</button>
+        <button onClick={props.sample}>Sample</button>
       </div>
       <PersonalDetails
         personalDetails={props.personalDetails}
