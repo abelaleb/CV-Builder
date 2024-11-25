@@ -1,11 +1,11 @@
 import React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "../components/ui/select";
 /* eslint-disable react/prop-types */
 
 const FontSelector = ({ selectedFont, setSelectedFont }) => {
@@ -15,7 +15,7 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
       <label htmlFor="font-select" className="mr-2">
         Fonts:
       </label>
-      <Select
+      {/* <Select
         id="font-select"
         value={selectedFont}
         onValueChange={setSelectedFont}
@@ -30,7 +30,7 @@ const FontSelector = ({ selectedFont, setSelectedFont }) => {
             </SelectItem>
           ))}
         </SelectContent>
-      </Select>
+      </Select> */}
     </div>
   );
 };
