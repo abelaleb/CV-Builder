@@ -1,44 +1,30 @@
 import React from "react";
-import { PDFViewer } from "@react-pdf/renderer";
 import PDFFile from "./customize/PDFFile";
+/* eslint-disable react/prop-types */
 
-const ContentArea = ({
-  personalDetails,
-  educationalBackgrounds,
-  saveEducationalEntries,
-  professionalExperiences,
-  selectedFont,
-  showPDFPreview,
-}) => {
+const ContentArea = (props) => {
   return (
-    <div className="flex justify-center p-5 w-full col-span-3">
-      {showPDFPreview ? (
-        // PDF Viewer Component
-        <PDFViewer width="100%" height="600px" style={{ border: "none" }}>
-          <PDFFile
-            personalDetails={personalDetails}
-            educationalBackgrounds={educationalBackgrounds}
-            saveEducationalEntries={saveEducationalEntries}
-            professionalExperiences={professionalExperiences}
-            selectedFont={selectedFont}
-          />
-        </PDFViewer>
+    <main className="flex justify-center p-5 w-full col-span-3">
+      {props.showPDFPreview ? (
+        <div>Download your pdf </div>
       ) : (
         // Static PDF Preview or Editable Form Section
-        <main className="flex flex-col bg-white" style={{ fontFamily: selectedFont }}>
+        <main
+          className="flex flex-col bg-white"
+          style={{ fontFamily: props.selectedFont }}
+        >
           <div className="rounded-lg w-[800px]">
             <PDFFile
-              personalDetails={personalDetails}
-              educationalBackgrounds={educationalBackgrounds}
-              saveEducationalEntries={saveEducationalEntries}
-              professionalExperiences={professionalExperiences}
-              selectedFont={selectedFont}
+              personalDetails={props.personalDetails}
+              // educationalBackgrounds={educationalBackgrounds}
+              // saveEducationalEntries={saveEducationalEntries}
+              // professionalExperiences={professionalExperiences}
+              selectedFont={props.selectedFont}
             />
           </div>
         </main>
       )}
-    </div>
+    </main>
   );
 };
-
 export default ContentArea;

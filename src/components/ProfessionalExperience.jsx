@@ -1,22 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "@/App";
 
-function professionalExperience({
-  professionalExperiences,
-  setProfessionalExperiences,
-  isShown,
-  toggleForm,
-}) {
+function professionalExperience({ isShown, toggleForm }) {
+  const { professionalExperienceEntries, setProfessionalExperienceEntries } =
+    useContext(Context);
   const handleChange = (index, e) => {
     const { name, value } = e.target;
 
-    const updatedExperiences = [...professionalExperiences];
+    const updatedExperiences = [...professionalExperienceEntries];
     updatedExperiences[index] = {
       ...updatedExperiences[index],
       [name]: value,
     };
-    setProfessionalExperiences(updatedExperiences);
+    setProfessionalExperienceEntries(updatedExperiences);
   };
-  console.log(`hi${professionalExperiences}`);
+  console.log(`hi${professionalExperienceEntries}`);
 
   return (
     <>
@@ -42,7 +40,7 @@ function professionalExperience({
             isShown ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          {professionalExperiences.map((experience, index) => (
+          {professionalExperienceEntries.map((experience, index) => (
             <form key={index}>
               <div className="mt-5 gap-3">
                 <div className="mb-1">

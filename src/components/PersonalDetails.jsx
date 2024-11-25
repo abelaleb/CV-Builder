@@ -1,4 +1,5 @@
 import React from "react";
+/* eslint-disable react/prop-types */
 
 export default function PersonalDetails({
   personalDetails,
@@ -6,8 +7,6 @@ export default function PersonalDetails({
   isShown,
   toggleForm,
 }) {
-  // alert(setIsShown);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPersonalDetails((prevDetails) => ({
@@ -23,11 +22,12 @@ export default function PersonalDetails({
           <img src="/src/assets/user-icon.svg" alt="user icon" />
           <h2 className=" font-bold text-lg ">Personal Details</h2>
         </div>
-        <button onClick={toggleForm} className=" underline ">
+        <button onClick={toggleForm} className=" underline duration-500">
           {isShown ? (
             <img
               src="/src/assets/dropdown-arrow-up.svg"
               alt="dropdown-arrow-up svg"
+              
             />
           ) : (
             <img src="src/assets/dropdown-arrow.svg" alt="add-icon image" />

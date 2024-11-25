@@ -1,14 +1,18 @@
-import React from "react";
-import { format, parseISO, isValid } from "date-fns";
+import React, { useContext } from "react";
+import { Context } from "@/App";
 
+import { format, parseISO, isValid } from "date-fns";
+import PropTypes from "prop-types";
 import {
   Page,
   Text,
   Document,
   StyleSheet,
   View,
-  PDFViewer,
+  Link,
 } from "@react-pdf/renderer";
+/* eslint-disable react/prop-types */
+// /* eslint-disable no-unused-vars */
 
 const styles = StyleSheet.create({
   // Common Styles
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
       gap: 10,
       marginBottom: 15,
     },
-    aboutMe: {
+    headerSection: {
       display: "flex",
       flexDirection: "column",
       gap: 4,
@@ -76,9 +80,6 @@ const styles = StyleSheet.create({
     section: {
       marginBottom: 10,
       paddingLeft: 0,
-    },
-    educationSection: {
-      marginBottom: 15,
     },
   },
 
@@ -128,14 +129,14 @@ const formatDate = (date) => {
 };
 
 const PDFFile = ({
-  personalDetails = [],
-  professionalExperiences = [],
-  saveEducationalEntries = [],
+  personalDetails = {},
+  selectedFont = "sans-serif",
 }) => {
- 
+  const {educationalBackgroundEntries} = useContext(Context);
+  const{professionalExperienceEntries}= useContext(Context);
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
+      <Page size="A4" style={{ ...styles.page, fontFamily: selectedFont }}>
         <View style={styles.defaultLayout.main}>
           <View
             style={{
@@ -146,49 +147,57 @@ const PDFFile = ({
             }}
           >
             <Text style={{ ...styles.defaultLayout.name, color: "white" }}>
-              {personalDetails.name}
+              {personalDetails.name || "Your Name"}
             </Text>
             <View style={styles.defaultLayout.contactInfo}>
-              <Text style={styles.text}>{personalDetails.email}</Text>
-              <Text style={styles.text}>{personalDetails.phoneNumber}</Text>
-              <Text style={styles.text}>{personalDetails.location}</Text>
+              <Text style={styles.text}>
+                {personalDetails.email || "Email"}
+              </Text>
+              <Text style={styles.text}>
+                {personalDetails.phoneNumber || "Phone Number"}
+              </Text>
+              <Text style={styles.text}>
+                {personalDetails.location || "Location"}
+              </Text>
+              {personalDetails.linkedin && (
+                <Text style={styles.text}>
+                  <Link src={personalDetails.linkedin}>LinkedIn</Link>
+                </Text>
+              )}
             </View>
           </View>
           <View style={{ padding: 40 }}>
-            <View style={styles.defaultLayout.aboutMe}>
+            <View style={styles.defaultLayout.headerSection}>
               <Text
                 style={{
                   ...styles.sectionHeader,
                   textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
                   backgroundColor: "#0e374e12",
                 }}
               >
-                About me
+                About Me
               </Text>
-
-              {personalDetails.aboutMe ? (
-                <Text>{personalDetails.aboutMe}</Text>
-              ) : (
-                <Text>No Personal Details Added</Text>
-              )}
+              <Text>
+                {personalDetails.aboutMe || "No Personal Details Added"}
+              </Text>
             </View>
-            <View style={styles.defaultLayout.educationSection}>
+
+            <View style={styles.defaultLayout.headerSection}>
               <Text
                 style={{
                   ...styles.sectionHeader,
                   textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
                   backgroundColor: "#0e374e12",
                 }}
               >
                 Education
               </Text>
-              {saveEducationalEntries.length>0 ? (
-                saveEducationalEntries.map((education, index) => (
-                  <View key={index} style={{ ...styles.flexRow, gap: 100,padding:10 }}>
+              {educationalBackgroundEntries &&
+                educationalBackgroundEntries.map((education, index) => (
+                  <View
+                    key={index}
+                    style={{ ...styles.flexRow, gap: 100, padding: 10 }}
+                  >
                     <View style={styles.flexColumn}>
                       <Text>
                         {formatDate(education.startSchoolDate)} -{" "}
@@ -203,52 +212,55 @@ const PDFFile = ({
                       <Text>{education.degree}</Text>
                     </View>
                   </View>
-                ))
-              ) : (
-                <Text>No Educational Background Added</Text>
-              )}
+                ))}
             </View>
 
-            <View style={styles.defaultLayout.section}>
+            <View style={styles.defaultLayout.headerSection}>
               <Text
                 style={{
                   ...styles.sectionHeader,
                   textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
                   backgroundColor: "#0e374e12",
                 }}
               >
                 Experience
               </Text>
-              {professionalExperiences.length > 0 ? (
-                <View style={{ ...styles.flexRow, gap: 100 }}>
-                  <View style={styles.flexColumn}>
-                    <Text>
-                      {formatDate(professionalExperiences.startJobDate)} -{" "}
-                      {formatDate(professionalExperiences.endJobDate)}
-                    </Text>
-                    <Text>
-                      {professionalExperiences.jobLocation},{" "}
-                      {professionalExperiences.jobTitle}
-                    </Text>
+              {
+              professionalExperienceEntries &&  
+               professionalExperienceEntries.map((experience, index) => (
+                  <View
+                    key={index}
+                    style={{ ...styles.flexRow, gap: 100, padding: 10 }}
+                  >
+                    <View style={styles.flexColumn}>
+                      <Text>
+                        {formatDate(experience.startJobDate)} -{" "}
+                        {formatDate(experience.endJobDate)}
+                      </Text>
+                      <Text>
+                        {experience.jobLocation}, {experience.jobTitle}
+                      </Text>
+                    </View>
+                    <View style={styles.flexColumn}>
+                      <Text>{experience.company}</Text>
+                      <Text>{experience.position}</Text>
+                      <Text>{experience.description}</Text>
+                    </View>
                   </View>
-                  <View style={{ ...styles.flexColumn }}>
-                    {" "}
-                    <Text>{professionalExperiences.company}</Text>
-                    <Text>{professionalExperiences.position}</Text>
-                    <Text>{professionalExperiences.description}</Text>
-                  </View>
-                </View>
-              ) : (
-                <Text>No Professional Experience Added</Text>
-              )}
+                ))
+              }
             </View>
           </View>
         </View>
       </Page>
     </Document>
   );
+};
+
+PDFFile.propTypes = {
+  personalDetails: PropTypes.array,
+  professionalExperiences: PropTypes.array,
+  saveEducationalEntries: PropTypes.array,
 };
 
 export default PDFFile;

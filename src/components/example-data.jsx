@@ -1,63 +1,37 @@
-import uniqid from "uniqid";
-
-const exampleData = {
-  personalInfo: {
-    fullName: "Josephine Meyers",
-    email: "josephine.meyers@mail.co.uk",
-    phoneNumber: "+44 3245 5521 5521",
-    address: "London, UK",
+export const initialPersonalDetails = [
+  {
+    id: crypto.randomUUID(),
+    name: "John Doe",
+    email: "john.doe@example.com",
+    phoneNumber: "123-456-7890",
+    location: "New York, USA",
+    aboutMe:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab enim ipsum inventore sequi officia! Ad quisquam consequatur itaque temporibus odit sapiente quam, perspiciatis obcaecati vel, deserunt sunt minus soluta",
+    linkedin: "linkedin.com/in/johndoe",
   },
+];
 
-  sections: {
-    educations: [
-      {
-        degree: "Bachelors in Economics",
-        schoolName: "London City University",
-        location: "New York City, US",
-        startDate: "08/2020",
-        endDate: "present",
-        isCollapsed: true,
-        isHidden: false,
-        id: uniqid(),
-      },
-      {
-        degree: "Master's Degree in Math",
-        schoolName: "Hidden University",
-        location: "New York City, US",
-        startDate: "08/2020",
-        endDate: "present",
-        isCollapsed: true,
-        isHidden: true,
-        id: uniqid(),
-      },
-    ],
-
-    experiences: [
-      {
-        companyName: "Umbrella Inc.",
-        positionTitle: "UX & UI Designer",
-        location: "New York City, US",
-        description:
-          "Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and Android",
-        startDate: "08/2020",
-        endDate: "present",
-        isCollapsed: true,
-        isHidden: false,
-        id: uniqid(),
-      },
-      {
-        companyName: "Black Mesa Labs",
-        positionTitle: "UX Research Assistant",
-        location: "Berlin, Germany",
-        description:
-          "Supported senior researchers on accessibility standards for the open web. Created and usability tested wireframes and prototypes. Produced interactive documentation for quick onboarding of new researchers.",
-        startDate: "04/2018",
-        endDate: "02/2019",
-        isCollapsed: true,
-        isHidden: false,
-        id: uniqid(),
-      },
-    ],
+export const initialEducationalBackgroundEntries = [
+  {
+    id: crypto.randomUUID(),
+    school: "California University",
+    degree: "Bachelor of Science",
+    schoolCity: "Los Angeles",
+    schoolCountry: "USA",
+    startSchoolDate: "2015-09-01",
+    endSchoolDate: "2019-06-15",
   },
-};
-export default exampleData;
+];
+
+export const initialProfessionalExperienceEntries = [
+  {
+    id: crypto.randomUUID(),
+    jobTitle: "Software Engineer",
+    company: "Tech Solutions Inc.",
+    position: "Frontend Developer",
+    startJobDate: "2020-01-01",
+    endJobDate: "2023-08-31",
+    jobLocation: "Remote",
+    description: "Developed and maintained web applications...",
+  },
+];

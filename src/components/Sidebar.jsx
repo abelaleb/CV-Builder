@@ -1,114 +1,38 @@
-import React, { useState, useEffect } from "react";
-import PersonalDetailsForm from "./PersonalDetails";
+import React, { useState } from "react";
+import { Button } from "./UI/button";
+import PersonalDetails from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ProfessionalExperience from "./ProfessionalExperience";
-import { Button } from "./UI/button";
-
-function Sidebar({
-  personalDetails,
-  setPersonalDetails,
-  educationalBackgrounds,
-  setEducationalBackgrounds,
-  saveEducationalEntries,
-  setSaveEducationalEntries,
-  professionalExperiences,
-  setProfessionalExperiences,
-  sample,
-  clear,
-  showPDFPreview,
-  setShowPDFPreview,
-}) {
+//eslint no-unused-vars
+const sidebar = (props) => {
   const [isShown, setIsShown] = useState({
     personalDetails: false,
     educationalBackground: false,
     professionalExperiences: false,
   });
-
   const toggleForm = (formName) => {
     setIsShown((prevIsShown) => ({
-      ...{
-        personalDetails: false,
-        educationalBackgrounds: false,
-        professionalExperiences: false,
-      },
-      [formName]: !prevIsShown[formName], // Toggle the selected form
+      ...prevIsShown,
+      [formName]: !prevIsShown[formName],
     }));
   };
-
-  // const addProfessionalExperiences = () => {
-  //   const validEntries = saveProfessionalExperiences.filter(
-  //     (entry) => entry.school.trim() !== ""
-  //   );
-  //   if (validEntries.length > 0) {
-  //     setSaveProfessionalExperiences((prevProfessionalExperience) => [
-  //       ...prevProfessionalExperience,
-  //       ...validEntries,
-  //     ]);
-  //   }
-  //   setProfessionalExperiences([
-  //     {
-  //       company: "",
-  //       position: "",
-  //       jobLocation: "",
-  //       startJobDate: "",
-  //       endJobDate: "",
-  //       description: "",
-  //     },
-  //   ]);
-  // };
-  const addEducationalBackground = () => {
-    const validEntries = educationalBackgrounds.filter(
-      (entry) => entry.school.trim() !== "" && entry.degree.trim() !== ""
-    );
-    if (validEntries.length > 0) {
-      setSaveEducationalEntries((prevEntries) => [
-        ...prevEntries,
-        ...validEntries,
-      ]);
-      setEducationalBackgrounds([
-        {
-          school: "",
-          degree: "",
-          schoolCity: "",
-          schoolCountry: "",
-          startSchoolDate: "",
-          endSchoolDate: "",
-        },
-      ]);
-    } else {
-      alert("Please fill out the form before adding another entry.");
-    }
-  };
-
-  useEffect(() => {
-    if (
-      educationalBackgrounds.length > 0 &&
-      educationalBackgrounds[0].school !== ""
-    ) {
-      console.log("saveEducationalEntries: ", saveEducationalEntries);
-      console.log("educationalBackgrounds: ", educationalBackgrounds);
-    }
-  }, [addEducationalBackground]);
-
   return (
     <aside className="text-center  bg-white col-span-1 pt-4">
       <div className="flex justify-between p-3">
-        <Button onClick={clear}>Clear</Button>
-        <Button onClick={sample}>Sample</Button>
+        <Button onClick={props.clear}>Clear</Button>
+        <Button onClick={props.sample}>Sample</Button>
       </div>
-      <PersonalDetailsForm
-        personalDetails={personalDetails}
-        setPersonalDetails={setPersonalDetails}
+      <PersonalDetails
+        personalDetails={props.personalDetails}
+        setPersonalDetails={props.setPersonalDetails}
         isShown={isShown.personalDetails}
         toggleForm={() => toggleForm("personalDetails")}
       />
       <EducationalBackground
-        educationalBackgrounds={educationalBackgrounds}
-        setEducationalBackgrounds={setEducationalBackgrounds}
         isShown={isShown.educationalBackground}
         toggleForm={() => toggleForm("educationalBackground")}
       />
-      <div className="mt-4 ">
+      {/* <div className="mt-4 ">
         {saveEducationalEntries.length === 0 ? (
           <p className="text-gray-500 ">No education entries added yet.</p>
         ) : (
@@ -122,17 +46,15 @@ function Sidebar({
             </div>
           ))
         )}
-      </div>
-      <div className="p-4">
+      </div> */}
+      {/* <div className="p-4">
         <Button onClick={addEducationalBackground}>&#x2795; School</Button>
-      </div>
-      {/* <ProfessionalExperience
-        professionalExperiences={professionalExperiences}
-        setProfessionalExperiences={setProfessionalExperiences}
+      </div> */}
+      <ProfessionalExperience
         isShown={isShown.professionalExperiences}
         toggleForm={() => toggleForm("professionalExperiences")}
       />
-      <div className="p-4">
+      {/* <div className="p-4">
         <Button onClick={addProfessionalExperiences}>
           &#x2795; Experience
         </Button>
@@ -140,14 +62,14 @@ function Sidebar({
       <div className="m-5 flex justify-between">
         <Button
           onClick={() => {
-            setShowPDFPreview(true);
+            props.setShowPDFPreview(true);
           }}
         >
-          Save
+          Download PDF
         </Button>
         <Button
           onClick={() => {
-            setShowPDFPreview(false);
+            props.setShowPDFPreview(false);
           }}
         >
           Edit
@@ -155,6 +77,5 @@ function Sidebar({
       </div>
     </aside>
   );
-}
-
-export default Sidebar;
+};
+export default sidebar;

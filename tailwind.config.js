@@ -5,7 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ["EBGaramond", "sans-serif"],
+        sans: ["sans-serif", "Arial", "Helvetica", "sans"],
+        calibri: ["Calibri", "sans-serif"],
+        ebgaramond: ["EB Garamond", "serif"],
+        mono: ["monospace", "Courier New", "monospace"],
       },
       width: {
         "us-letter": "51rem", // 8.5 x 11 inches
