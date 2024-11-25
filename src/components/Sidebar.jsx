@@ -60,20 +60,20 @@ const sidebar = (props) => {
         </Button>
       </div> */}
       <div className="m-5 flex justify-between">
-        <Button
+        <button
           onClick={() => {
             props.setShowPDFPreview(true);
           }}
         >
           Download PDF
-        </Button>
-        <Button
+        </button>
+        <button
           onClick={() => {
             props.setShowPDFPreview(false);
           }}
         >
           Edit
-        </Button>
+        </button>
       </div>
     </aside>
   );
