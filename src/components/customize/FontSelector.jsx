@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../components/ui/select";
 /* eslint-disable react/prop-types */
 
 const FontSelector = ({ selectedFont, setSelectedFont }) => {

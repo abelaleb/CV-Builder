@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import PersonalDetails from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ProfessionalExperience from "./ProfessionalExperience";
