@@ -128,12 +128,9 @@ const formatDate = (date) => {
   return isValid(parsedDate) ? format(parsedDate, "MMMM yyyy") : ""; // Ensure the date is valid before formatting
 };
 
-const PDFFile = ({
-  personalDetails = {},
-  selectedFont = "sans-serif",
-}) => {
-  const {educationalBackgroundEntries} = useContext(Context);
-  const{professionalExperienceEntries}= useContext(Context);
+const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
+  const { educationalBackgroundEntries } = useContext(Context);
+  const { professionalExperienceEntries } = useContext(Context);
   return (
     <Document>
       <Page size="A4" style={{ ...styles.page, fontFamily: selectedFont }}>
@@ -225,9 +222,8 @@ const PDFFile = ({
               >
                 Experience
               </Text>
-              {
-              professionalExperienceEntries &&  
-               professionalExperienceEntries.map((experience, index) => (
+              {professionalExperienceEntries &&
+                professionalExperienceEntries.map((experience, index) => (
                   <View
                     key={index}
                     style={{ ...styles.flexRow, gap: 100, padding: 10 }}
@@ -247,8 +243,7 @@ const PDFFile = ({
                       <Text>{experience.description}</Text>
                     </View>
                   </View>
-                ))
-              }
+                ))}
             </View>
           </View>
         </View>
