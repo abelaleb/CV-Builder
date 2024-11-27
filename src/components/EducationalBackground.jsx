@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "@/App";
 /* eslint-disable react/prop-types */
 export default function EducationalBackground({ isShown, toggleForm }) {
-  const {educationalBackgroundEntries, setEducationalBackgroundEntries} =
+  const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
     useContext(Context);
 
   const handleChange = (index, e) => {
