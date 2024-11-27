@@ -35,7 +35,7 @@ function App() {
         school: "",
         degree: "",
         schoolCity: "",
-        schoolCountry: " ",
+        schoolCountry: "",
         startSchoolDate: "",
         endSchoolDate: "",
       },
@@ -49,7 +49,7 @@ function App() {
         startJobDate: "",
         endJobDate: "",
         jobLocation: "",
-        description: " ",
+        description: "",
       },
     ]);
   };

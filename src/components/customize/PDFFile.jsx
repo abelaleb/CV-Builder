@@ -197,16 +197,18 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                   >
                     <View style={styles.flexColumn}>
                       <Text>
-                        {formatDate(education.startSchoolDate)} -{" "}
-                        {formatDate(education.endSchoolDate)}
+                        {formatDate(education.startSchoolDate) ||
+                          "No start Date"}{" "}
+                        - {formatDate(education.endSchoolDate) || "No end Date"}
                       </Text>
                       <Text>
-                        {education.schoolCity}, {education.schoolCountry}
+                        {education.schoolCity || "No City"},{" "}
+                        {education.schoolCountry || "No Country"}
                       </Text>
                     </View>
                     <View style={styles.flexColumn}>
-                      <Text>{education.school}</Text>
-                      <Text>{education.degree}</Text>
+                      <Text>{education.school || "No School Name"}</Text>
+                      <Text>{education.degree || "No Degree"}</Text>
                     </View>
                   </View>
                 ))}
@@ -230,17 +232,18 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                   >
                     <View style={styles.flexColumn}>
                       <Text>
-                        {formatDate(experience.startJobDate)} -{" "}
-                        {formatDate(experience.endJobDate)}
+                        {formatDate(experience.startJobDate) || "No start Date"}{" "}
+                        - {formatDate(experience.endJobDate) || "No end Date"}
                       </Text>
                       <Text>
-                        {experience.jobLocation}, {experience.jobTitle}
+                        {experience.jobLocation || "No location"},{" "}
+                        {experience.jobTitle || "No Job Title"}
                       </Text>
                     </View>
                     <View style={styles.flexColumn}>
-                      <Text>{experience.company}</Text>
-                      <Text>{experience.position}</Text>
-                      <Text>{experience.description}</Text>
+                      <Text>{experience.company || "No company"}</Text>
+                      <Text>{experience.position || "No Job Position"}</Text>
+                      <Text>{experience.description || "No description"}</Text>
                     </View>
                   </View>
                 ))}
