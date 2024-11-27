@@ -42,32 +42,33 @@ function App() {
         setProfessionalExperienceEntries,
       }}
     >
-      <main className="grid grid-cols-4 bg-slate-100 min-h-screen">
-        {/* Sidebar with Font and Layout Selectors */}
-        <div className="col-span-1 m-5 bg-white p-5">
-          <div className="flex flex-col ml-5">
-            <FontSelector
-              selectedFont={selectedFont}
-              setSelectedFont={setSelectedFont}
-            />
-          </div>
-          <Sidebar
-            sample={sample}
-            clear={clear}
-            setShowPDFPreview={setShowPDFPreview}
-            personalDetails={personalDetails}
-            setPersonalDetails={setPersonalDetails}
-          />
-        </div>
+     <main className="grid grid-cols-1 md:grid-cols-4 bg-slate-100 min-h-screen">
+  <div className="col-span-1 m-2 md:m-5 bg-white p-5">
+    {/* Sidebar */}
+    <div className="flex flex-col ml-2 md:ml-5">
+      <FontSelector
+        selectedFont={selectedFont}
+        setSelectedFont={setSelectedFont}
+      />
+    </div>
+    <Sidebar
+      sample={sample}
+      clear={clear}
+      setShowPDFPreview={setShowPDFPreview}
+      personalDetails={personalDetails}
+      setPersonalDetails={setPersonalDetails}
+    />
+  </div>
 
-        <ContentArea
-          sample={sample}
-          clear={clear}
-          showPDFPreview={showPDFPreview}
-          selectedFont={selectedFont}
-          personalDetails={personalDetails}
-        />
-      </main>
+  <ContentArea
+    sample={sample}
+    clear={clear}
+    showPDFPreview={showPDFPreview}
+    selectedFont={selectedFont}
+    personalDetails={personalDetails}
+  />
+</main>
+
     </Context.Provider>
   );
 }
