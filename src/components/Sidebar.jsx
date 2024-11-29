@@ -15,7 +15,6 @@ const sidebar = (props) => {
       ...prevIsShown,
       [formName]: !prevIsShown[formName],
     }));
-    props.clear();
 
   };
   return (
@@ -44,6 +43,8 @@ const sidebar = (props) => {
         isShown={isShown.educationalBackground}
         toggleForm={() => toggleForm("educationalBackground")}
         addEducationalEntry={props.addEducationalEntry}
+        isSample={props.isSample}
+        clear={props.clear}
       />
       <ProfessionalExperience
         isShown={isShown.professionalExperiences}

@@ -20,11 +20,13 @@ function App() {
 
   const [selectedFont, setSelectedFont] = useState("sans-serif");
   const [showPDFPreview, setShowPDFPreview] = useState(false);
+  const [isSample, setIsSample] = useState(true);
 
   const sample = () => {
     setPersonalDetails(initialPersonalDetails[0]);
     setEducationalBackgroundEntries(initialEducationalBackgroundEntries);
     setProfessionalExperienceEntries(initialProfessionalExperienceEntries);
+    setIsSample(true);
   };
 
   const clear = () => {
@@ -52,6 +54,13 @@ function App() {
         description: "",
       },
     ]);
+    setIsSample(false);
+  };
+
+  const handleEdit = () => {
+    if (isSample) {
+      clear();
+    }
   };
 
   return (
@@ -77,7 +86,11 @@ function App() {
             clear={clear}
             setShowPDFPreview={setShowPDFPreview}
             personalDetails={personalDetails}
-            setPersonalDetails={setPersonalDetails}
+            setPersonalDetails={(details) => {
+              handleEdit();
+              setPersonalDetails(details);
+            }}
+            isSample={isSample}
           />
         </div>
 

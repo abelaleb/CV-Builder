@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "@/App";
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-export default function EducationalBackground({ isShown, toggleForm }) {
+export default function EducationalBackground({ isShown, toggleForm, isSample, clear }) {
   const { educationalBackgroundEntries, setEducationalBackgroundEntries } = useContext(Context);
   const [newEntry, setNewEntry] = useState({
     id: crypto.randomUUID(),
@@ -20,6 +20,7 @@ export default function EducationalBackground({ isShown, toggleForm }) {
       ...prevEntry,
       [name]: value,
     }));
+    handleEdit();
   };
 
   const validateEntry = (entry) => {
@@ -48,6 +49,12 @@ export default function EducationalBackground({ isShown, toggleForm }) {
       startSchoolDate: "",
       endSchoolDate: "",
     });
+  };
+
+  const handleEdit = () => {
+    if (isSample) {
+      clear();
+    }
   };
 
   return (

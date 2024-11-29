@@ -131,6 +131,17 @@ const formatDate = (date) => {
 const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
   const { educationalBackgroundEntries } = useContext(Context);
   const { professionalExperienceEntries } = useContext(Context);
+
+  const filteredEducationalEntries = educationalBackgroundEntries.filter(
+    (entry) =>
+      entry.school.trim() !== "" ||
+      entry.degree.trim() !== "" ||
+      entry.startSchoolDate !== "" ||
+      entry.endSchoolDate !== "" ||
+      entry.schoolCity.trim() !== "" ||
+      entry.schoolCountry.trim() !== ""
+  );
+
   return (
     <Document>
       <Page size="A4" style={{ ...styles.page, fontFamily: selectedFont }}>
@@ -189,8 +200,8 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
               >
                 Education
               </Text>
-              {educationalBackgroundEntries &&
-                educationalBackgroundEntries.map((education, index) => (
+              {filteredEducationalEntries &&
+                filteredEducationalEntries.map((education, index) => (
                   <View
                     key={index}
                     style={{ ...styles.flexRow, gap: 100, padding: 10 }}
