@@ -12,7 +12,7 @@ import {
   Link,
 } from "@react-pdf/renderer";
 /* eslint-disable react/prop-types */
-// /* eslint-disable no-unused-vars */
+//  /* eslint-disable no-unused-vars */
 
 const styles = StyleSheet.create({
   // Common Styles
@@ -198,8 +198,8 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                     <View style={styles.flexColumn}>
                       <Text>
                         {formatDate(education.startSchoolDate) ||
-                          "No start Date"}{" "}
-                        - {formatDate(education.endSchoolDate) || "No end Date"}
+                          "No Start Date"}{" "}
+                        - {formatDate(education.endSchoolDate) || "No End Date"}
                       </Text>
                       <Text>
                         {education.schoolCity || "No City"},{" "}
@@ -232,8 +232,8 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                   >
                     <View style={styles.flexColumn}>
                       <Text>
-                        {formatDate(experience.startJobDate) || "No start Date"}{" "}
-                        - {formatDate(experience.endJobDate) || "No end Date"}
+                        {formatDate(experience.startJobDate) || "No Start Date"}{" "}
+                        - {formatDate(experience.endJobDate) || "No End Date"}
                       </Text>
                       <Text>
                         {experience.jobLocation || "No location"},{" "}
@@ -241,9 +241,9 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                       </Text>
                     </View>
                     <View style={styles.flexColumn}>
-                      <Text>{experience.company || "No company"}</Text>
+                      <Text>{experience.company || "No Company"}</Text>
                       <Text>{experience.position || "No Job Position"}</Text>
-                      <Text>{experience.description || "No description"}</Text>
+                      <Text>{experience.description || "No Description"}</Text>
                     </View>
                   </View>
                 ))}
@@ -256,7 +256,7 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
 };
 
 PDFFile.propTypes = {
-  personalDetails: PropTypes.array,
+  personalDetails: PropTypes.object,
   professionalExperiences: PropTypes.array,
   saveEducationalEntries: PropTypes.array,
 };

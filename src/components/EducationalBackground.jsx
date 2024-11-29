@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "@/App";
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 export default function EducationalBackground({ isShown, toggleForm }) {
   const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
     useContext(Context);
@@ -13,6 +14,36 @@ export default function EducationalBackground({ isShown, toggleForm }) {
       [name]: value,
     };
     setEducationalBackgroundEntries(updatedBackgrounds);
+  };
+
+  const validateEntries = (entries) => {
+    return entries.every(
+      (entry) =>
+        entry.school.trim() !== "" &&
+        entry.degree.trim() !== "" &&
+        entry.startSchoolDate !== "" &&
+        entry.endSchoolDate !== ""
+    );
+  };
+  const handleSave = () => {
+    if (!validateEntries(educationalBackgroundEntries)) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+  };
+  const addEducationalEntry = () => {
+    setEducationalBackgroundEntries((prevEntries) => [
+      ...prevEntries,
+      {
+        id: crypto.randomUUID(),
+        school: "",
+        degree: "",
+        schoolCity: "",
+        schoolCountry: "",
+        startSchoolDate: "",
+        endSchoolDate: "",
+      },
+    ]);
   };
 
   return (
@@ -58,7 +89,6 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>
-
             <div className="mb-1">
               <label
                 htmlFor={`degree-${index}`}
@@ -76,7 +106,6 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="capitalize mt-1 block w-full p-2 border rounded-md"
               />
             </div>
-
             <div className="mb-1">
               <label
                 htmlFor={`startSchoolDate-${index}`}
@@ -93,7 +122,6 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="mt-1 block w-full p-2 rounded-md border"
               />
             </div>
-
             <div className="mb-1">
               <label
                 htmlFor={`endSchoolDate-${index}`}
@@ -110,7 +138,6 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="mt-1 block w-full p-2 rounded-md border"
               />
             </div>
-
             <div className="mb-1">
               <label
                 htmlFor={`schoolCity-${index}`}
@@ -127,7 +154,6 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>
-
             <div className="mb-1">
               <label
                 htmlFor={`schoolCountry-${index}`}
@@ -144,6 +170,14 @@ export default function EducationalBackground({ isShown, toggleForm }) {
                 className="capitalize mt-1 block w-full p-2 rounded-md border"
               />
             </div>
+            <button
+              onClick={addEducationalEntry}
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+            >
+              {" "}
+              Add Education
+            </button>
+            ;
           </form>
         ))}
       </div>

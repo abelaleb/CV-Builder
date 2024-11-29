@@ -53,7 +53,17 @@ function App() {
       },
     ]);
   };
-
+  // useEffect(() => {
+  //   localStorage.setItem("personalDetails", JSON.stringify(personalDetails));
+  //   localStorage.setItem(
+  //     "educationalBackgroundEntries",
+  //     JSON.stringify(educationalBackgroundEntries)
+  //   );
+  //   localStorage.setItem(
+  //     "professionalExperienceEntries",
+  //     JSON.stringify(professionalExperienceEntries)
+  //   );
+  // },[personalDetails,educationalBackgroundEntries,professionalExperienceEntries]);
   return (
     <Context.Provider
       value={{
