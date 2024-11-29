@@ -1,49 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "@/App";
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 export default function EducationalBackground({ isShown, toggleForm }) {
-  const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
-    useContext(Context);
+  const { educationalBackgroundEntries, setEducationalBackgroundEntries } = useContext(Context);
+  const [newEntry, setNewEntry] = useState({
+    id: crypto.randomUUID(),
+    school: "",
+    degree: "",
+    schoolCity: "",
+    schoolCountry: "",
+    startSchoolDate: "",
+    endSchoolDate: "",
+  });
 
-  const handleChange = (index, e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    const updatedBackgrounds = [...educationalBackgroundEntries];
-    updatedBackgrounds[index] = {
-      ...updatedBackgrounds[index],
+    setNewEntry((prevEntry) => ({
+      ...prevEntry,
       [name]: value,
-    };
-    setEducationalBackgroundEntries(updatedBackgrounds);
+    }));
   };
 
-  const validateEntries = (entries) => {
-    return entries.every(
-      (entry) =>
-        entry.school.trim() !== "" &&
-        entry.degree.trim() !== "" &&
-        entry.startSchoolDate !== "" &&
-        entry.endSchoolDate !== ""
+  const validateEntry = (entry) => {
+    return (
+      entry.school.trim() !== "" &&
+      entry.degree.trim() !== "" &&
+      entry.startSchoolDate !== "" &&
+      entry.endSchoolDate !== "" &&
+      entry.schoolCity.trim() !== "" &&
+      entry.schoolCountry.trim() !== ""
     );
   };
+
   const handleSave = () => {
-    if (!validateEntries(educationalBackgroundEntries)) {
+    if (!validateEntry(newEntry)) {
       alert("Please fill out all required fields.");
       return;
     }
-  };
-  const addEducationalEntry = () => {
-    setEducationalBackgroundEntries((prevEntries) => [
-      ...prevEntries,
-      {
-        id: crypto.randomUUID(),
-        school: "",
-        degree: "",
-        schoolCity: "",
-        schoolCountry: "",
-        startSchoolDate: "",
-        endSchoolDate: "",
-      },
-    ]);
+    setEducationalBackgroundEntries((prevEntries) => [...prevEntries, newEntry]);
+    setNewEntry({
+      id: crypto.randomUUID(),
+      school: "",
+      degree: "",
+      schoolCity: "",
+      schoolCountry: "",
+      startSchoolDate: "",
+      endSchoolDate: "",
+    });
   };
 
   return (
@@ -70,116 +74,95 @@ export default function EducationalBackground({ isShown, toggleForm }) {
           isShown ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        {educationalBackgroundEntries.map((background, index) => (
-          <form key={index} className="mt-5 gap-3">
-            <div className="mb-1">
-              <label
-                htmlFor={`school-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                School
-              </label>
-              <input
-                type="text"
-                name="school"
-                id={`school-${index}`}
-                value={background.school || ""}
-                onChange={(e) => handleChange(index, e)}
-                placeholder="Enter School / University"
-                className="capitalize mt-1 block w-full p-2 rounded-md border"
-              />
-            </div>
-            <div className="mb-1">
-              <label
-                htmlFor={`degree-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                Degree
-              </label>
-              <input
-                type="text"
-                name="degree"
-                id={`degree-${index}`}
-                value={background.degree || ""}
-                onChange={(e) => handleChange(index, e)}
-                placeholder="Enter Degree / Field of Study"
-                className="capitalize mt-1 block w-full p-2 border rounded-md"
-              />
-            </div>
-            <div className="mb-1">
-              <label
-                htmlFor={`startSchoolDate-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                Start Date
-              </label>
-              <input
-                type="date"
-                name="startSchoolDate"
-                id={`startSchoolDate-${index}`}
-                value={background.startSchoolDate || ""}
-                onChange={(e) => handleChange(index, e)}
-                className="mt-1 block w-full p-2 rounded-md border"
-              />
-            </div>
-            <div className="mb-1">
-              <label
-                htmlFor={`endSchoolDate-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                End Date
-              </label>
-              <input
-                type="date"
-                name="endSchoolDate"
-                id={`endSchoolDate-${index}`}
-                value={background.endSchoolDate || ""}
-                onChange={(e) => handleChange(index, e)}
-                className="mt-1 block w-full p-2 rounded-md border"
-              />
-            </div>
-            <div className="mb-1">
-              <label
-                htmlFor={`schoolCity-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                City
-              </label>
-              <input
-                type="text"
-                name="schoolCity"
-                id={`schoolCity-${index}`}
-                value={background.schoolCity || ""}
-                onChange={(e) => handleChange(index, e)}
-                className="capitalize mt-1 block w-full p-2 rounded-md border"
-              />
-            </div>
-            <div className="mb-1">
-              <label
-                htmlFor={`schoolCountry-${index}`}
-                className="flex text-sm font-medium text-gray-700"
-              >
-                Country
-              </label>
-              <input
-                type="text"
-                name="schoolCountry"
-                id={`schoolCountry-${index}`}
-                value={background.schoolCountry || ""}
-                onChange={(e) => handleChange(index, e)}
-                className="capitalize mt-1 block w-full p-2 rounded-md border"
-              />
-            </div>
-            <button
-              onClick={addEducationalEntry}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
-            >
-              {" "}
-              Add Education
-            </button>
-            ;
-          </form>
-        ))}
+        <form className="mt-5 gap-3">
+          <div className="mb-1">
+            <label htmlFor="school" className="flex text-sm font-medium text-gray-700">
+              School
+            </label>
+            <input
+              type="text"
+              name="school"
+              id="school"
+              value={newEntry.school}
+              onChange={handleChange}
+              placeholder="Enter School / University"
+              className="capitalize mt-1 block w-full p-2 rounded-md border"
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="degree" className="flex text-sm font-medium text-gray-700">
+              Degree
+            </label>
+            <input
+              type="text"
+              name="degree"
+              id="degree"
+              value={newEntry.degree}
+              onChange={handleChange}
+              placeholder="Enter Degree / Field of Study"
+              className="capitalize mt-1 block w-full p-2 border rounded-md"
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="startSchoolDate" className="flex text-sm font-medium text-gray-700">
+              Start Date
+            </label>
+            <input
+              type="date"
+              name="startSchoolDate"
+              id="startSchoolDate"
+              value={newEntry.startSchoolDate}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 rounded-md border"
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="endSchoolDate" className="flex text-sm font-medium text-gray-700">
+              End Date
+            </label>
+            <input
+              type="date"
+              name="endSchoolDate"
+              id="endSchoolDate"
+              value={newEntry.endSchoolDate}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 rounded-md border"
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="schoolCity" className="flex text-sm font-medium text-gray-700">
+              City
+            </label>
+            <input
+              type="text"
+              name="schoolCity"
+              id="schoolCity"
+              value={newEntry.schoolCity}
+              onChange={handleChange}
+              className="capitalize mt-1 block w-full p-2 rounded-md border"
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="schoolCountry" className="flex text-sm font-medium text-gray-700">
+              Country
+            </label>
+            <input
+              type="text"
+              name="schoolCountry"
+              id="schoolCountry"
+              value={newEntry.schoolCountry}
+              onChange={handleChange}
+              className="capitalize mt-1 block w-full p-2 rounded-md border"
+            />
+          </div>
+          <button
+            type="button"
+            onClick={handleSave}
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Add Education
+          </button>
+        </form>
       </div>
     </section>
   );

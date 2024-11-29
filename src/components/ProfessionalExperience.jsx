@@ -14,7 +14,7 @@ function professionalExperience({ isShown, toggleForm }) {
     };
     setProfessionalExperienceEntries(updatedExperiences);
   };
-  console.log(`hi${professionalExperienceEntries}`);
+ 
 
   return (
     <>
