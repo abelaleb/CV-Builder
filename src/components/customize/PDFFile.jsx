@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
 });
 
 const formatDate = (date) => {
-  if (!date) return ""; // Handle empty or null date input
-  const parsedDate = parseISO(date); // Parse date string
+  if (!date) return "";
+  const parsedDate = parseISO(date);
   return isValid(parsedDate) ? format(parsedDate, "MMMM yyyy") : ""; // Ensure the date is valid before formatting
 };
 
@@ -141,7 +141,16 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
       entry.schoolCity.trim() !== "" ||
       entry.schoolCountry.trim() !== ""
   );
-
+  const filteredProfessionalExperienceEntries =
+    professionalExperienceEntries.filter(
+      (entry) =>
+        entry.company.trim() !== "" ||
+        entry.position.trim() !== "" ||
+        entry.startJobDate !== "" ||
+        entry.endJobDate !== "" ||
+        entry.jobLocation.trim() !== "" ||
+        entry.description.trim() !== ""
+    );
   return (
     <Document>
       <Page size="A4" style={{ ...styles.page, fontFamily: selectedFont }}>
@@ -235,29 +244,40 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
               >
                 Experience
               </Text>
-              {professionalExperienceEntries &&
-                professionalExperienceEntries.map((experience, index) => (
-                  <View
-                    key={index}
-                    style={{ ...styles.flexRow, gap: 100, padding: 10 }}
-                  >
-                    <View style={styles.flexColumn}>
-                      <Text>
-                        {formatDate(experience.startJobDate) || "No Start Date"}{" "}
-                        - {formatDate(experience.endJobDate) || "No End Date"}
-                      </Text>
-                      <Text>
-                        {experience.jobLocation || "No location"},{" "}
-                        {experience.jobTitle || "No Job Title"}
-                      </Text>
+              {filteredProfessionalExperienceEntries &&
+                filteredProfessionalExperienceEntries.map(
+                  (experience, index) => (
+                    <View key={index}>
+                      <View
+                        style={{ ...styles.flexRow, gap: 100, padding: 10 }}
+                      >
+                        <View style={styles.flexColumn}>
+                          <Text>
+                            {formatDate(experience.startJobDate) ||
+                              "No Start Date"}{" "}
+                            -{" "}
+                            {formatDate(experience.endJobDate) || "No End Date"}
+                          </Text>
+                          <Text>
+                            {experience.jobLocation || "No location"},{" "}
+                            {experience.jobTitle || "No Job Title"}
+                          </Text>
+                        </View>
+                        <View style={styles.flexColumn}>
+                          <Text>{experience.company || "No Company"}</Text>
+                          <Text>
+                            {experience.position || "No Job Position"}
+                          </Text>
+                        </View>
+                      </View>{" "}
+                      <View style={{padding:10,paddingTop:5}}>
+                        <Text>
+                          {experience.description || "No Description"}
+                        </Text>
+                      </View>
                     </View>
-                    <View style={styles.flexColumn}>
-                      <Text>{experience.company || "No Company"}</Text>
-                      <Text>{experience.position || "No Job Position"}</Text>
-                      <Text>{experience.description || "No Description"}</Text>
-                    </View>
-                  </View>
-                ))}
+                  )
+                )}
             </View>
           </View>
         </View>

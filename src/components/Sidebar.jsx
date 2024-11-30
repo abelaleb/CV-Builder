@@ -11,11 +11,10 @@ const sidebar = (props) => {
     professionalExperiences: false,
   });
   const toggleForm = (formName) => {
-    setIsShown((prevIsShown) => ({
-      ...prevIsShown,
-      [formName]: !prevIsShown[formName],
+    setIsShown((prevState) => ({
+      ...prevState,
+      [formName]: !prevState[formName],
     }));
-
   };
   return (
     <aside className="text-center bg-white p-4 md:col-span-1">
@@ -42,13 +41,14 @@ const sidebar = (props) => {
       <EducationalBackground
         isShown={isShown.educationalBackground}
         toggleForm={() => toggleForm("educationalBackground")}
-        addEducationalEntry={props.addEducationalEntry}
         isSample={props.isSample}
         clear={props.clear}
       />
       <ProfessionalExperience
         isShown={isShown.professionalExperiences}
         toggleForm={() => toggleForm("professionalExperiences")}
+        isSample={props.isSample}
+        clear={props.clear}
       />
       <div className="m-5 flex flex-wrap justify-center md:justify-between">
         <button

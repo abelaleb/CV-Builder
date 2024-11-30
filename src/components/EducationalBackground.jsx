@@ -36,7 +36,7 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
 
   const handleSave = () => {
     if (!validateEntry(newEntry)) {
-      alert("Please fill out all required fields.");
+      alert("Please fill out all required Education fields.");
       return;
     }
     setEducationalBackgroundEntries((prevEntries) => [...prevEntries, newEntry]);
