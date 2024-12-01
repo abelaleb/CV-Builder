@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Context } from "@/App";
-
+import { Button } from "@/components/ui/button";
+import dropdownArrowUp from "../assets/dropdown-arrow-up.svg";
+import dropdownArrow from "../assets/dropdown-arrow.svg";
+import briefcaseIcon from "../assets/briefcase-icon.svg";
 /* eslint-disable no-unused-vars */
 function professionalExperience({ isShown, toggleForm, isSample, clear }) {
   const { professionalExperienceEntries, setProfessionalExperienceEntries } =
@@ -65,17 +68,17 @@ function professionalExperience({ isShown, toggleForm, isSample, clear }) {
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
       <div className="flex justify-between items-center gap-4">
         <div className="flex gap-2 items-center">
-          <img src="/src/assets/briefcase-icon.svg" alt="briefcase icon" />
+          <img src={briefcaseIcon} alt="briefcase icon" />
           <h2 className=" font-bold text-lg ">Experience</h2>
         </div>
         <button onClick={toggleForm} className="text-indigo-500 underline ">
           {isShown ? (
             <img
-              src="/src/assets/dropdown-arrow-up.svg"
+              src={dropdownArrowUp}
               alt="dropdown-arrow-up svg"
             />
           ) : (
-            <img src="src/assets/dropdown-arrow.svg" alt="add-icon image" />
+            <img src={dropdownArrow} alt="dropdown-arrow svg" />
           )}
         </button>
       </div>
@@ -192,13 +195,13 @@ function professionalExperience({ isShown, toggleForm, isSample, clear }) {
               className="capitalize border mt-1 block w-full p-2 rounded-md focus:outline-none "
             />
           </div>
-          <button
+          <Button
             type="button"
             onClick={handleSave}
             className="px-4 py-2 bg-blue-500 text-white rounded"
           >
             Add Experience
-          </button>
+          </Button>
         </form>
       </div>
     </section>

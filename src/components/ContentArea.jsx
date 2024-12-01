@@ -4,7 +4,7 @@ import PDFFile from "./customize/PDFFile";
 
 const ContentArea = (props) => {
   return (
-    <main className="flex flex-col items-center p-4 w-full col-span-3">
+    <main className="flex flex-col items-center p-4 w-full col-span-4">
       {props.showPDFPreview ? (
         <div className="text-center text-lg">Download your PDF</div>
       ) : (

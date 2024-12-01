@@ -1,4 +1,7 @@
 import React from "react";
+import dropdownArrowUp from "../assets/dropdown-arrow-up.svg";
+import dropdownArrow from "../assets/dropdown-arrow.svg";
+import userIcon from "../assets/user-icon.svg";
 /* eslint-disable react/prop-types */
 
 export default function PersonalDetails({
@@ -19,18 +22,14 @@ export default function PersonalDetails({
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
       <div className="flex justify-between items-center gap-4">
         <div className="flex gap-2 items-center">
-          <img src="/src/assets/user-icon.svg" alt="user icon" />
+          <img src={userIcon} alt="user icon" />
           <h2 className=" font-bold text-lg ">Personal Details</h2>
         </div>
         <button onClick={toggleForm} className=" underline duration-500">
           {isShown ? (
-            <img
-              src="/src/assets/dropdown-arrow-up.svg"
-              alt="dropdown-arrow-up svg"
-              
-            />
+            <img src={dropdownArrowUp} alt="dropdown-arrow-up svg" />
           ) : (
-            <img src="src/assets/dropdown-arrow.svg" alt="add-icon image" />
+            <img src={dropdownArrow} alt="dropdown-arrow svg" />
           )}
         </button>
       </div>

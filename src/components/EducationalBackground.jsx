@@ -1,9 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Context } from "@/App";
+import { Button } from "@/components/ui/button";
+import dropdownArrowUp from "../assets/dropdown-arrow-up.svg";
+import dropdownArrow from "../assets/dropdown-arrow.svg";
+import educationIcon from "../assets/education-icon.svg";
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-export default function EducationalBackground({ isShown, toggleForm, isSample, clear }) {
-  const { educationalBackgroundEntries, setEducationalBackgroundEntries } = useContext(Context);
+export default function EducationalBackground({
+  isShown,
+  toggleForm,
+  isSample,
+  clear,
+}) {
+  const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
+    useContext(Context);
   const [newEntry, setNewEntry] = useState({
     id: crypto.randomUUID(),
     school: "",
@@ -20,7 +30,6 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
       ...prevEntry,
       [name]: value,
     }));
-    handleEdit();
   };
 
   const validateEntry = (entry) => {
@@ -39,7 +48,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
       alert("Please fill out all required Education fields.");
       return;
     }
-    setEducationalBackgroundEntries((prevEntries) => [...prevEntries, newEntry]);
+    setEducationalBackgroundEntries((prevEntries) => [
+      ...prevEntries,
+      newEntry,
+    ]);
     setNewEntry({
       id: crypto.randomUUID(),
       school: "",
@@ -61,17 +73,14 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
       <div className="flex justify-between items-center gap-4">
         <div className="flex gap-2 items-center">
-          <img src="/src/assets/education-icon.svg" alt="education icon" />
+          <img src={educationIcon} alt="education icon" />
           <h2 className="font-bold text-lg">Education</h2>
         </div>
         <button onClick={toggleForm} className="text-indigo-500 underline">
           {isShown ? (
-            <img
-              src="/src/assets/dropdown-arrow-up.svg"
-              alt="dropdown-arrow-up svg"
-            />
+            <img src={dropdownArrowUp} alt="dropdown-arrow-up svg" />
           ) : (
-            <img src="src/assets/dropdown-arrow.svg" alt="add-icon image" />
+            <img src={dropdownArrow} alt="dropdown-arrow" />
           )}
         </button>
       </div>
@@ -83,7 +92,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
       >
         <form className="mt-5 gap-3">
           <div className="mb-1">
-            <label htmlFor="school" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="school"
+              className="flex text-sm font-medium text-gray-700"
+            >
               School
             </label>
             <input
@@ -97,7 +109,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
             />
           </div>
           <div className="mb-1">
-            <label htmlFor="degree" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="degree"
+              className="flex text-sm font-medium text-gray-700"
+            >
               Degree
             </label>
             <input
@@ -111,7 +126,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
             />
           </div>
           <div className="mb-1">
-            <label htmlFor="startSchoolDate" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="startSchoolDate"
+              className="flex text-sm font-medium text-gray-700"
+            >
               Start Date
             </label>
             <input
@@ -124,7 +142,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
             />
           </div>
           <div className="mb-1">
-            <label htmlFor="endSchoolDate" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="endSchoolDate"
+              className="flex text-sm font-medium text-gray-700"
+            >
               End Date
             </label>
             <input
@@ -137,7 +158,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
             />
           </div>
           <div className="mb-1">
-            <label htmlFor="schoolCity" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="schoolCity"
+              className="flex text-sm font-medium text-gray-700"
+            >
               City
             </label>
             <input
@@ -150,7 +174,10 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
             />
           </div>
           <div className="mb-1">
-            <label htmlFor="schoolCountry" className="flex text-sm font-medium text-gray-700">
+            <label
+              htmlFor="schoolCountry"
+              className="flex text-sm font-medium text-gray-700"
+            >
               Country
             </label>
             <input
@@ -162,13 +189,13 @@ export default function EducationalBackground({ isShown, toggleForm, isSample, c
               className="capitalize mt-1 block w-full p-2 rounded-md border"
             />
           </div>
-          <button
+          <Button
             type="button"
             onClick={handleSave}
-            className="px-4 py-2 bg-blue-500 text-white rounded"
+            className="px-4 my-2 bg-blue-500 text-white rounded"
           >
             Add Education
-          </button>
+          </Button>
         </form>
       </div>
     </section>

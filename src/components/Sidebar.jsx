@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import PersonalDetails from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ProfessionalExperience from "./ProfessionalExperience";
+import { Button } from "@/components/ui/button"
+
 //eslint no-unused-vars
 const sidebar = (props) => {
   const [isShown, setIsShown] = useState({
@@ -17,20 +19,20 @@ const sidebar = (props) => {
     }));
   };
   return (
-    <aside className="text-center bg-white p-4 md:col-span-1">
+    <aside className="text-center bg-white p-4 md:col-span-1 ">
       <div className="flex flex-wrap justify-between p-2">
-        <button
+        <Button
           className="m-1 px-2 py-1 bg-red-500 text-white rounded"
           onClick={props.clear}
         >
           Clear
-        </button>
-        <button
+        </Button>
+        <Button
           className="m-1 px-2 py-1 bg-green-500 text-white rounded"
           onClick={props.sample}
         >
           Sample
-        </button>
+        </Button>
       </div>
       <PersonalDetails
         personalDetails={props.personalDetails}
@@ -51,22 +53,22 @@ const sidebar = (props) => {
         clear={props.clear}
       />
       <div className="m-5 flex flex-wrap justify-center md:justify-between">
-        <button
+        <Button
           className="m-1 px-2 py-1 bg-blue-500 text-white rounded"
           onClick={() => {
             props.setShowPDFPreview(true);
           }}
         >
           Download PDF
-        </button>
-        <button
+        </Button>
+        <Button
           className="m-1 px-2 py-1 bg-gray-500 text-white rounded"
           onClick={() => {
             props.setShowPDFPreview(false);
           }}
         >
           Edit
-        </button>
+        </Button>
       </div>
     </aside>
   );
