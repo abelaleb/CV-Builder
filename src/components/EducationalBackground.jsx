@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Context } from "@/App";
+import React, { useState } from "react";
+// import { Context } from "@/App";
 import { Button } from "@/components/ui/button";
 import dropdownArrowUp from "../assets/dropdown-arrow-up.svg";
 import dropdownArrow from "../assets/dropdown-arrow.svg";
@@ -11,9 +11,11 @@ export default function EducationalBackground({
   toggleForm,
   isSample,
   clear,
+  setEducationalBackgroundEntries,
+  educationalBackgroundEntries,
 }) {
-  const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
-    useContext(Context);
+  // const { educationalBackgroundEntries, setEducationalBackgroundEntries } =
+  //   useContext(Context);
   const [newEntry, setNewEntry] = useState({
     id: crypto.randomUUID(),
     school: "",
@@ -71,7 +73,10 @@ export default function EducationalBackground({
 
   return (
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
-      <div onClick={toggleForm} className="flex justify-between items-center gap-4 cursor-pointer">
+      <div
+        onClick={toggleForm}
+        className="flex justify-between items-center gap-4 cursor-pointer"
+      >
         <div className="flex gap-2 items-center">
           <img src={educationIcon} alt="education icon" />
           <h2 className="font-bold text-lg">Education</h2>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PersonalDetails from "./PersonalDetails";
 import EducationalBackground from "./EducationalBackground";
 import ProfessionalExperience from "./ProfessionalExperience";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 //eslint no-unused-vars
 const sidebar = (props) => {
@@ -45,12 +45,18 @@ const sidebar = (props) => {
         toggleForm={() => toggleForm("educationalBackground")}
         isSample={props.isSample}
         clear={props.clear}
+        educationalBackgroundEntries={props.educationalBackgroundEntries}
+        setEducationalBackgroundEntries={props.setEducationalBackgroundEntries}
       />
       <ProfessionalExperience
         isShown={isShown.professionalExperiences}
         toggleForm={() => toggleForm("professionalExperiences")}
         isSample={props.isSample}
         clear={props.clear}
+        professionalExperienceEntries={props.professionalExperienceEntries}
+        setProfessionalExperienceEntries={
+          props.setProfessionalExperienceEntries
+        }
       />
       <div className="m-2 flex flex-wrap justify-center md:justify-between">
         <Button
@@ -59,7 +65,7 @@ const sidebar = (props) => {
             props.setShowPDFPreview(true);
           }}
         >
-          Download PDF
+          Save PDF
         </Button>
         <Button
           className="m-1 px-4 py-1 bg-secondary text-white rounded"

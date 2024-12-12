@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import { Context } from "@/App";
+import React, { useState } from "react";
+// import { Context } from "@/App";
 import { Button } from "@/components/ui/button";
 import dropdownArrowUp from "../assets/dropdown-arrow-up.svg";
 import dropdownArrow from "../assets/dropdown-arrow.svg";
 import briefcaseIcon from "../assets/briefcase-icon.svg";
 /* eslint-disable no-unused-vars */
-function professionalExperience({ isShown, toggleForm, isSample, clear }) {
-  const { professionalExperienceEntries, setProfessionalExperienceEntries } =
-    useContext(Context);
+function professionalExperience({ isShown, toggleForm, isSample, clear,setProfessionalExperienceEntries, professionalExperienceEntries }) {
+  // const { professionalExperienceEntries, setProfessionalExperienceEntries } =
+  //   useContext(Context);
   const [newEntry, setNewEntry] = useState({
     id: crypto.randomUUID(),
     company: "",

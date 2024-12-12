@@ -7,7 +7,7 @@ import {
   initialEducationalBackgroundEntries,
   initialProfessionalExperienceEntries,
 } from "./components/example-data";
-export const Context = React.createContext();
+// export const Context = React.createContext();
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
@@ -31,17 +31,7 @@ function App() {
 
   const clear = () => {
     setPersonalDetails([]);
-    setEducationalBackgroundEntries([
-      {
-        id: crypto.randomUUID(),
-        school: "",
-        degree: "",
-        schoolCity: "",
-        schoolCountry: "",
-        startSchoolDate: "",
-        endSchoolDate: "",
-      },
-    ]);
+    setEducationalBackgroundEntries([]);
     setProfessionalExperienceEntries([
       {
         id: crypto.randomUUID(),
@@ -64,45 +54,56 @@ function App() {
   };
 
   return (
-    <Context.Provider
-      value={{
-        educationalBackgroundEntries,
-        setEducationalBackgroundEntries,
-        professionalExperienceEntries,
-        setProfessionalExperienceEntries,
-      }}
-    >
-      <main className="grid grid-cols-1 md:grid-cols-6 bg-slate-100 min-h-screen">
-        <div className="col-span-2 m-2 md:m-5 bg-white p-5">
-          {/* Sidebar */}
-          <div className="flex flex-col ml-2 md:ml-5">
-            <FontSelector
-              selectedFont={selectedFont}
-              setSelectedFont={setSelectedFont}
-            />
-          </div>
-          <Sidebar
-            sample={sample}
-            clear={clear}
-            setShowPDFPreview={setShowPDFPreview}
-            personalDetails={personalDetails}
-            setPersonalDetails={(details) => {
-              handleEdit();
-              setPersonalDetails(details);
-            }}
-            isSample={isSample}
+    // <Context.Provider
+    //   value={{
+    //     educationalBackgroundEntries,
+    //     setEducationalBackgroundEntries,
+    //     professionalExperienceEntries,
+    //     setProfessionalExperienceEntries,
+    //   }}
+    // >
+    <main className="grid grid-cols-1 md:grid-cols-6 bg-slate-100 min-h-screen">
+      <div className="col-span-2 m-2 md:m-5 bg-white p-5">
+        {/* Sidebar */}
+        <div className="flex flex-col ml-2 md:ml-5">
+          <FontSelector
+            selectedFont={selectedFont}
+            setSelectedFont={setSelectedFont}
           />
         </div>
-        {/* Content Area */}
-        <ContentArea
+        <Sidebar
           sample={sample}
           clear={clear}
-          showPDFPreview={showPDFPreview}
-          selectedFont={selectedFont}
+          setShowPDFPreview={setShowPDFPreview}
           personalDetails={personalDetails}
+          setPersonalDetails={(details) => {
+            handleEdit();
+            setPersonalDetails(details);
+          }}
+          educationalBackgroundEntries={educationalBackgroundEntries}
+          setEducationalBackgroundEntries={(entries) => {
+            handleEdit();
+            setEducationalBackgroundEntries(entries);
+          }}
+          professionalExperienceEntries={professionalExperienceEntries}
+          setProfessionalExperienceEntries={(entries) => {
+            handleEdit();
+            setProfessionalExperienceEntries(entries);
+          }}
+          isSample={isSample}
         />
-      </main>
-    </Context.Provider>
+      </div>
+      {/* Content Area */}
+      <ContentArea
+        sample={sample}
+        clear={clear}
+        showPDFPreview={showPDFPreview}
+        selectedFont={selectedFont}
+        personalDetails={personalDetails}
+        educationalBackgroundEntries={educationalBackgroundEntries}
+        professionalExperienceEntries={professionalExperienceEntries}
+      />
+    </main>
   );
 }
 

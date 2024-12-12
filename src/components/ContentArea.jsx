@@ -1,6 +1,6 @@
 import React from "react";
 import PDFFile from "./customize/PDFFile";
-import {  PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFViewer } from "@react-pdf/renderer";
 
 /* eslint-disable react/prop-types */
 
@@ -9,20 +9,15 @@ const ContentArea = (props) => {
     <main className="flex flex-col items-center p-4 w-full col-span-4">
       {props.showPDFPreview ? (
         <div className="text-center text-lg">
-          <PDFDownloadLink
-            document={
-              <PDFFile
-                personalDetails={props.personalDetails}
-                selectedFont={props.selectedFont}
-              />
-            }
-            fileName="Resume.pdf"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
-          >
-            {({ loading }) =>
-              loading ? "Preparing document..." : "Download PDF"
-            }
-          </PDFDownloadLink>
+          <PDFViewer width="595px" height="842px"> {/* Fixed size */}
+            <PDFFile
+              personalDetails={props.personalDetails}
+              selectedFont={props.selectedFont}
+              professionalExperiences={props.professionalExperienceEntries} // Changed from professionalExperienceEntries
+              educationalBackground={props.educationalBackgroundEntries} // Changed from educationalBackgroundEntries
+              sample={props.sample}
+            />
+          </PDFViewer>
         </div>
       ) : (
         <div
@@ -32,6 +27,9 @@ const ContentArea = (props) => {
           <PDFFile
             personalDetails={props.personalDetails}
             selectedFont={props.selectedFont}
+            professionalExperiences={props.professionalExperienceEntries} // Changed from professionalExperienceEntries
+            educationalBackground={props.educationalBackgroundEntries} // Changed from educationalBackgroundEntries
+            sample={props.sample}
           />
         </div>
       )}

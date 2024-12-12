@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { Context } from "../../App";
+import React from "react";
 import { format, parseISO, isValid } from "date-fns";
 import PropTypes from "prop-types";
 import {
@@ -10,7 +9,6 @@ import {
   View,
   Link,
 } from "@react-pdf/renderer";
-/* eslint-disable react/prop-types */
 //  /* eslint-disable no-unused-vars */
 
 const styles = StyleSheet.create({
@@ -127,11 +125,16 @@ const formatDate = (date) => {
   return isValid(parsedDate) ? format(parsedDate, "MMMM yyyy") : ""; // Ensure the date is valid before formatting
 };
 
-const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
-  const { educationalBackgroundEntries } = useContext(Context);
-  const { professionalExperienceEntries } = useContext(Context);
+const PDFFile = ({
+  personalDetails = {},
+  // selectedFont = "sans-serif",
+  professionalExperiences = [],
+  educationalBackground = [], 
+}) => {
+  // const { educationalBackgroundEntries } = useContext(Context);
+  // const { professionalExperienceEntries } = useContext(Context);
 
-  const filteredEducationalEntries = educationalBackgroundEntries.filter(
+  const filteredEducationalEntries = educationalBackground.filter(
     (entry) =>
       entry.school.trim() !== "" ||
       entry.degree.trim() !== "" ||
@@ -140,19 +143,24 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
       entry.schoolCity.trim() !== "" ||
       entry.schoolCountry.trim() !== ""
   );
-  const filteredProfessionalExperienceEntries =
-    professionalExperienceEntries.filter(
-      (entry) =>
-        entry.company.trim() !== "" ||
-        entry.position.trim() !== "" ||
-        entry.startJobDate !== "" ||
-        entry.endJobDate !== "" ||
-        entry.jobLocation.trim() !== "" ||
-        entry.description.trim() !== ""
-    );
+  const filteredProfessionalExperienceEntries = professionalExperiences.filter(
+    (entry) =>
+      entry.company.trim() !== "" ||
+      entry.position.trim() !== "" ||
+      entry.startJobDate !== "" ||
+      entry.endJobDate !== "" ||
+      entry.jobLocation.trim() !== "" ||
+      entry.description.trim() !== ""
+  );
   return (
     <Document>
-      <Page size="A4" style={{ ...styles.page, fontFamily: selectedFont }}>
+      <Page
+        size="A4"
+        style={{
+          ...styles.page,
+          //  fontFamily: selectedFont
+        }}
+      >
         <View style={styles.defaultLayout.main}>
           <View
             style={{
@@ -162,7 +170,7 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
               paddingBottom: "6px",
             }}
           >
-            <Text style={{ ...styles.defaultLayout.name, color: "white" }}>
+            <Text style={{ ...styles.defaultLayout.name, color: "white", textTransform: "capitalize" }}>
               {personalDetails.name || "Your Name"}
             </Text>
             <View style={styles.defaultLayout.contactInfo}>
@@ -275,8 +283,7 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                         </View>
                       </View>{" "}
                       <View style={{ padding: 10, paddingTop: 5 }}>
-                        <Text style={{color:"#4A4A4A", fontSize: 14, 
-                        }}> 
+                        <Text style={{ color: "#4A4A4A", fontSize: 14 }}>
                           {experience.description || "No Description"}
                         </Text>
                       </View>
@@ -285,7 +292,6 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                 )
               )}
             </View>
-            
           </View>
         </View>
       </Page>
@@ -295,8 +301,8 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
 
 PDFFile.propTypes = {
   personalDetails: PropTypes.object,
-  professionalExperiences: PropTypes.array,
-  saveEducationalEntries: PropTypes.array,
+  professionalExperiences: PropTypes.array, // Changed from professionalExperienceEntries
+  educationalBackground: PropTypes.array, // Changed from educationalBackgroundEntries
 };
 
 export default PDFFile;
