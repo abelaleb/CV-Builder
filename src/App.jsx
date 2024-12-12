@@ -93,7 +93,7 @@ function App() {
             isSample={isSample}
           />
         </div>
-
+        {/* Content Area */}
         <ContentArea
           sample={sample}
           clear={clear}

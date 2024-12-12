@@ -20,12 +20,14 @@ export default function PersonalDetails({
 
   return (
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4">
-      <div className="flex justify-between items-center gap-4">
+      <div onClick={toggleForm} className="flex justify-between items-center gap-4 cursor-pointer">
         <div className="flex gap-2 items-center">
           <img src={userIcon} alt="user icon" />
           <h2 className=" font-bold text-lg ">Personal Details</h2>
         </div>
-        <button onClick={toggleForm} className=" underline duration-500">
+        <button
+        //  onClick={toggleForm}
+         className=" underline duration-500">
           {isShown ? (
             <img src={dropdownArrowUp} alt="dropdown-arrow-up svg" />
           ) : (

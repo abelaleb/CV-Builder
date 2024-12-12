@@ -66,12 +66,12 @@ function professionalExperience({ isShown, toggleForm, isSample, clear }) {
 
   return (
     <section className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
-      <div className="flex justify-between items-center gap-4">
+      <div onClick={toggleForm} className="flex justify-between items-center gap-4 cursor-pointer">
         <div className="flex gap-2 items-center">
           <img src={briefcaseIcon} alt="briefcase icon" />
           <h2 className=" font-bold text-lg ">Experience</h2>
         </div>
-        <button onClick={toggleForm} className="text-indigo-500 underline ">
+        <button className="text-indigo-500 underline ">
           {isShown ? (
             <img
               src={dropdownArrowUp}

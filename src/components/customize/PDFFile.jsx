@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "@/App";
-
+import { Context } from "../../App";
 import { format, parseISO, isValid } from "date-fns";
 import PropTypes from "prop-types";
 import {
@@ -209,7 +208,9 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
               >
                 Education
               </Text>
-              {filteredEducationalEntries &&
+              {filteredEducationalEntries.length === 0 ? (
+                <Text>No Educational Details Added</Text>
+              ) : (
                 filteredEducationalEntries.map((education, index) => (
                   <View
                     key={index}
@@ -231,7 +232,8 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                       <Text>{education.degree || "No Degree"}</Text>
                     </View>
                   </View>
-                ))}
+                ))
+              )}
             </View>
 
             <View style={styles.defaultLayout.headerSection}>
@@ -244,7 +246,9 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
               >
                 Experience
               </Text>
-              {filteredProfessionalExperienceEntries &&
+              {filteredProfessionalExperienceEntries.length === 0 ? (
+                <Text>No Professional Experience Added</Text>
+              ) : (
                 filteredProfessionalExperienceEntries.map(
                   (experience, index) => (
                     <View key={index}>
@@ -270,15 +274,18 @@ const PDFFile = ({ personalDetails = {}, selectedFont = "sans-serif" }) => {
                           </Text>
                         </View>
                       </View>{" "}
-                      <View style={{padding:10,paddingTop:5}}>
-                        <Text>
+                      <View style={{ padding: 10, paddingTop: 5 }}>
+                        <Text style={{color:"#4A4A4A", fontSize: 14, 
+                        }}> 
                           {experience.description || "No Description"}
                         </Text>
                       </View>
                     </View>
                   )
-                )}
+                )
+              )}
             </View>
+            
           </View>
         </View>
       </Page>

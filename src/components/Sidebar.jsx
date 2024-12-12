@@ -22,13 +22,13 @@ const sidebar = (props) => {
     <aside className="text-center bg-white p-4 md:col-span-1 ">
       <div className="flex flex-wrap justify-between p-2">
         <Button
-          className="m-1 px-2 py-1 bg-red-500 text-white rounded"
+          className="m-1 px-4 py-1 bg-secondary text-white rounded"
           onClick={props.clear}
         >
           Clear
         </Button>
         <Button
-          className="m-1 px-2 py-1 bg-green-500 text-white rounded"
+          className="m-1 px-4 py-1 bg-secondary text-white rounded"
           onClick={props.sample}
         >
           Sample
@@ -52,9 +52,9 @@ const sidebar = (props) => {
         isSample={props.isSample}
         clear={props.clear}
       />
-      <div className="m-5 flex flex-wrap justify-center md:justify-between">
+      <div className="m-2 flex flex-wrap justify-center md:justify-between">
         <Button
-          className="m-1 px-2 py-1 bg-blue-500 text-white rounded"
+          className="m-1 px-4 py-1 bg-primary text-white rounded"
           onClick={() => {
             props.setShowPDFPreview(true);
           }}
@@ -62,7 +62,7 @@ const sidebar = (props) => {
           Download PDF
         </Button>
         <Button
-          className="m-1 px-2 py-1 bg-gray-500 text-white rounded"
+          className="m-1 px-4 py-1 bg-secondary text-white rounded"
           onClick={() => {
             props.setShowPDFPreview(false);
           }}
