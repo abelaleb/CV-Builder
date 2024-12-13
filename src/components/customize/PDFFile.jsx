@@ -115,6 +115,24 @@ const styles = StyleSheet.create({
   },
 });
 
+const emailSvg = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="white"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="lucide lucide-mail"
+    style={{ width: 400, height: 400 }}
+  >
+    <rect width="20" height="16" x="2" y="4" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
 const formatDate = (date) => {
   if (!date) return "";
   const parsedDate = parseISO(date);
@@ -167,19 +185,19 @@ const PDFFile = ({
               paddingBottom: "6px",
             }}
           >
-            <Text
-              style={{
-                ...styles.defaultLayout.name,
-                color: "white",
-                textTransform: "capitalize",
-              }}
-            >
-              {personalDetails.name || "Name"}
+            <Text style={{ ...styles.defaultLayout.name, color: "white", textTransform: "capitalize" }}>
+              {personalDetails.name || "Your Name"}
             </Text>
             <View style={styles.defaultLayout.contactInfo}>
-              <Text style={styles.text}>{personalDetails.email||"Email"}</Text>
-              <Text style={styles.text}>{personalDetails.phoneNumber ||"Phone Number"}</Text>
-              <Text style={styles.text}>{personalDetails.location || "Location"}</Text>
+              <Text style={styles.text}>
+                {personalDetails.email || "Email"}
+              </Text>
+              <Text style={styles.text}>
+                {personalDetails.phoneNumber || "Phone Number"}
+              </Text>
+              <Text style={styles.text}>
+                {personalDetails.location || "Location"}
+              </Text>
               {personalDetails.linkedin && (
                 <Text style={styles.text}>
                   <Link src={personalDetails.linkedin || "LinkedIn"}>LinkedIn</Link>
@@ -198,7 +216,9 @@ const PDFFile = ({
               >
                 About Me
               </Text>
-              <Text>{personalDetails.aboutMe || "No Personal Details Added"}</Text>
+              <Text>
+                {personalDetails.aboutMe || "No Personal Details Added"}
+              </Text>
             </View>
 
             <View style={styles.defaultLayout.headerSection}>
