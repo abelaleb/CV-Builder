@@ -9,7 +9,6 @@ import {
   View,
   Link,
 } from "@react-pdf/renderer";
-//  /* eslint-disable no-unused-vars */
 
 const styles = StyleSheet.create({
   // Common Styles
@@ -27,14 +26,11 @@ const styles = StyleSheet.create({
   },
   image: { width: "50px" },
   // Common Flex and Layout Styles
+  flexColumn: { display: "flex", flexDirection: "column" },
   flexRow: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-  },
-  flexColumn: {
-    display: "flex",
-    flexDirection: "column",
+    gap: "1rem",
   },
   sectionHeader: {
     fontSize: 16,
@@ -129,7 +125,7 @@ const PDFFile = ({
   personalDetails = {},
   // selectedFont = "sans-serif",
   professionalExperiences = [],
-  educationalBackground = [], 
+  educationalBackground = [],
 }) => {
   // const { educationalBackgroundEntries } = useContext(Context);
   // const { professionalExperienceEntries } = useContext(Context);
@@ -152,6 +148,7 @@ const PDFFile = ({
       entry.jobLocation.trim() !== "" ||
       entry.description.trim() !== ""
   );
+
   return (
     <Document>
       <Page
@@ -170,22 +167,22 @@ const PDFFile = ({
               paddingBottom: "6px",
             }}
           >
-            <Text style={{ ...styles.defaultLayout.name, color: "white", textTransform: "capitalize" }}>
-              {personalDetails.name || "Your Name"}
+            <Text
+              style={{
+                ...styles.defaultLayout.name,
+                color: "white",
+                textTransform: "capitalize",
+              }}
+            >
+              {personalDetails.name || "Name"}
             </Text>
             <View style={styles.defaultLayout.contactInfo}>
-              <Text style={styles.text}>
-                {personalDetails.email || "Email"}
-              </Text>
-              <Text style={styles.text}>
-                {personalDetails.phoneNumber || "Phone Number"}
-              </Text>
-              <Text style={styles.text}>
-                {personalDetails.location || "Location"}
-              </Text>
+              <Text style={styles.text}>{personalDetails.email||"Email"}</Text>
+              <Text style={styles.text}>{personalDetails.phoneNumber ||"Phone Number"}</Text>
+              <Text style={styles.text}>{personalDetails.location || "Location"}</Text>
               {personalDetails.linkedin && (
                 <Text style={styles.text}>
-                  <Link src={personalDetails.linkedin}>LinkedIn</Link>
+                  <Link src={personalDetails.linkedin || "LinkedIn"}>LinkedIn</Link>
                 </Text>
               )}
             </View>
@@ -201,9 +198,7 @@ const PDFFile = ({
               >
                 About Me
               </Text>
-              <Text>
-                {personalDetails.aboutMe || "No Personal Details Added"}
-              </Text>
+              <Text>{personalDetails.aboutMe || "No Personal Details Added"}</Text>
             </View>
 
             <View style={styles.defaultLayout.headerSection}>
@@ -220,24 +215,19 @@ const PDFFile = ({
                 <Text>No Educational Details Added</Text>
               ) : (
                 filteredEducationalEntries.map((education, index) => (
-                  <View
-                    key={index}
-                    style={{ ...styles.flexRow, gap: 100, padding: 10 }}
-                  >
-                    <View style={styles.flexColumn}>
+                  <View key={index} style={{ ...styles.flexRow, gap: 100 }}>
+                    <View style={{ ...styles.flexColumn }}>
                       <Text>
-                        {formatDate(education.startSchoolDate) ||
-                          "No Start Date"}{" "}
-                        - {formatDate(education.endSchoolDate) || "No End Date"}
+                        {formatDate(education.startSchoolDate)} -{" "}
+                        {formatDate(education.endSchoolDate)}
                       </Text>
                       <Text>
-                        {education.schoolCity || "No City"},{" "}
-                        {education.schoolCountry || "No Country"}
+                        {education.schoolCity}, {education.schoolCountry}
                       </Text>
                     </View>
-                    <View style={styles.flexColumn}>
-                      <Text>{education.school || "No School Name"}</Text>
-                      <Text>{education.degree || "No Degree"}</Text>
+                    <View style={{ ...styles.flexColumn }}>
+                      <Text>{education.school}</Text>
+                      <Text>{education.degree}</Text>
                     </View>
                   </View>
                 ))
@@ -260,31 +250,26 @@ const PDFFile = ({
                 filteredProfessionalExperienceEntries.map(
                   (experience, index) => (
                     <View key={index}>
-                      <View
-                        style={{ ...styles.flexRow, gap: 100, padding: 10 }}
-                      >
+                      <View style={{ ...styles.flexRow, gap: 100 }}>
                         <View style={styles.flexColumn}>
                           <Text>
-                            {formatDate(experience.startJobDate) ||
-                              "No Start Date"}{" "}
-                            -{" "}
-                            {formatDate(experience.endJobDate) || "No End Date"}
+                            {formatDate(experience.startJobDate)} -{" "}
+                            {formatDate(experience.endJobDate)}
                           </Text>
                           <Text>
-                            {experience.jobLocation || "No location"},{" "}
-                            {experience.jobTitle || "No Job Title"}
+                            {experience.jobLocation}, {experience.jobTitle}
                           </Text>
                         </View>
                         <View style={styles.flexColumn}>
-                          <Text>{experience.company || "No Company"}</Text>
-                          <Text>
-                            {experience.position || "No Job Position"}
-                          </Text>
+                          <Text>{experience.company}</Text>
+                          <Text>{experience.position}</Text>
                         </View>
                       </View>{" "}
-                      <View style={{ padding: 10, paddingTop: 5 }}>
+                      <View
+                        style={{ padding: 10, paddingTop: 5, paddingLeft: 0 }}
+                      >
                         <Text style={{ color: "#4A4A4A", fontSize: 14 }}>
-                          {experience.description || "No Description"}
+                          {experience.description}
                         </Text>
                       </View>
                     </View>
