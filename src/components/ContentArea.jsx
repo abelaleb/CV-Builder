@@ -9,7 +9,7 @@ const ContentArea = (props) => {
     <main className="flex flex-col items-center p-4 w-full col-span-4">
       {props.showPDFPreview ? (
         <div className="text-center text-lg">
-          <PDFViewer width="595px" height="842px"> {/* Fixed size */}
+          <PDFViewer width="850px" height="600px">
             <PDFFile
               personalDetails={props.personalDetails}
               selectedFont={props.selectedFont}

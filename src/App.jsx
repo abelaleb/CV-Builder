@@ -19,7 +19,7 @@ function App() {
     useState(initialProfessionalExperienceEntries);
 
   const [selectedFont, setSelectedFont] = useState("sans-serif");
-  const [showPDFPreview, setShowPDFPreview] = useState(false);
+  const [showPDFPreview, setShowPDFPreview] = useState(true);
   const [isSample, setIsSample] = useState(true);
 
   const sample = () => {

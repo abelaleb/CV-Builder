@@ -192,7 +192,7 @@ function professionalExperience({ isShown, toggleForm, isSample, clear,setProfes
               value={newEntry.description}
               onChange={handleChange}
               placeholder="Enter Description"
-              className="capitalize border mt-1 block w-full p-2 rounded-md focus:outline-none "
+              className=" border mt-1 block w-full p-2 rounded-md focus:outline-none "
             />
           </div>
           <Button
